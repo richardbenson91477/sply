@@ -15,13 +15,55 @@ def print_cmds ():
 
 def main ():
     model_id = "default"
+    editor = ""
+    user_name = ""
+    user_desc = ""
+    ai_name = ""
+    ai_desc = "" 
+    in_suffix = ""
+    in_suffix_enabled = True
+    rev_prompt = ""
+    prompt_file = ""
+    prompt = ""
 
     if len(sys.argv) > 1:
         for argv in sys.argv[1:]:
             if argv.find("model_id=") == 0:
                 model_id = argv[9:]
+            if argv.find("editor=") == 0:
+                editor = argv[7:]
+            if argv.find("user_name=") == 0:
+                user_name = argv[10:]
+            if argv.find("user_desc=") == 0:
+                user_desc = argv[10:]
+            if argv.find("ai_name=") == 0:
+                ai_name = argv[8:]
+            if argv.find("ai_desc=") == 0:
+                ai_desc = argv[8:]
+            if argv.find("in_suffix=") == 0:
+                in_suffix = argv[10:]
+            if argv.find("in_suffix_enabled=") == 0:
+                in_suffix_enabled = False if argv[18:] == "False" else True
+            if argv.find("rev_prompt=") == 0:
+                rev_prompt = argv[11:]
+            if argv.find("prompt_file=") == 0:
+                prompt_file = argv[12:]
+            if argv.find("prompt=") == 0:
+                prompt = argv[7:]
 
-    c = sply.chat(model_id=model_id)
+    c = sply.chat(
+        model_id=model_id,
+        editor=editor,
+        user_name=user_name,
+        user_desc=user_desc,
+        ai_name=ai_name,
+        ai_desc=ai_desc,
+        in_suffix=in_suffix,
+        in_suffix_enabled=in_suffix_enabled,
+        rev_prompt=rev_prompt,
+        prompt_file=prompt_file,
+        prompt=prompt,
+        )
 
     print(c.prompt, end="", flush=True)
 
@@ -75,7 +117,8 @@ def main ():
 
         if add:
             c.write(add)
-            print(c.in_suffix, end="", flush=True)
+            if in_suffix_enabled:
+                print(c.in_suffix, end="", flush=True)
         # end while running_
 
 if __name__ == "__main__":
