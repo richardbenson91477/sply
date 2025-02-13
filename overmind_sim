@@ -6,5 +6,6 @@ rev_prompt="
 ./chat_interact.py \
   in_suffix_enabled="False" \
   rev_prompt="$rev_prompt" \
-  prompt_file="overmind_sim.prompt"
+  prompt_file="overmind_sim.prompt" \
+  "$@"
 
