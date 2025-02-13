@@ -19,7 +19,7 @@ def main ():
     # set realish y's value to simulated y's value
     y = int(sp.runcode("y"))
 
-    # dispaly realish y
+    # print realish y's value
     print(f"y is {y}")
 
     #s.edit_prompt()
