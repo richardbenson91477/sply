@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import random
 import sys
 import sply
 
@@ -25,6 +26,11 @@ def main ():
     rev_prompt = ""
     prompt_file = ""
     prompt = ""
+    options = {
+        "seed": random.randint(0, 2 << 32),
+        "temperature": 0.8,
+        "num_ctx": 5_000,
+        }
 
     if len(sys.argv) > 1:
         for argv in sys.argv[1:]:
@@ -51,6 +57,13 @@ def main ():
             if argv.find("prompt=") == 0:
                 prompt = argv[7:]
 
+            if argv.find("seed=") == 0:
+                options["seed"] = float(argv[5:])
+            if argv.find("temperature=") == 0:
+                options["temperature"] = float(argv[12:])
+            if argv.find("num_ctx=") == 0:
+                options["num_ctx"] = float(argv[8:])
+
     c = sply.chat(
         model_id=model_id,
         editor=editor,
@@ -63,6 +76,7 @@ def main ():
         rev_prompt=rev_prompt,
         prompt_file=prompt_file,
         prompt=prompt,
+        options=options,
         )
 
     print(c.prompt, end="", flush=True)

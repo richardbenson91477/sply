@@ -7,5 +7,7 @@ rev_prompt="
   in_suffix_enabled="False" \
   rev_prompt="$rev_prompt" \
   prompt_file="overmind_sim.prompt" \
+  temperature="0.8" \
+  num_ctx="20_000" \
   "$@"
 

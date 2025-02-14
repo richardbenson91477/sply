@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 
-import subprocess, tempfile
+import random
+import subprocess
+import tempfile
 from ollama import generate
 
 class chat:
@@ -12,6 +14,11 @@ class chat:
     ai_desc_def = "is Rick's friend." 
     in_suffix_def = "Amy:"
     rev_prompt_def = "\nRick: "
+    options_def = {
+        "seed": random.randint(0, 2 << 32),
+        "temperature": 0.8,
+        "num_ctx": 20_000,
+        }
 
     def __init__ (self,
             model_id="",
@@ -25,6 +32,7 @@ class chat:
             rev_prompt="",
             prompt_file="",
             prompt="",
+            options=None,
             ):
 
         self.model_id = model_id if model_id else self.model_id_def
@@ -53,6 +61,8 @@ class chat:
         self.prompt_len = len(self.prompt)
         if self.prompt_len >= self.rev_prompt_len:
             self.rev_prompt_tail = self.prompt_len - self.rev_prompt_len
+
+        self.options = options if options else self.options_def
 
     def edit_prompt (self):
         prompt_path = tempfile.mktemp()
@@ -86,9 +96,10 @@ class chat:
 
     def read (self, show=False):
         gen = generate(
+            stream=True,
             model=self.model_id,
             prompt=self.prompt,
-            stream=True,
+            options=self.options,
             )
 
         res = ""

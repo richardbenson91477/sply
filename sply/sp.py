@@ -1,22 +1,29 @@
 #!/usr/bin/env python3
 
+import random
 from .chat import chat
 
 class sp:
     model_id_def = "default-code"
-    editor_def = "vim"
     rev_prompt_def = "\n>>> "
+    options_def = {
+        "seed": random.randint(0, 2 << 32),
+        "temperature": 0.0,
+        "num_ctx": 20_000,
+        }
 
     def __init__ (self,
+            show=False,
             model_id="",
             editor="",
             prompt_file="",
             prompt="",
-            show=False,
+            options=None,
             ):
 
         self.model_id = model_id if model_id else self.model_id_def
-        self.editor = editor if editor else self.editor_def
+
+        self.editor = editor
 
         self.rev_prompt = self.rev_prompt_def
         self.rev_prompt_len = len(self.rev_prompt)
@@ -29,12 +36,15 @@ class sp:
         else:
             self.prompt = self.default_prompt()
 
+        self.options = options if options else self.options_def
+
         self.c = chat(
             model_id=self.model_id,
             editor=self.editor,
             rev_prompt=self.rev_prompt,
             in_suffix_enabled=False,
             prompt=self.prompt,
+            options=self.options,
             )
 
         self.c.read(show=show)

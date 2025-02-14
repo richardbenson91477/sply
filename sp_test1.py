@@ -2,17 +2,19 @@
 
 import sys
 import sply
+import random
 
 def main ():
-    if len(sys.argv) > 1:
-        show=True
-    else:
-        show=False
+    options = {
+        "seed": random.randint(0, 2 << 32),
+        "temperature": 0.0,
+        "num_ctx": 1_000,
+        }
 
-    sp = sply.sp(show=show)
+    sp = sply.sp(show=True, options=options)
 
-    sp.runcode("y = 4", show=show)
-    s = sp.runcode("y + 2", show=show)
+    sp.runcode("y = 4", show=True)
+    s = sp.runcode("y + 2", show=True)
     print(f"**{s}**")
 
     #s.edit_prompt()

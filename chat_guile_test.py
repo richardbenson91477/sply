@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import random
 import sply
 
 prompt = "["\
@@ -18,6 +19,11 @@ def main ():
         rev_prompt="\nscheme@(guile-user)> ",
         prompt=prompt,
         in_suffix_enabled=False,
+        options = {
+            "seed": random.randint(0, 2 << 32),
+            "temperature": 0.0,
+            "num_ctx": 1_000,
+            }
         )
 
     print(c.prompt, end="", flush=True)
