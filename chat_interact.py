@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
-import random
 import sys
+import random
 import sply
 
 def print_cmds ():
