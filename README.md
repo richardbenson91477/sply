@@ -17,11 +17,16 @@
 >>> 
 ```
 
-## chat_interact.py usage:
+## chat_interact.py usage
   * run "./chat_interact.py --help" for command line options and defaults
   * enter /? for help
   * suffix input lines with a backslash to extend the input to multiple lines
   * hit Ctrl-C during generation to interrupt and return to input mode
+
+## issues with gibberish
+  * try a lower temperature value
+  * try a coding model (tested working on qwen2.5-coder-14b-instruct-q8_0.gguf)
+  * Ctrl-C is your friend!
 
 ## credits
 an [richardbenson91477](https://www.deviantart.com/richardbenson91477) artistic expression
