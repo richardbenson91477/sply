@@ -5,7 +5,7 @@ import sys
 import sply
 
 def print_cmds ():
-    print("\n* commands\n"
+    print("\n* commands:\n"
           "/?: this help\n"
           "/p: display prompt (surrounded by **'s)\n"
           "/i: print current input (surrounded by ***'s)\n"
@@ -17,7 +17,7 @@ def print_cmds ():
           )
 
 def print_usage ():
-    print(f"usage: {sys.argv[0]} [options]\n" 
+    print(f"Usage: {sys.argv[0]} [options]\n"
           f"  where [options] are zero or more of:\n"
           f"    model_id=(string): ollama model to load (default: \"{sply.chat.model_id_def}\")\n"
           f"    editor=(string): editor path for prompt editing (default: \"{sply.chat.editor_def}\")\n"
