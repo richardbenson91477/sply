@@ -62,19 +62,22 @@ class sp:
     def __setitem__ (self, item, val):
         pass
 
-    def edit_prompt (self):
+    def edit_prompt (self, show=False):
         self.c.edit_prompt()
-        # FIXME: read here?
+        res = self.c.read(show=show)
+        if res.rfind(self.rev_prompt) == len(res) - self.rev_prompt_len:
+            res = res[:-self.rev_prompt_len]
+        return res
 
     def default_prompt (self):
         return "["\
             "You are just a python interpreter."\
             "You must not generate anything that the python interpreter you are would not."\
             "]\n"\
-            ">>> x = 6\n"\
+            ">>> x = 1\n"\
             ">>> print(x)\n"\
-            "6\n"\
-            ">>> y = 3\n"\
+            "1\n"\
+            ">>> y = x + 1\n"\
             ">>> print(x+y)\n"\
-            "9\n"
+            "3\n"
 

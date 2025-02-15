@@ -8,12 +8,12 @@ from ollama import generate
 class chat:
     model_id_def = "default"
     editor_def = "vim"
-    user_name_def = "Rick"
-    user_desc_def = "is Amy's friend."
-    ai_name_def = "Amy"
-    ai_desc_def = "is Rick's friend." 
-    in_suffix_def = "Amy:"
-    rev_prompt_def = "\nRick: "
+    user_name_def = "John"
+    user_desc_def = "is Jane's friend."
+    ai_name_def = "Jane"
+    ai_desc_def = "is John's friend." 
+    in_suffix_def = "Jane:"
+    rev_prompt_def = "\nJohn: "
     options_def = {
         "seed": random.randint(0, 2 << 32),
         "temperature": 0.8,

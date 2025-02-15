@@ -6,28 +6,28 @@
 >>> del pipe
 >>> import overmind
 >>> n = overmind.node()
->>> amy = n.new("an intelligent being named Amy, female gender, age 18.")
->>> amy["name"]
-'Amy'
->>> n("infer the meaning of a 'realism' property of the amy object and describe it to me")
+>>> jane = n.new("an intelligent being named Jane, female gender, age 25.")
+>>> jane["name"]
+'Jane'
+>>> n("infer the meaning of a 'realism' property of the jane object and describe it to me")
 'How human-like the agent will be. Affects qualities such as sense of physical presence and strength of emotions. Normal values range from 0.0 (fully robot-like) to 1.0 (fully human-like). The default value is 0.75'
->>> amy["realism"] = 0.95
->>> amy["IQ"] = 120.0
->>> user = n.new("a reference to myself, a 47 year old man named Rick")
->>> amy["master"] = user
->>> amy("how are you feeling today?")
-'Amy: I\'m feeilng great, Rick!'
->>> zoe = n.new("Zoe - a copy of Amy with various personal properties randomly changed by up to 20%")
->>> zoe["master"] = user
+>>> jane["realism"] = 0.95
+>>> jane["IQ"] = 120.0
+>>> user = n.new("a reference to myself, a man named John")
+>>> jane["master"] = user
+>>> jane("how are you feeling today?")
+'Jane: I\'m feeilng great, John!'
+>>> sue = n.new("Sue - a copy of Jane with various personal properties randomly changed by up to 20%")
+>>> sue["master"] = user
 >>> g = n.new("an empty group that I can communicate with")
 >>> g.__class__
 <class 'overmind.node'>
->>> g["members"] = [zoe, amy]
+>>> g["members"] = [jane, sue]
 >>> n.new("a large and luxurious living room")
 <overmind.node object at 0x7f4b3c5c3d90>
 >>> room = n.new("a large and luxurious living room")
 >>> user["location"] = g["location"] = room
->>> n("add items to the living room that Amy and Zoe desire")
+>>> n("add items to the living room that Jane and Sue desire")
 'OK'
 >>> g("how do you like the room")
-'Group: Amy: 
+'Group: Jane: 

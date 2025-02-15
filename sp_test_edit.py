@@ -13,11 +13,11 @@ def main ():
 
     sp = sply.sp(show=True, options=options)
 
-    sp.runcode("y = 4", show=True)
-    s = sp.runcode("y + 2", show=True)
+    sp.runcode("y = 1", show=True)
+    s = sp.runcode("y + 1", show=True)
     print(f"**{s}**")
 
-    #s.edit_prompt()
+    s.edit_prompt(show=True)
 
 if __name__ == "__main__":
     exit(main())

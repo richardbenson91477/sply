@@ -1,9 +1,8 @@
 #!/bin/sh
 
-rev_prompt="
->>> "
+rev_prompt=$(printf "\n>>> ")
 
-./chat_interact.py \
+../chat_interact.py \
   in_suffix_enabled="False" \
   rev_prompt="$rev_prompt" \
   prompt_file="overmind_sim.prompt" \

@@ -4,7 +4,7 @@ import overmind
 
 n = overmind.node()
 
-n("how is the overmind doing?")
+n("what is the overmind?")
 
 amy = n.new("a girl named Amy")
 
