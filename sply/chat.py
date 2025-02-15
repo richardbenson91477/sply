@@ -13,6 +13,7 @@ class chat:
     ai_name_def = "Jane"
     ai_desc_def = "is John's friend." 
     in_suffix_def = "Jane:"
+    in_suffix_enabled_def = True
     rev_prompt_def = "\nJohn: "
     options_def = {
         "seed": random.randint(0, 2 << 32),
