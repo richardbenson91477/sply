@@ -6,8 +6,7 @@
   * the [Ollama Python Library](https://pypi.org/project/ollama/) (https://pypi.org/project/ollama/)
 
 ## example usage
-$ python3
-...
+```python
 >>> import sply
 >>> sp = sply.sp(model_id="default-code") # create a simulated python interpreter
 >>> y = 1
@@ -17,6 +16,7 @@ $ python3
 >>> y
 2
 >>> 
+```
 
 ## chat_interact.py usage:
   * run "./chat_interact.py --help" for command line options and defaults
