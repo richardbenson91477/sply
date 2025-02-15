@@ -5,17 +5,38 @@ import sys
 import sply
 
 def print_cmds ():
-    print("\n*commands*")
-    print("/?: this help")
-    print("/p: display prompt")
-    print("/i: print input")
-    print("/c: clear input")
-    print("//: input /\\n")
-    print("/q: quit")
-    print("/e: edit prompt")
+    print("\n* commands\n"
+          "/?: this help\n"
+          "/p: display prompt (surrounded by **'s)\n"
+          "/i: print current input (surrounded by ***'s)\n"
+          "/c: clear current input\n"
+          "//: input /\\n\n"
+          "/q: quit\n"
+          "/e: edit prompt\n"
+          "*"
+          )
+
+def print_usage ():
+    print(f"usage: {sys.argv[0]} [options]\n" 
+          f"  where [options] are zero or more of:\n"
+          f"    model_id=(string): ollama model to load (default: \"{sply.chat.model_id_def}\")\n"
+          f"    editor=(string): editor path for prompt editing (default: \"{sply.chat.editor_def}\")\n"
+          f"    user_name=(string): user name for the auto prompt (default: \"{sply.chat.user_name_def}\")\n"
+          f"    user_desc=(string): user description for the auto prompt (default: \"{sply.chat.user_desc_def}\")\n"
+          f"    ai_name=(string): AI name for the auto prompt (default: \"{sply.chat.ai_name_def}\")\n"
+          f"    ai_desc=(string): AI description for the auto prompt (default: \"{sply.chat.ai_desc_def}\")\n"
+          f"    in_suffix=(string): string to auto-insert after input (default: \"{sply.chat.in_suffix_def}\")\n"
+          f"    in_suffix_enabled=(bool): whether to use the in_suffix (default: {sply.chat.in_suffix_enabled_def})\n"
+          f"    rev_prompt=(string): set the chat reverse prompt (default: \"{sply.chat.rev_prompt_def}\")\n"
+          f"    prompt_file=(string): file containing a prompt to initiate the chat (default: auto-generated prompt)\n"
+          f"    prompt=(string): string prompt to initiate the chat (default: auto-generated prompt)\n"
+          f"    seed=(int): psuedo-random number generator seed for ollama (default: random)\n"
+          f"    temp=(float): temperature setting for ollama (default: {sply.chat.options_def["temperature"]})\n"
+          f"    num_ctx=(int): context size for ollama (default: {sply.chat.options_def["num_ctx"]})\n"
+          )
 
 def main ():
-    model_id = "default"
+    model_id = ""
     editor = ""
     user_name = ""
     user_desc = ""
@@ -26,14 +47,13 @@ def main ():
     rev_prompt = ""
     prompt_file = ""
     prompt = ""
-    options = {
-        "seed": random.randint(0, 2 << 32),
-        "temperature": 0.8,
-        "num_ctx": 5_000,
-        }
+    options = sply.chat.options_def
 
     if len(sys.argv) > 1:
         for argv in sys.argv[1:]:
+            if argv.find("--help") == 0:
+                print_usage()
+                exit(-1)
             if argv.find("model_id=") == 0:
                 model_id = argv[9:]
             if argv.find("editor=") == 0:
@@ -59,7 +79,7 @@ def main ():
 
             if argv.find("seed=") == 0:
                 options["seed"] = float(argv[5:])
-            if argv.find("temperature=") == 0:
+            if argv.find("temp=") == 0:
                 options["temperature"] = float(argv[12:])
             if argv.find("num_ctx=") == 0:
                 options["num_ctx"] = float(argv[8:])
