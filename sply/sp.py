@@ -56,12 +56,6 @@ class sp:
             res = res[:-self.rev_prompt_len]
         return res
 
-    def __getitem__ (self, item):
-        pass
-
-    def __setitem__ (self, item, val):
-        pass
-
     def edit_prompt (self, show=False):
         self.c.edit_prompt()
         res = self.c.read(show=show)
