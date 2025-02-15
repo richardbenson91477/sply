@@ -1,4 +1,4 @@
-# SPLY - **S**imulated **P**ython **L**ink librar**Y**
+# [SPLY - **S**imulated **P**ython **L**ink librar**Y**](https://github.com/richardbenson91477/sply)
 #### _a bridge between real and simulated python interpreters_
 
 ## requirements
