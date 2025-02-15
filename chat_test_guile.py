@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import sys
 import random
 import sply
 
@@ -13,9 +14,15 @@ prompt = "["\
         "$1 = 3\n"
 
 def main ():
+    model_id = "default-code"
+
+    if len(sys.argv) > 1:
+        for argv in sys.argv[1:]:
+            if argv.find("model_id=") == 0:
+                model_id = argv[9:]
+
     c = sply.chat(
-        model_id="default-code",
-        editor="vim",
+        model_id=model_id,
         rev_prompt="\nscheme@(guile-user)> ",
         prompt=prompt,
         in_suffix_enabled=False,
@@ -31,6 +38,8 @@ def main ():
 
     c.write("(* 3 2)\n", show=True)
     c.read(show=True)
+
+    print()
 
 if __name__ == "__main__":
     exit(main())
