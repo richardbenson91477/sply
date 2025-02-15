@@ -6,13 +6,13 @@ n = overmind.node()
 
 n("what is the overmind?")
 
-amy = n.new("a girl named Amy")
+jane = n.new("a lady named Jane")
 
-amy["name"] = "Amy"
+jane["name"] = "Jane"
 
-print(amy["name"])
+print(jane["name"])
 
-amy("hello!")
+jane("hello!")
 
-amy += n.new("some snacks")
+jane += n.new("some delicious snacks")
 
