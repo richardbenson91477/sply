@@ -1,6 +1,5 @@
 # SPLY - **S**imulated **P**ython **L**ink librar**Y**
 #### _a bridge between real and simulated python interpreters_
-===
 
 ## requirements
   * the [Ollama Python Library](https://pypi.org/project/ollama/) (https://pypi.org/project/ollama/)
