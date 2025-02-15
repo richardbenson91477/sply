@@ -43,7 +43,7 @@ def main ():
     ai_name = ""
     ai_desc = "" 
     in_suffix = ""
-    in_suffix_enabled = True
+    in_suffix_enabled = sply.chat.in_suffix_enabled_def
     rev_prompt = ""
     prompt_file = ""
     prompt = ""
