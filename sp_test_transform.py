@@ -6,7 +6,7 @@ import sply
 
 def main ():
     # create a simulated python
-    sp = sply.sp()
+    sp = sply.sp(model_id="default-code")
 
     # set realish y's value to 1
     y = 1
