@@ -41,8 +41,8 @@ class sp:
         self.c = chat(
             model_id=self.model_id,
             editor=self.editor,
-            rev_prompt=self.rev_prompt,
             in_suffix_enabled=False,
+            rev_prompt=self.rev_prompt,
             prompt=self.prompt,
             options=self.options,
             )
