@@ -27,7 +27,7 @@
 <overmind.node object at 0x7f4b3c5c3d90>
 >>> room = n.new("a large and luxurious living room")
 >>> user["location"] = g["location"] = room
->>> n("add items to the living room that Jane and Sue desire")
+>>> n("add some items to the living room that Jane and Sue would like")
 'OK'
->>> g("how do you like the room")
+>>> g("how do you like the room?")
 'Group: Jane: 
