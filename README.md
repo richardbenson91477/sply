@@ -21,6 +21,7 @@
   * run "./chat_interact.py --help" for command line options and defaults
   * enter /? for help
   * suffix input lines with a backslash to extend the input to multiple lines
+  * hit Ctrl-C during generation to interrupt and return to input mode
 
 ## credits
 an [richardbenson91477](https://www.deviantart.com/richardbenson91477) artistic expression
