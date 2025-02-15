@@ -1,15 +1,30 @@
-* Simulated Python Link librarY
-** bridge between a real and simulated python interpreter
+# SPLY - **S**imulated **P**ython **L**ink librar**Y**
+#### _a bridge between real and simulated python interpreters_
+===
 
-requires the Ollama Python Library (https://pypi.org/project/ollama/)
+## requirements
+  * the [Ollama Python Library](https://pypi.org/project/ollama/) (https://pypi.org/project/ollama/)
 
-(early proof-of-concept version)
+## example usage
+$ python3
+...
+>>> import sply
+>>> sp = sply.sp(model_id="default-code") # create a simulated python interpreter
+>>> y = 1
+>>> sp.runcode(f"y = {y} + 1") # set y in simulated python to realish y + 1
+''
+>>> y = int(sp.runcode("y")) # set realish y's value to the simulated y's value
+>>> y
+2
+>>> 
 
-example session:
+## chat_interact.py usage:
+  * run "./chat_interact.py --help" for command line options and defaults
+  * enter /? for help
+  * suffix input lines with a backslash to extend the input to multiple lines
 
-..
+## credits
+an [richardbenson91477](https://www.deviantart.com/richardbenson91477) artistic expression
 
-an richardbenson91477 artistic expression
-https://www.deviantart.com/richardbenson91477
+available under GPLv3: see [LICENSE](https://github.com/richardbenson91477/sply/blob/main/LICENSE)
 
-available under GPLv3 (see LICENSE)
