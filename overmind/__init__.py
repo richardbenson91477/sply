@@ -1,3 +1,6 @@
+
+show = False
+
 prompt = \
     "["\
     "You are just a python interpreter. "\
@@ -11,7 +14,8 @@ prompt = \
     ">>> import overmind\n"\
     ">>> "
 
-print(prompt)
+if show:
+    print(prompt)
 
 import random
 import sply
@@ -24,7 +28,7 @@ options = {
     }
 
 sp = sply.sp(
-    show=True,
+    show=show,
     model_id=model_id,
     options=options,
     prompt=prompt,
