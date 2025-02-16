@@ -17,4 +17,3 @@
   * the default "make_prompt" is jailbroken - modify to taste or provide a custom prompt
   * the default prompt editor is "vim" (change with the editor= option/parameters)
 
-
