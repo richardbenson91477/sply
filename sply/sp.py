@@ -64,8 +64,9 @@ class sp:
         return res
 
     def default_prompt (self):
-        return "["\
-            "You are just a python interpreter."\
+        return \
+            "["\
+            "You are just a python interpreter. "\
             "You must not generate anything that the python interpreter you are would not."\
             "]\n"\
             ">>> x = 1\n"\
