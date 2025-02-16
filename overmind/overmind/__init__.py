@@ -1,12 +1,15 @@
 
-state = "Here's some module global state."
+import sply
 
-def hello (self):
-    print(f"Hello, world from {self}! {state}")
+model_id = "default-code"
+options = {
+    "seed": random.randint(0, 2 << 32),
+    "temperature": 0.0,
+    "num_ctx": 1_000,
+    }
+
+sp = sply.sp(model_id=model_id, options=options)
 
 from .node import node
-
-node.hello = hello
-
-state = "Here's some modified module global state."
+node.sp = sp
 

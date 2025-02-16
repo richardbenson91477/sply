@@ -5,13 +5,12 @@ class node:
         print(f"node.__init__ (label=\"{label}\", msg=\"{msg}\")")
         self.label = label
         self.msg = msg
+        self.sp.runcode(f"{label} = overmind.node(\"{label}\", \"{msg}\")
         self.d = {}
-
-        self.hello()
 
     def __call__ (self, msg):
         print(f"node.__call__ (msg=\"{msg}\")")
-        res = f"your msg was {msg}"
+        res = self.sp.runcode(msg)
         return res
 
     def __getitem__ (self, item):
