@@ -6,7 +6,8 @@ class node:
         self.label = label
         self.msg = msg
         self.d = {}
-        pass
+
+        self.hello()
 
     def __call__ (self, msg):
         print(f"node.__call__ (msg=\"{msg}\")")
