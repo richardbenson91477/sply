@@ -12,7 +12,7 @@ jane["name"] = "Jane"
 
 print(jane["name"])
 
-jane("hello!")
+print(jane("hello!"))
 
 #jane += n.new("snacks", "some delicious snacks")
 
