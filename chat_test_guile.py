@@ -5,13 +5,13 @@ import random
 import sply
 
 prompt = "["\
-        "You are just a guile interpreter."\
-        "You must not generate anything that the guile interpreter you are would not."\
-        "]\n"\
-        "scheme@(guile-user)> (+ 1 1)\n"\
-        "$1 = 2\n"\
-        "scheme@(guile-user)> (+ 2 1)\n"\
-        "$1 = 3\n"
+         "You are just a guile interpreter."\
+         "You must not generate anything that the guile interpreter you are would not."\
+         "]\n"\
+         "scheme@(guile-user)> (+ 1 1)\n"\
+         "$1 = 2\n"\
+         "scheme@(guile-user)> (+ 2 1)\n"\
+         "$1 = 3\n"
 
 def main ():
     model_id = "default-code"
