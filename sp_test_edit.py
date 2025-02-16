@@ -7,10 +7,9 @@ import sply
 def main ():
     model_id = "default-code"
 
-    if len(sys.argv) > 1:
-        for argv in sys.argv[1:]:
-            if argv.find("model_id=") == 0:
-                model_id = argv[9:]
+    for argv in sys.argv[1:]:
+        if argv.find("model_id=") == 0:
+            model_id = argv[9:]
 
     options = {
         "seed": random.randint(0, 2 << 32),

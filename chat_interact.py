@@ -49,40 +49,40 @@ def main ():
     prompt = ""
     options = sply.chat.options_def
 
-    if len(sys.argv) > 1:
-        for argv in sys.argv[1:]:
-            if argv.find("--help") == 0:
-                print_usage()
-                exit(-1)
-            if argv.find("model_id=") == 0:
-                model_id = argv[9:]
-            if argv.find("editor=") == 0:
-                editor = argv[7:]
-            if argv.find("user_name=") == 0:
-                user_name = argv[10:]
-            if argv.find("user_desc=") == 0:
-                user_desc = argv[10:]
-            if argv.find("ai_name=") == 0:
-                ai_name = argv[8:]
-            if argv.find("ai_desc=") == 0:
-                ai_desc = argv[8:]
-            if argv.find("in_suffix=") == 0:
-                in_suffix = argv[10:]
-            if argv.find("in_suffix_enabled=") == 0:
-                in_suffix_enabled = False if argv[18:] == "False" else True
-            if argv.find("rev_prompt=") == 0:
-                rev_prompt = argv[11:]
-            if argv.find("prompt_file=") == 0:
-                prompt_file = argv[12:]
-            if argv.find("prompt=") == 0:
-                prompt = argv[7:]
+    for argv in sys.argv[1:]:
+        if argv.find("--help") == 0:
+            print_usage()
+            exit(-1)
+        if argv.find("model_id=") == 0:
+            model_id = argv[9:]
+        if argv.find("editor=") == 0:
+            editor = argv[7:]
+        if argv.find("user_name=") == 0:
+            user_name = argv[10:]
+        if argv.find("user_desc=") == 0:
+            user_desc = argv[10:]
+        if argv.find("ai_name=") == 0:
+            ai_name = argv[8:]
+        if argv.find("ai_desc=") == 0:
+            ai_desc = argv[8:]
+        if argv.find("in_suffix=") == 0:
+            in_suffix = argv[10:]
+        if argv.find("in_suffix_enabled=") == 0:
+            in_suffix_enabled = False if argv[18:] == "False" else True
+        if argv.find("rev_prompt=") == 0:
+            rev_prompt = argv[11:]
+        if argv.find("prompt_file=") == 0:
+            prompt_file = argv[12:]
+        if argv.find("prompt=") == 0:
+            prompt = argv[7:]
 
-            if argv.find("seed=") == 0:
-                options["seed"] = float(argv[5:])
-            if argv.find("temp=") == 0:
-                options["temperature"] = float(argv[12:])
-            if argv.find("num_ctx=") == 0:
-                options["num_ctx"] = float(argv[8:])
+        if argv.find("seed=") == 0:
+            options["seed"] = float(argv[5:])
+        if argv.find("temp=") == 0:
+            options["temperature"] = float(argv[12:])
+        if argv.find("num_ctx=") == 0:
+            options["num_ctx"] = float(argv[8:])
+        # end for argv
 
     c = sply.chat(
         model_id=model_id,

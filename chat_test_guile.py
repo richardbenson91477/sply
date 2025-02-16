@@ -16,10 +16,9 @@ prompt = "["\
 def main ():
     model_id = "default-code"
 
-    if len(sys.argv) > 1:
-        for argv in sys.argv[1:]:
-            if argv.find("model_id=") == 0:
-                model_id = argv[9:]
+    for argv in sys.argv[1:]:
+        if argv.find("model_id=") == 0:
+            model_id = argv[9:]
 
     c = sply.chat(
         model_id=model_id,
