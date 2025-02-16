@@ -1,38 +1,32 @@
 #!/usr/bin/env python3
 
 class node:
-    init_msg_def="default init message goes here"
-
-    def __init__ (self, msg=""):
-        print("node.__init__")
-
-        if msg:
-            self.init_msg = msg
-        else:
-            self.init_msg = self.init_msg_def
-
+    def __init__ (self, label, msg):
+        print(f"node.__init__ (label=\"{label}\", msg=\"{msg}\")")
+        self.label = label
+        self.msg = msg
         self.d = {}
         pass
 
     def __call__ (self, msg):
-        print("node.__call__")
+        print(f"node.__call__ (msg=\"{msg}\")")
         res = f"your msg was {msg}"
         return res
 
     def __getitem__ (self, item):
-        print("node.__getitem__")
+        print(f"node.__getitem__ (item=\"{item}\")")
         return self.d[item]
 
     def __setitem__ (self, item, val):
-        print("node.__setitem__")
+        print(f"node.__setitem__ (item=\"{item}\", val=\"{val}\")")
         self.d[item] = val
 
     def __add__ (self, val):
-        print("node.__add__")
+        print(f"node.__add__ (val=\"{val}\")")
         return self
 
-    def new (self, msg):
-        print("node.new")
-        res = node()
+    def new (self, label, msg):
+        print(f"node.new (label=\"{label}\", msg=\"{msg}\")")
+        res = node(label, msg)
         return res
 
