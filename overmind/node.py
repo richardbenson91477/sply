@@ -30,11 +30,6 @@ class node:
         self.d_s = self.sp.runcode(f"{self.label}[\"{item}\"]")
         return self.d_s
 
-    def __add__ (self, val):
-        if self.verbose:
-            print(f"*node.__add__ (val=\"{val}\")*")
-        return self
-
     def new (self, label, msg):
         if self.verbose:
             print(f"*node.new (label=\"{label}\", msg=\"{msg}\")*")
