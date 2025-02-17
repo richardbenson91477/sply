@@ -21,6 +21,8 @@ class sp:
             options=None,
             ):
 
+        self.show = show
+
         self.model_id = model_id if model_id else self.model_id_def
 
         self.editor = editor
@@ -47,18 +49,18 @@ class sp:
             options=self.options,
             )
 
-        self.c.read(show=show)
+        self.c.read(show=self.show)
 
-    def runcode (self, msg, show=False):
-        self.c.write(msg + "\n", show=show)
-        res = self.c.read(show=show)
+    def runcode (self, msg):
+        self.c.write(msg + "\n", show=self.show)
+        res = self.c.read(show=self.show)
         if res.rfind(self.rev_prompt) == len(res) - self.rev_prompt_len:
             res = res[:-self.rev_prompt_len]
         return res
 
-    def edit_prompt (self, show=False):
+    def edit_prompt (self):
         self.c.edit_prompt()
-        res = self.c.read(show=show)
+        res = self.c.read(show=self.show)
         if res.rfind(self.rev_prompt) == len(res) - self.rev_prompt_len:
             res = res[:-self.rev_prompt_len]
         return res

@@ -19,11 +19,11 @@ def main ():
 
     sp = sply.sp(show=True, model_id=model_id, options=options)
 
-    sp.runcode("y = 1", show=True)
-    s = sp.runcode("y + 1", show=True)
+    sp.runcode("y = 1")
+    s = sp.runcode("y + 1")
     print(f"**{s}**")
 
-    sp.edit_prompt(show=True)
+    sp.edit_prompt()
 
 if __name__ == "__main__":
     exit(main())
