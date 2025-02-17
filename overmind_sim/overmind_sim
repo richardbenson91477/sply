@@ -7,6 +7,6 @@ rev_prompt=$(printf "\n>>> ")
   rev_prompt="$rev_prompt" \
   prompt_file="overmind_sim.prompt" \
   temp="0.8" \
-  num_ctx="20_000" \
+  num_ctx="8_000" \
   "$@"
 
