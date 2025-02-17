@@ -79,7 +79,7 @@ def main ():
         if argv.find("seed=") == 0:
             options["seed"] = int(argv[5:])
         if argv.find("temp=") == 0:
-            options["temperature"] = float(argv[12:])
+            options["temperature"] = float(argv[5:])
         if argv.find("num_ctx=") == 0:
             options["num_ctx"] = int(argv[8:])
         # end for argv
