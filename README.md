@@ -5,7 +5,7 @@
 
 - [Installation](#installation)
 - [Requirements](#requirements)
-- [Example usage](#exampleusage)
+- [Example usage](#example-usage)
 - [Documentation](#documentation)
 - [Credits](#credits)
 - [License](#license)
