@@ -12,11 +12,11 @@
   * try a lower temperature value
   * try an alternate seed number - restart with a new random seed, or specify a seed
   * reuse a model+prompt+seed combo that has worked in the past
-  * when all else fails, Ctrl-C + edit_prompt are your friends
+  * when all else fails, Ctrl-C + "edit_prompt()" are your friends
 
 ## Misc
-  * the "prompt_file" args always have precedence over "prompt" args
-  * "edit_prompt" currently leaves all prompt tempfiles intact (for later inspection)
-  * the default "make_prompt" is jailbroken - modify to taste or provide a custom prompt
-  * the default prompt editor is "vim" (change with the editor= option/parameters)
+  * the "prompt_file=" args always have precedence over "prompt=" args
+  * "edit_prompt" currently leaves prompt tempfiles intact (for manual review)
+  * the default "make_prompt" is jailbroken - modify to taste, or provide a custom prompt
+  * the default prompt editor is "vim" - customize with the "editor=" options/parameters
 
