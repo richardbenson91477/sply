@@ -34,6 +34,7 @@ TODO
 
 ## Documentation
   * [NOTES.md](NOTES.md)
+  * (more to come)
 
 ## Credits
 an [richardbenson91477](https://www.deviantart.com/richardbenson91477) artistic expression
