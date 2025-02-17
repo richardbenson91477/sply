@@ -18,7 +18,7 @@ class chat:
     options_def = {
         "seed": random.randint(0, 2 << 32),
         "temperature": 0.8,
-        "num_ctx": 20_000,
+        "num_ctx": 8_000,
         }
 
     def __init__ (self,
