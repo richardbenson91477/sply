@@ -66,14 +66,14 @@ class chat:
         self.options = options if options else self.options_def
 
     def edit_prompt (self):
-        prompt_path = tempfile.mktemp()
+        prompt_file = tempfile.mktemp()
 
-        with open(prompt_path, "w") as f:
+        with open(prompt_file, "w") as f:
             f.write(self.prompt)
 
-        subprocess.run([self.editor, prompt_path])
+        subprocess.run([self.editor, prompt_file])
 
-        with open(prompt_path, "r") as f:
+        with open(prompt_file, "r") as f:
             self.prompt = f.read()
 
         self.prompt_len = len(self.prompt)
