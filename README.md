@@ -11,10 +11,7 @@
 - [License](#license)
 
 ## Installation
-
-```console
-TODO
-```
+  * simply copy the files :) 
 
 ## Requirements
   * the [Ollama Python Library](https://pypi.org/project/ollama/) (https://pypi.org/project/ollama/)
@@ -34,6 +31,7 @@ TODO
 
 ## Documentation
   * [NOTES.md](NOTES.md)
+  * [overmind.md](overmind.md)
   * (more to come)
 
 ## Credits
