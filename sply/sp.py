@@ -74,5 +74,6 @@ class sp:
             "1\n"\
             ">>> y = x + 1\n"\
             ">>> print(x+y)\n"\
-            "3\n"
+            "3\n"\
+            ">>> del [x, y]\n"
 
