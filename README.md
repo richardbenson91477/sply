@@ -11,7 +11,7 @@
 - [License](#license)
 
 ## Installation
-  * simply copy the files :) 
+  * simply copy the files 😀
 
 ## Requirements
   * the [Ollama Python Library](https://pypi.org/project/ollama/) (https://pypi.org/project/ollama/)
