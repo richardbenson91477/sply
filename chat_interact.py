@@ -77,11 +77,11 @@ def main ():
             prompt = argv[7:]
 
         if argv.find("seed=") == 0:
-            options["seed"] = float(argv[5:])
+            options["seed"] = int(argv[5:])
         if argv.find("temp=") == 0:
             options["temperature"] = float(argv[12:])
         if argv.find("num_ctx=") == 0:
-            options["num_ctx"] = float(argv[8:])
+            options["num_ctx"] = int(argv[8:])
         # end for argv
 
     c = sply.chat(
