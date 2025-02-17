@@ -7,29 +7,29 @@ model_id = "default-code"
 options = {
     "seed": random.randint(0, 2 << 32),
     "temperature": 0.0,
-    "num_ctx": 1_000,
+    "num_ctx": 8_000,
     }
 show = False
 
-env_model_id = os.getenv("overmind_model_id")
-if env_model_id:
-    model_id = env_model_id
+env_var = os.getenv("overmind_model_id")
+if env_var:
+    model_id = env_var
 
-env_show = os.getenv("overmind_show")
-if env_show == "True":
-    env_show = True
+env_var = os.getenv("overmind_show")
+if env_var == "True":
+    show = True
 
-env_seed = os.getenv("overmind_seed")
-if env_seed:
-    options["seed"] = int(env_seed)
+env_var = os.getenv("overmind_seed")
+if env_var:
+    options["seed"] = int(env_var)
 
-env_seed = os.getenv("overmind_seed")
-if env_seed:
-    options["seed"] = int(env_seed)
+env_var = os.getenv("overmind_temp")
+if env_var:
+    options["temperature"] = float(env_var)
 
-env_num_ctx = os.getenv("overmind_num_ctx")
-if env_num_ctx:
-    options["num_ctx"] = int(env_num_ctx)
+env_var = os.getenv("overmind_num_ctx")
+if env_var:
+    options["num_ctx"] = int(env_var)
 
 prompt = \
     "["\
