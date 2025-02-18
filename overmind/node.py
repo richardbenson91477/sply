@@ -30,10 +30,10 @@ class node:
         self.d_s = self.sp.runcode(f"{self.label}[\"{item}\"]")
         return self.d_s
 
-    def new (self, label, msg):
+    def node (self, label, msg):
         if self.verbose:
-            print(f"*node.new (label=\"{label}\", msg=\"{msg}\")*")
+            print(f"*node.node (label=\"{label}\", msg=\"{msg}\")*")
         res = node(label, msg, runcode=False, verbose=self.verbose)
-        self.sp.runcode(f"{label} = {self.label}.new(\"{label}\", \"{msg}\")")
+        self.sp.runcode(f"{label} = {self.label}.node(\"{label}\", \"{msg}\")")
         return res
 

@@ -45,7 +45,7 @@ prompt = \
     ">>> "
 
 if show:
-    print(prompt)
+    print(prompt, end="", flush=True)
 
 sp = sply.sp(
     show=show,

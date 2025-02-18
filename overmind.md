@@ -10,22 +10,22 @@
 ```python
 >>> import overmind
 >>> n = overmind.node("n", "a primary node connected to the Overmind")
->>> jane = n.new("jane", "an intelligent being named Jane, female gender, age 25.")
+>>> jane = n.node("jane", "an intelligent being named Jane, female gender, age 25.")
 >>> jane["name"]
 "'Jane'"
 >>> n("infer the meaning of a 'realism' property of the jane object and describe it to me")
 "'Realism is a property that indicates how closely Jane\'s characteristics align with real-world human traits.'"
 >>> jane["realism"] = "very high"
 >>> jane["IQ"] = "120.0"
->>> user = n.new("user", "a reference to myself, a man named John")
+>>> user = n.node("user", "a reference to myself, a man named John")
 >>> jane["master"] = "user"
 >>> jane("how are you feeling today?")
 "'Jane: I\'m feeilng great, John!'"
->>> sue = n.new("sue", "Sue - a copy of Jane with various personal properties randomly changed by up to 20%")
+>>> sue = n.node("sue", "Sue - a copy of Jane with various personal properties randomly changed by up to 20%")
 >>> sue["master"] = "user"
->>> g = n.new("g", "an empty group that I can communicate with")
+>>> g = n.node("g", "an empty group that I can communicate with")
 >>> g["members"] = ["jane", "sue"]
->>> room = n.new("room", "a large and luxurious living room")
+>>> room = n.node("room", "a large and luxurious living room")
 >>> user["location"] = "room"
 >>> g["location"] = "room"
 >>> n("add some items to the living room that Jane and Sue would like")
