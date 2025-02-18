@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 import overmind
-
 n = overmind.node("n", "a primary node connected to the Overmind")
 jane = n.new("jane", "an intelligent being named Jane, female gender, age 25.")
 jane["name"]
