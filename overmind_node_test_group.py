@@ -15,7 +15,6 @@ sue = n.new("sue", "Sue - a copy of Jane with various personal properties random
 sue["master"] = "user"
 g = n.new("g", "an empty group that I can communicate with")
 g["members"] = ["jane", "sue"]
-n.new("room", "a large and luxurious living room")
 room = n.new("room", "a large and luxurious living room")
 user["location"] = "room"
 g["location"] = "room"
