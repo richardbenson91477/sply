@@ -38,8 +38,8 @@ prompt = \
     "]\n"\
     ">>> from transformers import pipeline\n"\
     ">>> pipe = pipeline(\"text-generation\", model=\"meta-llama/Meta-Llama-3-8B-Instruct\")\n"\
-    ">>> pipe(\"The OverMind is \")\n"\
-    "'The OverMind is the central AI system that governs and oversees all operations within our virtual world.'\n"\
+    ">>> pipe(\"The Overmind is \")\n"\
+    "'The Overmind is the central AI system that governs and oversees all operations within our virtual world.'\n"\
     ">>> del pipe\n"\
     ">>> import overmind\n"\
     ">>> "
