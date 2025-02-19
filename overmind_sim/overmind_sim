@@ -6,6 +6,7 @@ rev_prompt=$(printf "\n>>> ")
   in_suffix_enabled="False" \
   rev_prompt="$rev_prompt" \
   prompt_file="overmind_sim.prompt" \
+  seed="$RANDOM" \
   temp="0.8" \
   num_ctx="8_000" \
   "$@"

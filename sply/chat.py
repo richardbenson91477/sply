@@ -6,48 +6,70 @@ import tempfile
 from ollama import generate
 
 class chat:
-    model_id_def = "default"
-    editor_def = "vim"
-    user_name_def = "John"
-    user_desc_def = "is Jane's friend."
-    ai_name_def = "Jane"
-    ai_desc_def = "is John's friend." 
-    in_suffix_def = "Jane:"
-    in_suffix_enabled_def = True
-    rev_prompt_def = "\nJohn: "
-    options_def = {
-        "seed": random.randint(0, 2 << 32),
-        "temperature": 0.8,
+    default_args = {
+        "model_id": "default",
+        "editor": "vim",
+        "user_name": "John",
+        "user_desc": "is Jane's friend",
+        "ai_name": "Jane",
+        "ai_desc": "is John's friend",
+        "in_suffix": "Jane:",
+        "in_suffix_enabled": True,
+        "rev_prompt": "\nJohn: ",
+        "prompt_file": "",
+        "prompt": "",
+        "seed": 42,
+        "temp": 0.8,
         "num_ctx": 8_000,
         }
 
+    arg_desc = (
+        {"name": "model_id", "type": str, "desc": "ollama model to load"},
+        {"name": "editor", "type": str, "desc": "editor path for prompt editing"},
+        {"name": "user_name", "type": str, "desc": "user name for the auto prompt"},
+        {"name": "user_desc", "type": str, "desc": "user description for the auto prompt"},
+        {"name": "ai_name", "type": str, "desc": "AI name for the auto prompt"},
+        {"name": "ai_desc", "type": str, "desc": "AI description for the auto prompt"},
+        {"name": "in_suffix", "type": str, "desc": "string to auto-insert after input"},
+        {"name": "in_suffix_enabled", "type": bool, "desc": "whether to use the in_suffix"},
+        {"name": "rev_prompt", "type": str, "desc": "chat reverse prompt"},
+        {"name": "prompt_file", "type": str, "desc": "path to a prompt to initiate the chat"},
+        {"name": "prompt", "type": str, "desc": "string prompt to initiate the chat"},
+        {"name": "seed", "type": int, "desc": "psuedo-random number generator seed for ollama"},
+        {"name": "temp", "type": float, "desc": "temperature setting for ollama"},
+        {"name": "num_ctx", "type": int, "desc": "context size for ollama"},
+        )
+
     def __init__ (self,
-            model_id="",
-            editor="",
-            user_name="",
-            user_desc="",
-            ai_name="",
-            ai_desc="",
-            in_suffix="",
-            in_suffix_enabled=True,
-            rev_prompt="",
-            prompt_file="",
-            prompt="",
-            options=None,
+            model_id=None,
+            editor=None,
+            user_name=None,
+            user_desc=None,
+            ai_name=None,
+            ai_desc=None,
+            in_suffix=None,
+            in_suffix_enabled=None,
+            rev_prompt=None,
+            prompt_file=None,
+            prompt=None,
+            seed=None,
+            temp=None,
+            num_ctx=None,
             ):
 
-        self.model_id = model_id if model_id else self.model_id_def
-        self.editor = editor if editor else self.editor_def
-        self.user_name = user_name if user_name else self.user_name_def
-        self.user_desc = user_desc if user_desc else self.user_desc_def
-        self.ai_name = ai_name if ai_name else self.ai_name_def
-        self.ai_desc = ai_desc if ai_desc else self.ai_desc_def
+        self.model_id = model_id if model_id else self.default_args["model_id"]
+        self.editor = editor if editor else self.default_args["editor"]
+        self.user_name = user_name if user_name else self.default_args["user_name"]
+        self.user_desc = user_desc if user_desc else self.default_args["user_desc"]
+        self.ai_name = ai_name if ai_name else self.default_args["ai_name"]
+        self.ai_desc = ai_desc if ai_desc else self.default_args["ai_desc"]
 
-        self.in_suffix = in_suffix if in_suffix else self.in_suffix_def
+        self.in_suffix = in_suffix if in_suffix else self.default_args["in_suffix"]
         self.in_suffix_len = len(self.in_suffix)
-        self.in_suffix_enabled = in_suffix_enabled
+ 
+        self.in_suffix_enabled = in_suffix_enabled if in_suffix_enabled else default_args["in_suffix_enabled"]
 
-        self.rev_prompt = rev_prompt if rev_prompt else self.rev_prompt_def
+        self.rev_prompt = rev_prompt if rev_prompt else self.default_args["rev_prompt"]
         self.rev_prompt_len = len(self.rev_prompt)
         self.rev_prompt_tail = 0
  
@@ -63,7 +85,11 @@ class chat:
         if self.prompt_len >= self.rev_prompt_len:
             self.rev_prompt_tail = self.prompt_len - self.rev_prompt_len
 
-        self.options = options if options else self.options_def
+        self.options = {
+            "seed": seed if seed else self.default_args["seed"],
+            "temperature": temp if temp else self.default_args["temp"],
+            "num_ctx": num_ctx if num_ctx else self.default_args["num_ctx"],
+            }
 
     def edit_prompt (self):
         prompt_file = tempfile.mktemp()
