@@ -13,7 +13,7 @@
 >>> jane = n.node("jane", "an intelligent being named Jane, female gender, age 25.")
 >>> jane["name"]
 "Jane"
->>> n("infer the meaning of a 'realism' property (i.e. jane[\"realism\"]) and describe it to me")
+>>> n("infer the meaning of a 'realism' property (i.e. jane[\"realism\"]) and return it")
 "Realism in this context refers to the degree to which Jane's characteristics and behaviors align with real-world human traits and experiences. It encompasses factors such as her emotional depth, cognitive abilities, and interactions within the environment. A higher realism value indicates that Jane exhibits more authentic and relatable human-like qualities."
 >>> jane["realism"] = "very high"
 >>> jane["IQ"] = "120.0"

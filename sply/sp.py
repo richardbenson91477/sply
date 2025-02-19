@@ -4,14 +4,6 @@ import random
 from .chat import chat
 
 class sp:
-    show_def = False
-    model_id_def = "default-code"
-    editor_def = None
-    rev_prompt_def = "\n>>> "
-    seed_def = random.randint(0, 2 << 32)
-    temp_def = 0.0
-    num_ctx_def = 20_000
-
     def __init__ (self,
             show=None,
             model_id=None,
@@ -24,44 +16,33 @@ class sp:
             ):
 
         self.show = show if show is not None \
-            else self.show_def
+            else False
 
-        self.model_id = model_id if model_id is not None \
-            else self.model_id_def
-
-        self.editor = editor if editor is not None \
-            else self.editor_def
-
-        self.rev_prompt = self.rev_prompt_def
-        self.rev_prompt_len = len(self.rev_prompt)
+        chat_args = {}
+        chat_args["model_id"] = model_id if model_id is not None \
+            else "default-code"
+        chat_args["editor"] = editor
+        chat_args["in_suffix_enabled"] = False
+        chat_args["rev_prompt"] = "\n>>> "
+        chat_args["seed"] = seed if seed is not None \
+            else random.randint(0, 2 << 32)
+        chat_args["temp"] = temp if temp is not None \
+            else 0.0
+        chat_args["num_ctx"] = num_ctx if num_ctx is not None \
+            else 20_000
 
         if prompt_file:
             with open(prompt_file, "r") as f:
-                self.prompt = f.read()
+                chat_args["prompt"] = f.read()
         elif prompt:
-            self.prompt = prompt
+            chat_args["prompt"] = prompt
         else:
-            self.prompt = self.default_prompt()
+            chat_args["prompt"] = self.default_prompt()
 
-        self.seed = seed if seed is not None \
-            else self.seed_def
+        self.rev_prompt = chat_args["rev_prompt"]
+        self.rev_prompt_len = len(self.rev_prompt)
 
-        self.temp = temp if temp is not None \
-            else self.temp_def
-
-        self.num_ctx = num_ctx if num_ctx is not None \
-            else self.num_ctx_def
-
-        self.c = chat(
-            model_id=self.model_id,
-            editor=self.editor,
-            in_suffix_enabled=False,
-            rev_prompt=self.rev_prompt,
-            prompt=self.prompt,
-            seed=self.seed,
-            temp=self.temp,
-            num_ctx=self.num_ctx,
-            )
+        self.c = chat(**chat_args)
 
         self.c.read(show=self.show)
 
