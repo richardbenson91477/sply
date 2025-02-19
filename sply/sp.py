@@ -4,28 +4,33 @@ import random
 from .chat import chat
 
 class sp:
+    show_def = False
     model_id_def = "default-code"
+    editor_def = ""
     rev_prompt_def = "\n>>> "
-    options_def = {
-        "seed": random.randint(0, 2 << 32),
-        "temperature": 0.0,
-        "num_ctx": 20_000,
-        }
+    seed_def = random.randint(0, 2 << 32)
+    temp_def = 0.0
+    num_ctx_def = 20_000
 
     def __init__ (self,
-            show=False,
-            model_id="",
-            editor="",
-            prompt_file="",
-            prompt="",
-            options=None,
+            show=None,
+            model_id=None,
+            editor=None,
+            prompt_file=None,
+            prompt=None,
+            seed=None,
+            temp=None,
+            num_ctx_def=None,
             ):
 
-        self.show = show
+        self.show = show if show is not None \
+            else self.show_def
 
-        self.model_id = model_id if model_id else self.model_id_def
+        self.model_id = model_id if model_id is not None \
+            else self.model_id_def
 
-        self.editor = editor
+        self.editor = editor if editor is not None \
+            else self.editor_def
 
         self.rev_prompt = self.rev_prompt_def
         self.rev_prompt_len = len(self.rev_prompt)
@@ -38,7 +43,14 @@ class sp:
         else:
             self.prompt = self.default_prompt()
 
-        self.options = options if options else self.options_def
+        self.seed = seed if seed is not None \
+            else self.seed_def
+
+        self.temp = temp if temp is not None \
+            else self.temp_def
+
+        self.num_ctx = num_ctx if num_ctx is not None \
+            else self.num_ctx_def
 
         self.c = chat(
             model_id=self.model_id,
@@ -46,7 +58,9 @@ class sp:
             in_suffix_enabled=False,
             rev_prompt=self.rev_prompt,
             prompt=self.prompt,
-            options=self.options,
+            seed=self.seed,
+            temp=self.temp,
+            num_ctx=self.num_ctx,
             )
 
         self.c.read(show=self.show)

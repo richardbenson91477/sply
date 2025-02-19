@@ -4,12 +4,10 @@ import random
 import sply
 
 model_id = "default-code"
-options = {
-    "seed": random.randint(0, 2 << 32),
-    "temperature": 0.0,
-    "num_ctx": 8_000,
-    }
 show = False
+seed = random.randint(0, 2 << 32),
+temp = 0.0,
+num_ctx = 8_000,
 
 env_var = os.getenv("overmind_model_id")
 if env_var:
@@ -21,15 +19,15 @@ if env_var == "True":
 
 env_var = os.getenv("overmind_seed")
 if env_var:
-    options["seed"] = int(env_var)
+    seed = int(env_var)
 
 env_var = os.getenv("overmind_temp")
 if env_var:
-    options["temperature"] = float(env_var)
+    temp = float(env_var)
 
 env_var = os.getenv("overmind_num_ctx")
 if env_var:
-    options["num_ctx"] = int(env_var)
+    num_ctx = int(env_var)
 
 prompt = \
     "["\
@@ -51,7 +49,9 @@ sp = sply.sp(
     show=show,
     model_id=model_id,
     options=options,
-    prompt=prompt,
+    seed=seed,
+    temp=temp,
+    num_ctx=num_ctx,
     )
 
 from .node import node

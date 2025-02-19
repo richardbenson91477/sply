@@ -57,19 +57,28 @@ class chat:
             num_ctx=None,
             ):
 
-        self.model_id = model_id if model_id else self.default_args["model_id"]
-        self.editor = editor if editor else self.default_args["editor"]
-        self.user_name = user_name if user_name else self.default_args["user_name"]
-        self.user_desc = user_desc if user_desc else self.default_args["user_desc"]
-        self.ai_name = ai_name if ai_name else self.default_args["ai_name"]
-        self.ai_desc = ai_desc if ai_desc else self.default_args["ai_desc"]
+        self.model_id = model_id if model_id is not None \
+            else self.default_args["model_id"]
+        self.editor = editor if editor is not None \
+            else self.default_args["editor"]
+        self.user_name = user_name if user_name is not None \
+            else self.default_args["user_name"]
+        self.user_desc = user_desc if user_desc is not None \
+            else self.default_args["user_desc"]
+        self.ai_name = ai_name if ai_name is not None \
+            else self.default_args["ai_name"]
+        self.ai_desc = ai_desc if ai_desc is not None \
+            else self.default_args["ai_desc"]
 
-        self.in_suffix = in_suffix if in_suffix else self.default_args["in_suffix"]
+        self.in_suffix = in_suffix if in_suffix is not None \
+            else self.default_args["in_suffix"]
         self.in_suffix_len = len(self.in_suffix)
  
-        self.in_suffix_enabled = in_suffix_enabled if in_suffix_enabled else self.default_args["in_suffix_enabled"]
+        self.in_suffix_enabled = in_suffix_enabled if in_suffix_enabled is not None \
+            else self.default_args["in_suffix_enabled"]
 
-        self.rev_prompt = rev_prompt if rev_prompt else self.default_args["rev_prompt"]
+        self.rev_prompt = rev_prompt if rev_prompt is not None \
+            else self.default_args["rev_prompt"]
         self.rev_prompt_len = len(self.rev_prompt)
         self.rev_prompt_tail = 0
  
@@ -86,9 +95,12 @@ class chat:
             self.rev_prompt_tail = self.prompt_len - self.rev_prompt_len
 
         self.options = {
-            "seed": seed if seed else self.default_args["seed"],
-            "temperature": temp if temp else self.default_args["temp"],
-            "num_ctx": num_ctx if num_ctx else self.default_args["num_ctx"],
+            "seed": seed if seed is not None \
+                else self.default_args["seed"],
+            "temperature": temp if temp is not None \
+                else self.default_args["temp"],
+            "num_ctx": num_ctx if num_ctx is not None \
+                else self.default_args["num_ctx"],
             }
 
     def edit_prompt (self):
