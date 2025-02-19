@@ -67,7 +67,7 @@ class chat:
         self.in_suffix = in_suffix if in_suffix else self.default_args["in_suffix"]
         self.in_suffix_len = len(self.in_suffix)
  
-        self.in_suffix_enabled = in_suffix_enabled if in_suffix_enabled else default_args["in_suffix_enabled"]
+        self.in_suffix_enabled = in_suffix_enabled if in_suffix_enabled else self.default_args["in_suffix_enabled"]
 
         self.rev_prompt = rev_prompt if rev_prompt else self.default_args["rev_prompt"]
         self.rev_prompt_len = len(self.rev_prompt)
