@@ -4,7 +4,7 @@ import overmind
 n = overmind.node("n", "a primary node connected to the Overmind")
 jane = n.node("jane", "an intelligent being named Jane, female gender, age 25.")
 jane["name"]
-n("infer the meaning of a 'realism' property of the jane object and describe it to me")
+n("infer the meaning of the 'realism' property of the 'jane' node and describe it to me")
 jane["realism"] = "very high"
 jane["IQ"] = "120.0"
 user = n.node("user", "a reference to myself, a man named John")
@@ -12,7 +12,7 @@ jane["master"] = "user"
 jane("how are you feeling today?")
 sue = n.node("sue", "Sue - a copy of Jane with various personal properties randomly changed by up to 20%")
 sue["master"] = "user"
-g = n.node("g", "an empty group that I can communicate with")
+g = n.node("g", "an uninitialized node group")
 g["members"] = ["jane", "sue"]
 room = n.node("room", "a large and luxurious living room")
 user["location"] = "room"
