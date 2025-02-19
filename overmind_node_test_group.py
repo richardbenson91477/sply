@@ -4,7 +4,7 @@ import overmind
 n = overmind.node("n", "a primary node connected to the Overmind")
 jane = n.node("jane", "an intelligent being named Jane, female gender, age 25.")
 jane["name"]
-n("infer the meaning of the 'realism' property of the 'jane' node and describe it to me")
+n("infer the meaning of a 'realism' property (i.e. jane[\"realism\"]) and describe it to me")
 jane["realism"] = "very high"
 jane["IQ"] = "120.0"
 user = n.node("user", "a reference to myself, a man named John")

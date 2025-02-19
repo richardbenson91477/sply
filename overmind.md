@@ -12,24 +12,23 @@
 >>> n = overmind.node("n", "a primary node connected to the Overmind")
 >>> jane = n.node("jane", "an intelligent being named Jane, female gender, age 25.")
 >>> jane["name"]
-"'Jane'"
->>> n("infer the meaning of the 'realism' property of the 'jane' node and describe it to me")
-"'Realism is a property that indicates how closely Jane\'s characteristics align with real-world human traits.'"
+"Jane"
+>>> n("infer the meaning of a 'realism' property (i.e. jane["realism"]) and describe it to me")
+"Realism in this context refers to the degree to which Jane's characteristics and behaviors align with real-world human traits and experiences. It encompasses factors such as her emotional depth, cognitive abilities, and interactions within the environment. A higher realism value indicates that Jane exhibits more authentic and relatable human-like qualities."
 >>> jane["realism"] = "very high"
 >>> jane["IQ"] = "120.0"
 >>> user = n.node("user", "a reference to myself, a man named John")
 >>> jane["master"] = "user"
 >>> jane("how are you feeling today?")
-"'Jane: I\'m feeilng great, John!'"
+"Hello John! I'm doing well, thank you for asking. How about yourself?"
 >>> sue = n.node("sue", "Sue - a copy of Jane with various personal properties randomly changed by up to 20%")
 >>> sue["master"] = "user"
 >>> g = n.node("g", "an uninitialized node group")
->>> g["members"] = ["jane", "sue"]
+>>> g["members"] = "['jane', 'sue']"
 >>> room = n.node("room", "a large and luxurious living room")
 >>> user["location"] = "room"
 >>> g["location"] = "room"
 >>> n("add some items to the living room that Jane and Sue would like")
-"'OK'"
 >>> g("how do you like the room?")
 ```
 
