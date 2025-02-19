@@ -24,7 +24,7 @@
 >>> sue = n.node("sue", "Sue - a copy of Jane with various personal properties randomly changed by up to 20%")
 >>> sue["master"] = "user"
 >>> g = n.node("g", "an uninitialized node group")
->>> g["members"] = "['jane', 'sue']"
+>>> g["members"] = ['jane', 'sue']
 >>> room = n.node("room", "a large and luxurious living room")
 >>> user["location"] = "room"
 >>> g["location"] = "room"
