@@ -22,13 +22,17 @@ class node:
         if self.verbose:
             print(f"*node.__setitem__ (item=\"{item}\", val=\"{val}\")*")
         self.d_r[item] = val
-        self.sp.runcode(f"{self.label}[\"{item}\"] = \"{val}\"")
+        if type(val) == str:
+            do_quote = "\""
+        else:
+            do_quote = ""
+        self.sp.runcode(f"{self.label}[\"{item}\"] = {do_quote}{val}{do_quote}")
 
     def __getitem__ (self, item):
         if self.verbose:
             print(f"*node.__getitem__ (item=\"{item}\")*")
-        self.d_s = self.sp.runcode(f"{self.label}[\"{item}\"]")
-        return self.d_s
+        self.d_s[item] = self.sp.runcode(f"{self.label}[\"{item}\"]")
+        return self.d_s[item]
 
     def node (self, label, msg):
         if self.verbose:
