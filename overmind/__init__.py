@@ -5,9 +5,9 @@ import sply
 
 model_id = "default-code"
 show = False
-seed = random.randint(0, 2 << 32),
-temp = 0.0,
-num_ctx = 8_000,
+seed = random.randint(0, 2 << 32)
+temp = 0.0
+num_ctx = 8_000
 
 env_var = os.getenv("overmind_model_id")
 if env_var:
