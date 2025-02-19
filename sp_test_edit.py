@@ -11,13 +11,17 @@ def main ():
         if argv.find("model_id=") == 0:
             model_id = argv[9:]
 
-    options = {
-        "seed": random.randint(0, 2 << 32),
-        "temperature": 0.0,
-        "num_ctx": 1_000,
-        }
+    seed = random.randint(0, 2 << 32)
+    temp = 0.0
+    num_ctx = 1_000
 
-    sp = sply.sp(show=True, model_id=model_id, options=options)
+    sp = sply.sp(
+        show=True,
+        model_id=model_id,
+        seed=seed,
+        temp=temp,
+        num_ctx=num_ctx,
+        )
 
     sp.runcode("y = 1")
     s = sp.runcode("y + 1")
