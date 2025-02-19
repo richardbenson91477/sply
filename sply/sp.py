@@ -6,7 +6,7 @@ from .chat import chat
 class sp:
     show_def = False
     model_id_def = "default-code"
-    editor_def = ""
+    editor_def = None
     rev_prompt_def = "\n>>> "
     seed_def = random.randint(0, 2 << 32)
     temp_def = 0.0
