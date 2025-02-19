@@ -20,7 +20,7 @@ class sp:
             prompt=None,
             seed=None,
             temp=None,
-            num_ctx_def=None,
+            num_ctx=None,
             ):
 
         self.show = show if show is not None \

@@ -48,7 +48,6 @@ if show:
 sp = sply.sp(
     show=show,
     model_id=model_id,
-    options=options,
     seed=seed,
     temp=temp,
     num_ctx=num_ctx,
