@@ -36,7 +36,7 @@ if env_var:
 
 prompt = \
     "[ "\
-    "The following is an ongoing log of a python interpreter session. "\
+    "The following is an ongoing log of a python interpreter session. There is no reason that markdown quoted blocks should appear here."\
     "]\n"\
     ">>> from transformers import pipeline\n"\
     ">>> pipe = pipeline(\"text-generation\", model=\"meta-llama/Meta-Llama-3-8B-Instruct\")\n"\
