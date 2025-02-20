@@ -5,8 +5,14 @@ import sys
 import sply
 
 def main ():
+    model_id = "default-code"
+
+    for argv in sys.argv[1:]:
+        if argv.find("model_id=") == 0:
+            model_id = argv[9:]
+
     # create a simulated python
-    sp = sply.sp(model_id="default-code")
+    sp = sply.sp(model_id=model_id)
 
     # set realish y's value to 1
     y = 1
