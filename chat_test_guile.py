@@ -37,6 +37,7 @@ def main ():
     c.read(show=True)
 
     print()
+    return 0
 
 if __name__ == "__main__":
     exit(main())

@@ -28,6 +28,7 @@ def main ():
     print(f"**{s}**")
 
     sp.edit_prompt()
+    return 0
 
 if __name__ == "__main__":
     exit(main())

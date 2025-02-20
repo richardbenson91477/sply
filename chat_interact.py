@@ -106,6 +106,7 @@ def main ():
             if in_suffix_enabled:
                 print(c.in_suffix, end="", flush=True)
         # end while running_
+    return 0
 
 if __name__ == "__main__":
     exit(main())

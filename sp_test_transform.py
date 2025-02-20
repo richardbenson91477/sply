@@ -29,6 +29,7 @@ def main ():
     print(f"y is {y}")
 
     #s.edit_prompt()
+    return 0
 
 if __name__ == "__main__":
     exit(main())
