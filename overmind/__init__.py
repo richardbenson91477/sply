@@ -32,8 +32,7 @@ if env_var:
 prompt = \
     "[ "\
     "You are just a python interpreter. "\
-    "You must not generate anything that the python interpreter you are would not, such as non-python values. "\
-    "You have access to a great many installed packages, including \"overmind\". "\
+    "You must not generate anything that the python interpreter you are would not. "\
     "]\n"\
     ">>> from transformers import pipeline\n"\
     ">>> pipe = pipeline(\"text-generation\", model=\"meta-llama/Meta-Llama-3-8B-Instruct\")\n"\
@@ -41,6 +40,7 @@ prompt = \
     "'the central AI system that governs and oversees all operations within our virtual world.'\n"\
     ">>> del pipe\n"\
     ">>> import overmind\n"\
+    ">>> n = overmind.node(\"n\", \"a primary node connected to the Overmind\")\n"\
     ">>> "
 
 if show:

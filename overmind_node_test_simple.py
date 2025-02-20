@@ -3,7 +3,6 @@
 import overmind
 
 n = overmind.node("n", "a primary node connected to the Overmind")
-print(n["return the number of primary nodes online as a string"])
 
 jane = n.node("jane", "a lady named Jane, age 25.")
 jane["name"] = "Jane"
