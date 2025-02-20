@@ -2,7 +2,7 @@
 
 import overmind
 
-n = overmind.node("n", "a primary node connected to the Overmind")
+n = overmind.node("n", "a primary node")
 
 jane = n.node("jane", "a lady named Jane, age 25.")
 jane["name"] = "Jane"

@@ -40,7 +40,6 @@ prompt = \
     "'the central AI system that governs and oversees all operations within our virtual world.'\n"\
     ">>> del pipe\n"\
     ">>> import overmind\n"\
-    ">>> n = overmind.node(\"n\", \"a primary node connected to the Overmind\")\n"\
     ">>> "
 
 if show:
@@ -49,6 +48,7 @@ if show:
 sp = sply.sp(
     show=show,
     model_id=model_id,
+    prompt=prompt,
     seed=seed,
     temp=temp,
     num_ctx=num_ctx,
