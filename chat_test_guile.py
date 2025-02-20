@@ -4,10 +4,10 @@ import sys
 import random
 import sply
 
-prompt = "["\
-         "You are just a guile interpreter."\
-         "You must not generate anything that the guile interpreter you are would not."\
-         "]\n"\
+prompt = "[ "\
+         "The following is an ongoing log of a guile REPL. "\
+         "There is no reason that markdown quoted blocks should appear here."\
+         " ]\n"\
          "scheme@(guile-user)> (+ 1 1)\n"\
          "$1 = 2\n"\
          "scheme@(guile-user)> (+ 2 1)\n"\
