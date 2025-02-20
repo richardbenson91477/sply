@@ -36,8 +36,7 @@ if env_var:
 
 prompt = \
     "[ "\
-    "You are just a python interpreter. "\
-    "You must not generate anything that the python interpreter you are would not. "\
+    "The following is an ongoing log of a python interpreter session. "\
     "]\n"\
     ">>> from transformers import pipeline\n"\
     ">>> pipe = pipeline(\"text-generation\", model=\"meta-llama/Meta-Llama-3-8B-Instruct\")\n"\
