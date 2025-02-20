@@ -5,17 +5,22 @@ import sply
 
 show = False
 model_id = "default-code"
+editor = None
 seed = random.randint(0, 2 << 32)
 temp = 0.0
 num_ctx = 8_000
+
+env_var = os.getenv("overmind_show")
+if env_var == "True":
+    show = True
 
 env_var = os.getenv("overmind_model_id")
 if env_var:
     model_id = env_var
 
-env_var = os.getenv("overmind_show")
-if env_var == "True":
-    show = True
+env_var = os.getenv("overmind_editor")
+if env_var:
+    editor = env_var
 
 env_var = os.getenv("overmind_seed")
 if env_var:
@@ -48,6 +53,7 @@ if show:
 sp = sply.sp(
     show=show,
     model_id=model_id,
+    editor=editor,
     prompt=prompt,
     seed=seed,
     temp=temp,
