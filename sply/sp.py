@@ -63,7 +63,7 @@ class sp:
     def default_prompt (self):
         return \
             "[ "\
-            "The following is an ongoing log of a python interpreter session. "
+            "The following is an ongoing log of a python interpreter session. "\
             "There is no reason that markdown quoted blocks should appear here."\
             " ]\n"\
             ">>> x = 1\n"\
