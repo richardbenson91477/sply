@@ -62,10 +62,10 @@ class sp:
 
     def default_prompt (self):
         return \
-            "["\
-            "You are just a python interpreter. "\
-            "You must not generate anything that the python interpreter you are would not."\
-            "]\n"\
+            "[ "\
+            "The following is an ongoing log of a python interpreter session. "
+            "There is no reason that markdown quoted blocks should appear here."\
+            " ]\n"\
             ">>> x = 1\n"\
             ">>> print(x)\n"\
             "1\n"\
