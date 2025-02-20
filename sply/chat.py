@@ -103,8 +103,6 @@ class chat:
                 else self.default_args["num_ctx"],
             }
 
-        print(f"seed = {self.options["seed"]}")
-
     def edit_prompt (self):
         prompt_file = tempfile.mktemp()
 
