@@ -1,11 +1,8 @@
 #!/usr/bin/env python3
 
 import overmind
-
-n = overmind.node("n", "a primary node")
-
+n = overmind.node("n", "a primary node connected to the Overmind")
 jane = n.node("jane", "a lady named Jane, age 25.")
-jane["name"] = "Jane"
 print(jane["name"])
 
 snacks = n.node("snacks", "some delicious snacks")
