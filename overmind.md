@@ -10,12 +10,12 @@
 ```python
 >>> import overmind
 >>> n = overmind.node("n", "a primary node connected to the Overmind")
->>> jane = n.node("jane", "an intelligent being named Jane, female gender, age 25.")
+>>> jane = n.node("jane", "a lady named Jane, age 25.")
 >>> jane["name"]
 "Jane"
 >>> n("infer the meaning of a 'realism' property (i.e. jane[\"realism\"]) and return it")
 "Realism in this context refers to the degree to which Jane's characteristics and behaviors align with real-world human traits and experiences. It encompasses factors such as her emotional depth, cognitive abilities, and interactions within the environment. A higher realism value indicates that Jane exhibits more authentic and relatable human-like qualities."
->>> jane["realism"] = "very high"
+>>> jane["realism"] = "very human-like"
 >>> jane["IQ"] = "120.0"
 >>> user = n.node("user", "a reference to myself, a man named John")
 >>> jane["master"] = "user"

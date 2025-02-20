@@ -1,5 +1,5 @@
 #!/bin/sh
 
 overmind_show="True" \
-  python3 "overmind_node_test_group.py"
+  ./overmind_node_test_group.py
 

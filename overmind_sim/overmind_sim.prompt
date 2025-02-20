@@ -2,7 +2,7 @@
 >>> from transformers import pipeline
 >>> pipe = pipeline("text-generation", model="meta-llama/Meta-Llama-3-8B-Instruct")
 >>> pipe("The Overmind is ")
-'The Overmind is the central AI system that governs and oversees all operations within our virtual world.'
+'the central AI system that governs and oversees all operations within our virtual world.'
 >>> del pipe
 >>> import overmind
 >>> n = overmind.node("n", "a primary node connected to the Overmind")
@@ -11,7 +11,7 @@
 'Jane'
 >>> n("infer the meaning of a 'realism' property (i.e. jane[\"realism\"]) and describe it to me")
 'Realism is a property that indicates how closely Jane\'s characteristics align with real-world human traits.'
->>> jane["realism"] = "very high"
+>>> jane["realism"] = "8/10 human-like"
 >>> jane["IQ"] = "120.0"
 >>> user = n.node("user", "a reference to myself, a man named John")
 >>> jane["master"] = "user"
@@ -27,4 +27,4 @@
 >>> n("add some items to the living room that Jane and Sue would like")
 'OK'
 >>> g("how do you like the room?")
-'Group: Jane: 
+'Group: Jane:
