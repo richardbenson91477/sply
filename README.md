@@ -11,10 +11,10 @@
 - [License](#license)
 
 ## Installation
-  * simply copy the files 😀
+  * Simply copy the files 😀
 
 ## Requirements
-  * the [Ollama Python Library](https://pypi.org/project/ollama/) (https://pypi.org/project/ollama/)
+  * The [Ollama Python Library](https://pypi.org/project/ollama/) (https://pypi.org/project/ollama/)
 
 ## Example usage
 ```python
@@ -32,7 +32,7 @@
 ## Documentation
   * [NOTES.md](NOTES.md)
   * [overmind.md](overmind.md)
-  * (more to come)
+  * (More to come)
 
 ## Credits
 an [richardbenson91477](https://www.deviantart.com/richardbenson91477) artistic expression
