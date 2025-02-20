@@ -3,8 +3,8 @@ import os
 import random
 import sply
 
-model_id = "default-code"
 show = False
+model_id = "default-code"
 seed = random.randint(0, 2 << 32)
 temp = 0.0
 num_ctx = 8_000
