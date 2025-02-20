@@ -30,9 +30,10 @@ if env_var:
     num_ctx = int(env_var)
 
 prompt = \
-    "["\
+    "[ "\
     "You are just a python interpreter. "\
-    "You must not generate anything that the python interpreter you are would not, such as non-python values."\
+    "You must not generate anything that the python interpreter you are would not, such as non-python values. "\
+    "You have access to a great many installed packages, including \"overmind\". "\
     "]\n"\
     ">>> from transformers import pipeline\n"\
     ">>> pipe = pipeline(\"text-generation\", model=\"meta-llama/Meta-Llama-3-8B-Instruct\")\n"\
