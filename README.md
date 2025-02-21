@@ -11,7 +11,7 @@
 - [License](#license)
 
 ## Installation
-  * Simply copy the files 😀
+  * Simply copy or symlink the "sply/sply" folder to "$HOME/.local/lib/python3.12/site-packages" (or somewhere similar) 😀
 
 ## Requirements
   * The [Ollama Python Library](https://pypi.org/project/ollama/) (https://pypi.org/project/ollama/)
