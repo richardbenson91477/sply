@@ -29,7 +29,7 @@ class sp:
         chat_args["temp"] = temp if temp is not None \
             else 0.0
         chat_args["num_ctx"] = num_ctx if num_ctx is not None \
-            else 20_000
+            else 8_000
 
         if prompt_file:
             with open(prompt_file, "r") as f:
