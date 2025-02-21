@@ -11,10 +11,15 @@
 - [License](#license)
 
 ## Installation
+  * Bleeding edge
 ```bash
 git clone "https://github.com/richardbenson91477/sply.git" &&\
   cd sply &&\
   pip install .
+```
+  * Stable
+```bash
+pip install sply
 ```
 
 ## Requirements
