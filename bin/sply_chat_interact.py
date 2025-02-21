@@ -103,7 +103,7 @@ def main ():
 
         if add:
             c.write(add)
-            if in_suffix_enabled:
+            if chat_args["in_suffix_enabled"]:
                 print(c.in_suffix, end="", flush=True)
         # end while running_
     return 0

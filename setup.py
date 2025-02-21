@@ -7,7 +7,7 @@ package_data = {'': ['*']}
 
 setup_kwargs = {
     'name': 'sply',
-    'version': '1.0.0',
+    'version': '1.0.1',
     'description': 'a bridge between real and simulated python interpreters',
     'long_description': '',
     'author': 'Richard Benson',
