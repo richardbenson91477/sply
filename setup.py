@@ -18,6 +18,7 @@ setup_kwargs = {
     'packages': packages,
     'package_data': package_data,
     'python_requires': '>=3.7',
+    'scripts': ['bin/sply_chat_interact.py']
 }
 
 setup(**setup_kwargs)
