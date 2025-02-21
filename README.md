@@ -11,7 +11,11 @@
 - [License](#license)
 
 ## Installation
-  * cd sply; pip install .
+```bash
+git clone "https://github.com/richardbenson91477/sply.git" &&\
+  cd sply &&\
+  pip install .
+```
 
 ## Requirements
   * The [Ollama Python Library](https://pypi.org/project/ollama/) (https://pypi.org/project/ollama/)
