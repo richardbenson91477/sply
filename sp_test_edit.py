@@ -11,15 +11,11 @@ def main ():
         if argv.find("model_id=") == 0:
             model_id = argv[9:]
 
-    seed = random.randint(0, 2 << 32)
-    temp = 0.0
     num_ctx = 1_000
 
     sp = sply.sp(
         show=True,
         model_id=model_id,
-        seed=seed,
-        temp=temp,
         num_ctx=num_ctx,
         )
 
