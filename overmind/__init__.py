@@ -4,11 +4,11 @@ import random
 import sply
 
 show = False
-model_id = "default-code"
+model_id = None
 editor = None
-seed = random.randint(0, 2 << 32)
-temp = 0.0
-num_ctx = 8_000
+seed = None
+temp = None
+num_ctx = None
 
 env_var = os.getenv("overmind_show")
 if env_var == "True":
