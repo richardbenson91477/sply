@@ -8,7 +8,7 @@
 
 ## Example usage
 ```python
->>> import overmind
+>>> import sply.overmind
 >>> n = overmind.node("n", "a primary node connected to the Overmind")
 >>> jane = n.node("jane", "a lady named Jane, age 25.")
 >>> jane["name"]

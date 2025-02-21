@@ -1,5 +1,0 @@
-#!/bin/sh
-
-overmind_show="True" \
-  ./overmind_node_test_group.py
-

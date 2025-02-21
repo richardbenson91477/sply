@@ -2,7 +2,7 @@
 
 rev_prompt=$(printf "\n>>> ")
 
-../chat_interact.py \
+PYTHONPATH=".." ../bin/sply_chat_interact.py \
   in_suffix_enabled="False" \
   rev_prompt="$rev_prompt" \
   prompt_file="overmind_sim.prompt" \
