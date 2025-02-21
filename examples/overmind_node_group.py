@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-import sply.overmind
+import sply.overmind as overmind
 n = overmind.node("n", "a primary node connected to the Overmind")
 jane = n.node("jane", "a lady named Jane, age 25.")
 print(jane["name"])
