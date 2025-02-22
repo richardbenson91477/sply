@@ -1,7 +1,7 @@
 # Notes
 
 ## Using "sply_chat_interact.py"
-  * Run "./sply_chat_interact.py --help" for command line options and defaults
+  * Run "sply_chat_interact.py --help" for command line options and defaults
   * Enter "/?" for help
   * Suffix input lines with a backslash to extend the input to multiple lines
   * Hit Ctrl-C during generation to interrupt and return to input mode
