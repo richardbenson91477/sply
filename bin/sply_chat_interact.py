@@ -41,9 +41,9 @@ def main ():
                 elif tp == bool:
                     chat_args[name] = True if argv[name_len_p1:] == "True" else False
                 elif tp == int:
-                    chat_args[name] = int(argv[name_len_p1:])
+                    chat_args[name] = int(argv[name_len_p1:]) if argv[name_len_p1:] else ""
                 elif tp == float:
-                    chat_args[name] = float(argv[name_len_p1:])
+                    chat_args[name] = float(argv[name_len_p1:]) if argv[name_len_p1:] else ""
 
     print("chat_args = ", end="")
     print(chat_args)
