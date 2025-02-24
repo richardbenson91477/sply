@@ -13,6 +13,7 @@ prompt = "[ "\
          "scheme@(guile-user)> (+ 2 1)\n"\
          "$1 = 3\n"
 
+
 def main ():
     model_id = "default-code"
 
@@ -39,6 +40,8 @@ def main ():
     print()
     return 0
 
+
 if __name__ == "__main__":
     exit(main())
+
 

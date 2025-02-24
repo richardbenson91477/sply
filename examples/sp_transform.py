@@ -4,6 +4,7 @@ import sys
 # import simulated python link library
 import sply
 
+
 def main ():
     model_id = "default-code"
 
@@ -30,6 +31,7 @@ def main ():
 
     #s.edit_prompt()
     return 0
+
 
 if __name__ == "__main__":
     exit(main())

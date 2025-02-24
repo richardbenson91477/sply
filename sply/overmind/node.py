@@ -12,11 +12,13 @@ class node:
         if runcode:
             self.sp.runcode(f"{label} = overmind.node(\"{label}\", \"{msg}\")")
 
+
     def __call__ (self, msg):
         if self.verbose:
             print(f"*node.__call__ (msg=\"{msg}\")*")
         res = self.sp.runcode(f"{self.label}(\"{msg}\")")
         return res
+
 
     def __setitem__ (self, item, val):
         if self.verbose:
@@ -28,11 +30,13 @@ class node:
             do_quote = ""
         self.sp.runcode(f"{self.label}[\"{item}\"] = {do_quote}{val}{do_quote}")
 
+
     def __getitem__ (self, item):
         if self.verbose:
             print(f"*node.__getitem__ (item=\"{item}\")*")
         self.d_s[item] = self.sp.runcode(f"{self.label}[\"{item}\"]")
         return self.d_s[item]
+
 
     def node (self, label, msg):
         if self.verbose:
@@ -40,4 +44,5 @@ class node:
         res = node(label, msg, runcode=False, verbose=self.verbose)
         self.sp.runcode(f"{label} = {self.label}.node(\"{label}\", \"{msg}\")")
         return res
+
 
