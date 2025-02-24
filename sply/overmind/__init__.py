@@ -4,11 +4,11 @@ import random
 import sply
 
 show = False
-model_id = None
-editor = None
-seed = None
-temp = None
-num_ctx = None
+model_id = ""
+editor = ""
+seed = ""
+temp = ""
+num_ctx = ""
 
 env_var = os.getenv("overmind_show")
 if env_var == "True":

@@ -5,30 +5,30 @@ from .chat import chat
 
 class sp:
     def __init__ (self,
-            show=None,
-            model_id=None,
-            editor=None,
-            prompt_file=None,
-            prompt=None,
-            seed=None,
-            temp=None,
-            num_ctx=None,
+            show="",
+            model_id="",
+            editor="",
+            prompt_file="",
+            prompt="",
+            seed="",
+            temp="",
+            num_ctx="",
             ):
 
-        self.show = show if show is not None \
+        self.show = show if show != "" \
             else False
 
         chat_args = {}
-        chat_args["model_id"] = model_id if model_id is not None \
+        chat_args["model_id"] = model_id if model_id != "" \
             else "default-code"
         chat_args["editor"] = editor
         chat_args["in_suffix_enabled"] = False
         chat_args["rev_prompt"] = "\n>>> "
-        chat_args["seed"] = seed if seed is not None \
+        chat_args["seed"] = seed if seed != "" \
             else random.randint(0, 2 << 32)
-        chat_args["temp"] = temp if temp is not None \
+        chat_args["temp"] = temp if temp != "" \
             else 0.0
-        chat_args["num_ctx"] = num_ctx if num_ctx is not None \
+        chat_args["num_ctx"] = num_ctx if num_ctx != "" \
             else 8_000
 
         if prompt_file:
