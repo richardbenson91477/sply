@@ -14,7 +14,7 @@ class chat:
         "ai_name": "Jane",
         "ai_desc": "is John's friend",
         "in_suffix": "Jane:",
-        "in_suffix_enabled": "True",
+        "in_suffix_enabled": True,
         "rev_prompt": "\nJohn: ",
         "prompt_file": "",
         "prompt": "",
