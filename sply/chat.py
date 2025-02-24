@@ -14,7 +14,7 @@ class chat:
         "ai_name": "Jane",
         "ai_desc": "is John's friend",
         "in_suffix": "Jane:",
-        "in_suffix_enabled": True,
+        "in_suffix_enabled": "True",
         "rev_prompt": "\nJohn: ",
         "prompt_file": "",
         "prompt": "",
@@ -41,47 +41,49 @@ class chat:
         )
 
     def __init__ (self,
-            model_id=None,
-            editor=None,
-            user_name=None,
-            user_desc=None,
-            ai_name=None,
-            ai_desc=None,
-            in_suffix=None,
-            in_suffix_enabled=None,
-            rev_prompt=None,
-            prompt_file=None,
-            prompt=None,
-            seed=None,
-            temp=None,
-            num_ctx=None,
+            model_id="",
+            editor="",
+            user_name="",
+            user_desc="",
+            ai_name="",
+            ai_desc="",
+            in_suffix="",
+            in_suffix_enabled="",
+            rev_prompt="",
+            prompt_file="",
+            prompt="",
+            seed="",
+            temp="",
+            num_ctx="",
             ):
 
-        self.model_id = model_id if model_id \
+        self.model_id = model_id if model_id != "" \
             else self.default_args["model_id"]
-        self.editor = editor if editor \
+        self.editor = editor if editor != "" \
             else self.default_args["editor"]
-        self.user_name = user_name if user_name \
+        self.user_name = user_name if user_name != "" \
             else self.default_args["user_name"]
-        self.user_desc = user_desc if user_desc \
+        self.user_desc = user_desc if user_desc != "" \
             else self.default_args["user_desc"]
-        self.ai_name = ai_name if ai_name \
+        self.ai_name = ai_name if ai_name != "" \
             else self.default_args["ai_name"]
-        self.ai_desc = ai_desc if ai_desc \
+        self.ai_desc = ai_desc if ai_desc != "" \
             else self.default_args["ai_desc"]
-
-        self.in_suffix = in_suffix if in_suffix \
+        self.in_suffix = in_suffix if in_suffix != "" \
             else self.default_args["in_suffix"]
-        self.in_suffix_len = len(self.in_suffix)
- 
-        self.in_suffix_enabled = in_suffix_enabled if in_suffix_enabled \
+        self.in_suffix_enabled = in_suffix_enabled if in_suffix_enabled != "" \
             else self.default_args["in_suffix_enabled"]
-
-        self.rev_prompt = rev_prompt if rev_prompt \
+        self.rev_prompt = rev_prompt if rev_prompt != "" \
             else self.default_args["rev_prompt"]
-        self.rev_prompt_len = len(self.rev_prompt)
-        self.rev_prompt_tail = 0
- 
+        self.options = {
+            "seed": seed if seed is not "" \
+                else self.default_args["seed"],
+            "temperature": temp if temp is not "" \
+                else self.default_args["temp"],
+            "num_ctx": num_ctx if num_ctx is not "" \
+                else self.default_args["num_ctx"],
+            }
+
         if prompt_file:
             with open(prompt_file, "r") as f:
                 self.prompt = f.read()
@@ -90,18 +92,14 @@ class chat:
         else:
             self.prompt = self.make_prompt()
 
+        self.in_suffix_len = len(self.in_suffix)
+        self.rev_prompt_len = len(self.rev_prompt)
         self.prompt_len = len(self.prompt)
         if self.prompt_len >= self.rev_prompt_len:
             self.rev_prompt_tail = self.prompt_len - self.rev_prompt_len
+        else:
+            self.rev_prompt_tail = 0
 
-        self.options = {
-            "seed": seed if seed \
-                else self.default_args["seed"],
-            "temperature": temp if temp \
-                else self.default_args["temp"],
-            "num_ctx": num_ctx if num_ctx \
-                else self.default_args["num_ctx"],
-            }
 
     def edit_prompt (self):
         prompt_file = tempfile.mktemp()
@@ -118,6 +116,7 @@ class chat:
         if self.prompt_len >= self.rev_prompt_len:
             self.rev_prompt_tail = self.prompt_len - self.rev_prompt_len
  
+
     def write (self, msg, show=False):
         self.prompt += msg
         self.prompt_len += len(msg)
@@ -132,6 +131,7 @@ class chat:
 
         if self.prompt_len >= self.rev_prompt_len:
             self.rev_prompt_tail = self.prompt_len - self.rev_prompt_len
+
 
     def read (self, show=False):
         gen = generate(
@@ -170,6 +170,7 @@ class chat:
             print("**** KeyboardInterrupt in chat.read() ****")
 
         return res
+
 
     def make_prompt (self):
         return \
