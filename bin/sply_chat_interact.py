@@ -15,6 +15,7 @@ def print_cmds ():
           "/e: edit prompt\n"
           "*")
 
+
 def print_usage ():
     print(f"Usage: {sys.argv[0]} [options]\n"
           f"  where [options] are zero or more of:"
@@ -23,6 +24,7 @@ def print_usage ():
         print(f"    {arg["name"]}=({arg["type"].__name__}): "
               f"{arg["desc"]} (default: \"{sply.chat.default_args[arg["name"]]}\")"
               )
+
 
 def main ():
     chat_args = sply.chat.default_args.copy()
@@ -44,6 +46,7 @@ def main ():
                     chat_args[name] = int(argv[name_len_p1:]) if argv[name_len_p1:] else ""
                 elif tp == float:
                     chat_args[name] = float(argv[name_len_p1:]) if argv[name_len_p1:] else ""
+
 
     print("chat_args = ", end="")
     print(chat_args)
@@ -103,10 +106,11 @@ def main ():
 
         if add:
             c.write(add)
-            if chat_args["in_suffix_enabled"]:
+            if c.in_suffix_enabled:
                 print(c.in_suffix, end="", flush=True)
         # end while running_
     return 0
+
 
 if __name__ == "__main__":
     exit(main())
