@@ -7,7 +7,7 @@ print(jane["name"])
 
 print(n("infer the meaning of a 'realism' property (i.e. jane[\"realism\"]) and briefly describe it to me"))
 
-jane["realism"] = "90% human-like"
+jane["realism"] = "90 percent human-like"
 jane["IQ"] = "120.0"
 user = n.node("user", "a reference to myself, a man named John")
 jane["master"] = "user"
