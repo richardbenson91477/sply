@@ -9,6 +9,7 @@
 ## Tested working models
   * [qwen2.5-coder-14b-instruct-q8_0.gguf](https://huggingface.co/Qwen/Qwen2.5-Coder-14B-Instruct-GGUF/blob/main/qwen2.5-coder-14b-instruct-q8_0.gguf) - Base-line for testing.
   * [Qwen2.5-Coder-7B-Instruct-abliterated-Q8_0.gguf](https://huggingface.co/bartowski/Qwen2.5-Coder-7B-Instruct-abliterated-GGUF/blob/main/Qwen2.5-Coder-7B-Instruct-abliterated-Q8_0.gguf)
+  * [Lamarck-14B-v0.7-Q8_0.gguf](https://huggingface.co/bartowski/Lamarck-14B-v0.7-GGUF/blob/main/Lamarck-14B-v0.7-Q8_0.gguf) - Not yet _heavily_ tested.
   * [DeepSeek-R1-Distill-Llama-70B-abliterated-IQ3_XXS.gguf](https://huggingface.co/bartowski/huihui-ai_DeepSeek-R1-Distill-Llama-70B-abliterated-GGUF/blob/main/huihui-ai_DeepSeek-R1-Distill-Llama-70B-abliterated-IQ3_XXS.gguf) - Only tested once.
   * [DeepSeek-R1-Distill-Qwen-32B-abliterated-IQ4_NL.gguf](https://huggingface.co/bartowski/DeepSeek-R1-Distill-Qwen-32B-abliterated-GGUF/blob/main/DeepSeek-R1-Distill-Qwen-32B-abliterated-IQ4_NL.gguf) - Not yet _heavily_ tested.
 
