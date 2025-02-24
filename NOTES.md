@@ -7,10 +7,11 @@
   * Hit Ctrl-C during generation to interrupt and return to input mode
 
 ## Tested working models
-  * [qwen2.5-coder-14b-instruct-q8_0.gguf](https://huggingface.co/Qwen/Qwen2.5-Coder-14B-Instruct-GGUF/blob/main/qwen2.5-coder-14b-instruct-q8_0.gguf) - Base-line for testing
+  * [qwen2.5-coder-14b-instruct-q8_0.gguf](https://huggingface.co/Qwen/Qwen2.5-Coder-14B-Instruct-GGUF/blob/main/qwen2.5-coder-14b-instruct-q8_0.gguf) - Base-line for testing.
   * [Qwen2.5-Coder-7B-Instruct-abliterated-Q8_0.gguf](https://huggingface.co/bartowski/Qwen2.5-Coder-7B-Instruct-abliterated-GGUF/blob/main/Qwen2.5-Coder-7B-Instruct-abliterated-Q8_0.gguf) - lacks creativity compared to the 14b version
-  * [Lamarck-14B-v0.7-Q8_0.gguf](https://huggingface.co/bartowski/Lamarck-14B-v0.7-GGUF/blob/main/Lamarck-14B-v0.7-Q8_0.gguf) - Seems very creative. Not yet _heavily_ tested
-  * [DeepSeek-R1-Distill-Llama-70B-abliterated-IQ3_XXS.gguf](https://huggingface.co/bartowski/huihui-ai_DeepSeek-R1-Distill-Llama-70B-abliterated-GGUF/blob/main/huihui-ai_DeepSeek-R1-Distill-Llama-70B-abliterated-IQ3_XXS.gguf) - Only tested once (because it took 23 minutes using CPU + 32 GB RAM + 16 GB swap) - but it did work, so that counts
+  * [Lamarck-14B-v0.7-Q8_0.gguf](https://huggingface.co/bartowski/Lamarck-14B-v0.7-GGUF/blob/main/Lamarck-14B-v0.7-Q8_0.gguf) - Seems very creative. Not yet _heavily_ tested.
+  * [DeepSeek-R1-Distill-Llama-70B-abliterated-IQ3_XXS.gguf](https://huggingface.co/bartowski/huihui-ai_DeepSeek-R1-Distill-Llama-70B-abliterated-GGUF/blob/main/huihui-ai_DeepSeek-R1-Distill-Llama-70B-abliterated-IQ3_XXS.gguf) - Only tested once (because it took 23 minutes using CPU + 32 GB RAM + 16 GB swap) - but it did work, so that counts.
+  * [DeepSeek-R1-Distill-Qwen-32B-abliterated-IQ4_NL.gguf](https://huggingface.co/bartowski/DeepSeek-R1-Distill-Qwen-32B-abliterated-GGUF/blob/main/DeepSeek-R1-Distill-Qwen-32B-abliterated-IQ4_NL.gguf) - Appears to work well. Not yet _heavily_ tested.
 
 ## Mostly-working models
   * [phi-4-abliterated.Q8_0.gguf](https://huggingface.co/mradermacher/phi-4-abliterated-GGUF/blob/main/phi-4-abliterated.Q8_0.gguf) - Occasionally generates high-strangeness like multiple string results ('this''that') or markdown block-quotes. Otherwise very verbose, creative, and life-like.
