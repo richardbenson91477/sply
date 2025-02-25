@@ -28,8 +28,7 @@ class sp:
             else random.randint(0, 2 << 32)
         chat_args["temp"] = temp if temp != "" \
             else 0.0
-        chat_args["num_ctx"] = num_ctx if num_ctx != "" \
-            else 8_000
+        chat_args["num_ctx"] = num_ctx
 
         if prompt_file:
             with open(prompt_file, "r") as f:
