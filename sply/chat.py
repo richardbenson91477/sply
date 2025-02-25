@@ -76,18 +76,18 @@ class chat:
         self.rev_prompt = rev_prompt if rev_prompt != "" \
             else self.default_args["rev_prompt"]
         self.options = {
-            "seed": seed if seed is not "" \
+            "seed": seed if seed != "" \
                 else self.default_args["seed"],
-            "temperature": temp if temp is not "" \
+            "temperature": temp if temp != "" \
                 else self.default_args["temp"],
-            "num_ctx": num_ctx if num_ctx is not "" \
+            "num_ctx": num_ctx if num_ctx != "" \
                 else self.default_args["num_ctx"],
             }
 
-        if prompt_file:
+        if prompt_file != "":
             with open(prompt_file, "r") as f:
                 self.prompt = f.read()
-        elif prompt:
+        elif prompt != "":
             self.prompt = prompt
         else:
             self.prompt = self.make_prompt()
