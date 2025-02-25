@@ -1,7 +1,5 @@
 #!/bin/sh
 
-
-
 rev_prompt=$(printf "\n>>> ")
 
 sply_chat_interact.py \
