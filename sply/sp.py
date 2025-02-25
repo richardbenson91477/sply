@@ -46,6 +46,7 @@ class sp:
 
         self.c.read(show=self.show)
 
+
     def runcode (self, msg):
         self.c.write(msg + "\n", show=self.show)
         res = self.c.read(show=self.show)
@@ -53,12 +54,14 @@ class sp:
             res = res[:-self.rev_prompt_len]
         return res
 
+
     def edit_prompt (self):
         self.c.edit_prompt()
         res = self.c.read(show=self.show)
         if res.rfind(self.rev_prompt) == len(res) - self.rev_prompt_len:
             res = res[:-self.rev_prompt_len]
         return res
+
 
     def default_prompt (self):
         return \
