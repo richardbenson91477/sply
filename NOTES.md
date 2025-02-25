@@ -32,4 +32,5 @@
   * "prompt_file=" args always have precedence over "prompt=" args
   * "edit_prompt" currently leaves prompt tempfiles intact (for manual review)
   * "make_prompt" is jailbroken - modify to taste, or provide a custom prompt
+  * sp.__init__ passes some alternate default params to chat() - see sply/sp.py
 
