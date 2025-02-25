@@ -29,7 +29,7 @@
   * When all else fails, Ctrl-C + "edit_prompt()" are your friends
 
 ## Misc
-  * The default prompt editor is "vim" - customize with the "editor=" options and parameters
+  * The default prompt editor is "vim -b" - customize with the "editor=" options and parameters
   * "prompt_file=" args always have precedence over "prompt=" args
   * "edit_prompt" currently leaves prompt tempfiles intact (for manual review)
   * "make_prompt" is jailbroken - modify to taste, or provide a custom prompt

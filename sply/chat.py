@@ -8,7 +8,7 @@ from ollama import generate
 class chat:
     default_args = {
         "model_id": "default",
-        "editor": "vim",
+        "editor": "vim -b",
         "user_name": "John",
         "user_desc": "is Jane's friend",
         "ai_name": "Jane",
@@ -25,7 +25,7 @@ class chat:
 
     arg_desc = (
         {"name": "model_id", "type": str, "desc": "ollama model to load"},
-        {"name": "editor", "type": str, "desc": "editor path for prompt editing"},
+        {"name": "editor", "type": str, "desc": "editor path/args for prompt editing"},
         {"name": "user_name", "type": str, "desc": "user name for the auto prompt"},
         {"name": "user_desc", "type": str, "desc": "user description for the auto prompt"},
         {"name": "ai_name", "type": str, "desc": "AI name for the auto prompt"},
@@ -107,7 +107,7 @@ class chat:
         with open(prompt_file, "w") as f:
             f.write(self.prompt)
 
-        subprocess.run([self.editor, prompt_file])
+        subprocess.run(self.editor.split() + [prompt_file])
 
         with open(prompt_file, "r") as f:
             self.prompt = f.read()
