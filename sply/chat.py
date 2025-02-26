@@ -117,6 +117,31 @@ class chat:
             self.rev_prompt_tail = self.prompt_len - self.rev_prompt_len
  
 
+    def set_cmd (self, cmd):
+        # TODO: utilize "for arg in arg_desc"
+        if cmd.find("=") == -1:
+            if cmd == "list": 
+                print("settable params: \"model_id\", \"seed\", \"temp\", \"num_ctx\"")
+            if cmd == "model_id":
+                print(f"model_id={self.model_id}")
+            elif cmd == "seed":
+                print(f"seed={self.options["seed"]}")
+            elif cmd == "temp":
+                print(f"temp={self.options["temperature"]}")
+            elif cmd == "num_ctx":
+                print(f"num_ctx:{self.options["num_ctx"]}")
+        else:
+            param, value = cmd.split("=")
+            if param == "model_id":
+                self.model_id = value
+            elif param == "seed":
+                self.options["seed"] = int(value)
+            elif param == "temp":
+                self.options["temperature"] = float(value)
+            elif param == "num_ctx":
+                self.options["num_ctx"] = int(value)
+
+
     def write (self, msg, show=False):
         self.prompt += msg
         self.prompt_len += len(msg)
@@ -187,4 +212,5 @@ class chat:
             "]\n"\
            f"{self.user_name}: Hi, {self.ai_name}!\n"\
            f"{self.ai_name}: "
+
 

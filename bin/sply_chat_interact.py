@@ -4,6 +4,7 @@ import sys
 import random
 import sply
 
+
 def print_cmds ():
     print("\n* commands:\n"
           "/?: this help\n"
@@ -13,6 +14,9 @@ def print_cmds ():
           "//: input /\\n\n"
           "/q: quit\n"
           "/e: edit prompt\n"
+          "/s list: list settable params\n"
+          "/s param: show param\n"
+          "/s param=value: set param to value\n"
           "*")
 
 
@@ -65,6 +69,7 @@ def main ():
             if not inp:
                 add += "\n"
                 break
+
             elif inp[0] == "/" and len(inp) == 2:
                 if inp == "/?":
                     print_cmds()
@@ -88,9 +93,10 @@ def main ():
                     c.edit_prompt()
                     add = ""
                     break
-                else:
-                    print_cmds()
-                    continue
+
+            elif inp[0:3] == "/s ":
+                c.set_cmd(inp[3:])
+                continue
 
             inp_tail = len(inp) - 1
             if inp[inp_tail] == "\\":
@@ -113,4 +119,5 @@ def main ():
 
 if __name__ == "__main__":
     exit(main())
+
 
