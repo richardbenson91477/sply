@@ -186,5 +186,5 @@ class chat:
             "What follows is an ongoing log of our interactions in the format \"\\nName: statements and/or (actions)\"."\
             "]\n"\
            f"{self.user_name}: Hi, {self.ai_name}!\n"\
-           f"{self.ai_name}:"
+           f"{self.ai_name}: "
 
