@@ -4,7 +4,7 @@
   * Run "sply_chat_interact.py --help" for command line options and defaults
   * Enter "/?" for help
   * Suffix input lines with a backslash to extend the input to multiple lines
-  * Hit Ctrl-C during generation to interrupt and return to input mode
+  * Hit Ctrl-C during generation to interrupt and enter input mode
 
 ## Tested working models
   * [qwen2.5-coder-14b-instruct-q8_0.gguf](https://huggingface.co/Qwen/Qwen2.5-Coder-14B-Instruct-GGUF/blob/main/qwen2.5-coder-14b-instruct-q8_0.gguf) - Base-line for testing
@@ -18,7 +18,7 @@
   * [phi-4-abliterated.Q8_0.gguf](https://huggingface.co/mradermacher/phi-4-abliterated-GGUF/blob/main/phi-4-abliterated.Q8_0.gguf) - Occasionally generates high-strangeness like multiple string results ('this''that') or markdown block-quotes
 
 ## Non-working models
-  * [Mistral-Small-24B-Instruct-2501-Q5_K_M.gguf](https://huggingface.co/bartowski/Mistral-Small-24B-Instruct-2501-GGUF/blob/main/Mistral-Small-24B-Instruct-2501-Q5_K_M.gguf) - generates _a lot_ of simulated python errors.
+  * [Mistral-Small-24B-Instruct-2501-Q5_K_M.gguf](https://huggingface.co/bartowski/Mistral-Small-24B-Instruct-2501-GGUF/blob/main/Mistral-Small-24B-Instruct-2501-Q5_K_M.gguf) - Generates _a lot_ of simulated python errors.
 
 ## Dealing with gibberish output (in order of importance)
   * Try a different model - see the [tested working models list](#tested-working-models). Note that "chain of thought reasoning" models aren't well suited as they generate a lot of extraneous output 
