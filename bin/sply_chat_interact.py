@@ -9,7 +9,7 @@ def print_cmds ():
     print("\n* commands:\n"
           "/?: this help\n"
           "/p: display prompt (surrounded by **'s)\n"
-          "/i: print current input (surrounded by ***'s)\n"
+          "/i: display current input (surrounded by ***'s)\n"
           "/c: clear current input\n"
           "//: input /\\n\n"
           "/q: quit\n"
