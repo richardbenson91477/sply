@@ -6,38 +6,21 @@ import tempfile
 from ollama import generate
 
 class chat:
-    default_args = {
-        "model_id": "default",
-        "editor": "vim -b",
-        "user_name": "John",
-        "user_desc": "is Jane's friend",
-        "ai_name": "Jane",
-        "ai_desc": "is John's friend",
-        "in_suffix": "Jane: ",
-        "in_suffix_enabled": True,
-        "rev_prompt": "\nJohn: ",
-        "prompt_file": "",
-        "prompt": "",
-        "seed": 42,
-        "temp": 0.8,
-        "num_ctx": 8_000,
-        }
-
     arg_desc = (
-        {"name": "model_id", "type": str, "desc": "ollama model to load"},
-        {"name": "editor", "type": str, "desc": "editor path/args for prompt editing"},
-        {"name": "user_name", "type": str, "desc": "user name for the auto prompt"},
-        {"name": "user_desc", "type": str, "desc": "user description for the auto prompt"},
-        {"name": "ai_name", "type": str, "desc": "AI name for the auto prompt"},
-        {"name": "ai_desc", "type": str, "desc": "AI description for the auto prompt"},
-        {"name": "in_suffix", "type": str, "desc": "string to auto-insert after input"},
-        {"name": "in_suffix_enabled", "type": bool, "desc": "whether to use the in_suffix"},
-        {"name": "rev_prompt", "type": str, "desc": "chat reverse prompt"},
-        {"name": "prompt_file", "type": str, "desc": "path to a prompt to initiate the chat"},
-        {"name": "prompt", "type": str, "desc": "string prompt to initiate the chat"},
-        {"name": "seed", "type": int, "desc": "psuedo-random number generator seed for ollama"},
-        {"name": "temp", "type": float, "desc": "temperature setting for ollama"},
-        {"name": "num_ctx", "type": int, "desc": "context size for ollama"},
+        {"name": "model_id", "type": str, "default": "default", "desc": "ollama model to load"},
+        {"name": "editor", "type": str, "default": "vim -b", "desc": "editor path/args for prompt editing"},
+        {"name": "user_name", "type": str, "default": "John", "desc": "user name for the auto prompt"},
+        {"name": "user_desc", "type": str, "default": "is Jane's friend", "desc": "user description for the auto prompt"},
+        {"name": "ai_name", "type": str, "default": "Jane", "desc": "AI name for the auto prompt"},
+        {"name": "ai_desc", "type": str, "default": "is John's friend", "desc": "AI description for the auto prompt"},
+        {"name": "in_suffix", "type": str, "default": "Jane: ", "desc": "string to auto-insert after input"},
+        {"name": "in_suffix_enabled", "type": bool, "default": True, "desc": "whether to use the in_suffix"},
+        {"name": "rev_prompt", "type": str, "default": "\nJohn: ", "desc": "chat reverse prompt"},
+        {"name": "prompt_file", "type": str, "default": "", "desc": "path to a prompt to initiate the chat"},
+        {"name": "prompt", "type": str, "default": "", "desc": "string prompt to initiate the chat"},
+        {"name": "seed", "type": int, "default": 42, "desc": "psuedo-random number generator seed for ollama"},
+        {"name": "temp", "type": float, "default": 0.8, "desc": "temperature setting for ollama"},
+        {"name": "num_ctx", "type": int, "default": 8_000, "desc": "context size for ollama"},
         )
 
     def __init__ (self,
@@ -56,6 +39,8 @@ class chat:
             temp="",
             num_ctx="",
             ):
+
+        self.default_args = self.get_default_args()
 
         self.model_id = model_id if model_id != "" \
             else self.default_args["model_id"]
@@ -99,6 +84,14 @@ class chat:
             self.rev_prompt_tail = self.prompt_len - self.rev_prompt_len
         else:
             self.rev_prompt_tail = 0
+
+
+    @staticmethod
+    def get_default_args ():
+        args = {}
+        for arg in chat.arg_desc:
+            args[arg["name"]] = arg["default"]
+        return args
 
 
     def edit_prompt (self):

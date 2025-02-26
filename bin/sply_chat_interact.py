@@ -31,7 +31,7 @@ def print_usage ():
 
 
 def main ():
-    chat_args = sply.chat.default_args.copy()
+    chat_args = sply.chat.get_default_args()
 
     for argv in sys.argv[1:]:
         if argv.find("--help") == 0:
