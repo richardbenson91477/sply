@@ -56,6 +56,7 @@ class chat:
 
         self.default_args = self.get_default_args()
 
+        # TODO: find a way to for-loop this
         self.model_id = model_id if model_id != "" \
             else self.default_args["model_id"]
         self.editor = editor if editor != "" \
@@ -137,9 +138,13 @@ class chat:
                     if arg["adjust"]:
                         print(f"    {arg["name"]}")
                 return
+            found = False
             for arg in self.arg_desc:
                 if arg["name"] == param:
+                    found = True
                     print(self.__dict__[param])
+            if not found:
+                print(f"error: param \"{param}\" not found")
             return
 
         param, value = cmd.split("=")
