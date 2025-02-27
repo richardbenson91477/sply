@@ -7,20 +7,34 @@ from ollama import generate
 
 class chat:
     arg_desc = (
-        {"name": "model_id", "type": str, "default": "default", "desc": "ollama model to load"},
-        {"name": "editor", "type": str, "default": "vim -b", "desc": "editor path/args for prompt editing"},
-        {"name": "user_name", "type": str, "default": "John", "desc": "user name for the auto prompt"},
-        {"name": "user_desc", "type": str, "default": "is Jane's friend", "desc": "user description for the auto prompt"},
-        {"name": "ai_name", "type": str, "default": "Jane", "desc": "AI name for the auto prompt"},
-        {"name": "ai_desc", "type": str, "default": "is John's friend", "desc": "AI description for the auto prompt"},
-        {"name": "in_suffix", "type": str, "default": "Jane: ", "desc": "string to auto-insert after input"},
-        {"name": "in_suffix_enabled", "type": bool, "default": True, "desc": "whether to use the in_suffix"},
-        {"name": "rev_prompt", "type": str, "default": "\nJohn: ", "desc": "chat reverse prompt"},
-        {"name": "prompt_file", "type": str, "default": "", "desc": "path to a prompt to initiate the chat"},
-        {"name": "prompt", "type": str, "default": "", "desc": "string prompt to initiate the chat"},
-        {"name": "seed", "type": int, "default": 42, "desc": "psuedo-random number generator seed for ollama"},
-        {"name": "temp", "type": float, "default": 0.8, "desc": "temperature setting for ollama"},
-        {"name": "num_ctx", "type": int, "default": 8_000, "desc": "context size for ollama"},
+        {"name": "model_id", "type": str,
+            "default": "default", "adjust": True, "desc": "ollama model to load"},
+        {"name": "editor", "type": str,
+            "default": "vim -b", "adjust": True, "desc": "editor path/args for prompt editing"},
+        {"name": "user_name", "type": str,
+            "default": "John", "adjust": False, "desc": "user name for the auto prompt"},
+        {"name": "user_desc", "type": str,
+            "default": "is Jane's friend", "adjust": False, "desc": "user description for the auto prompt"},
+        {"name": "ai_name", "type": str,
+            "default": "Jane", "adjust": False, "desc": "AI name for the auto prompt"},
+        {"name": "ai_desc", "type": str,
+            "default": "is John's friend", "adjust": False, "desc": "AI description for the auto prompt"},
+        {"name": "in_suffix", "type": str,
+            "default": "Jane: ", "adjust": True, "desc": "string to auto-insert after input"},
+        {"name": "in_suffix_enabled", "type": bool,
+            "default": True, "adjust": True, "desc": "whether to use the in_suffix"},
+        {"name": "rev_prompt", "type": str,
+            "default": "\nJohn: ", "adjust": False, "desc": "chat reverse prompt"},
+        {"name": "prompt_file", "type": str,
+            "default": "", "adjust": False, "desc": "path to a prompt to initiate the chat"},
+        {"name": "prompt", "type": str,
+            "default": "", "adjust": False, "desc": "string prompt to initiate the chat"},
+        {"name": "seed", "type": int,
+            "default": 42, "adjust": True, "desc": "psuedo-random number generator seed for ollama"},
+        {"name": "temp", "type": float,
+            "default": 0.8, "adjust": True, "desc": "temperature setting for ollama"},
+        {"name": "num_ctx", "type": int,
+            "default": 8_000, "adjust": True, "desc": "context size for ollama"},
         )
 
     def __init__ (self,
@@ -60,13 +74,17 @@ class chat:
             else self.default_args["in_suffix_enabled"]
         self.rev_prompt = rev_prompt if rev_prompt != "" \
             else self.default_args["rev_prompt"]
+        self.seed = seed if seed != "" \
+            else self.default_args["seed"]
+        self.temp = temp if temp != "" \
+            else self.default_args["temp"]
+        self.num_ctx = num_ctx if num_ctx != "" \
+            else self.default_args["num_ctx"]
+
         self.options = {
-            "seed": seed if seed != "" \
-                else self.default_args["seed"],
-            "temperature": temp if temp != "" \
-                else self.default_args["temp"],
-            "num_ctx": num_ctx if num_ctx != "" \
-                else self.default_args["num_ctx"],
+            "seed": self.seed,
+            "temperature": self.temp,
+            "num_ctx": self.num_ctx,
             }
 
         if prompt_file != "":
@@ -111,28 +129,47 @@ class chat:
  
 
     def set_cmd (self, cmd):
-        # TODO: utilize "for arg in arg_desc"
         if cmd.find("=") == -1:
-            if cmd == "list": 
-                print("settable params: \"model_id\", \"seed\", \"temp\", \"num_ctx\"")
-            if cmd == "model_id":
-                print(f"model_id={self.model_id}")
-            elif cmd == "seed":
-                print(f"seed={self.options["seed"]}")
-            elif cmd == "temp":
-                print(f"temp={self.options["temperature"]}")
-            elif cmd == "num_ctx":
-                print(f"num_ctx:{self.options["num_ctx"]}")
-        else:
-            param, value = cmd.split("=")
-            if param == "model_id":
-                self.model_id = value
-            elif param == "seed":
-                self.options["seed"] = int(value)
-            elif param == "temp":
-                self.options["temperature"] = float(value)
-            elif param == "num_ctx":
-                self.options["num_ctx"] = int(value)
+            param = cmd
+            if param == "list": 
+                print("settable params: ")
+                for arg in self.arg_desc:
+                    if arg["adjust"]:
+                        print(f"    {arg["name"]}")
+                return
+            for arg in self.arg_desc:
+                if arg["name"] == param:
+                    print(self.__dict__[param])
+            return
+
+        param, value = cmd.split("=")
+        found = False
+        for arg in self.arg_desc:
+            if not arg["adjust"]:
+                continue
+            name = arg["name"]
+            tp = arg["type"]
+            if name == param:
+                found = True
+                if tp == str:
+                    self.__dict__[param] = value
+                elif tp == bool:
+                    self.__dict__[param] = True if value == "True" else False
+                elif tp == int:
+                    self.__dict__[param] = int(value)
+                elif tp == float:
+                    self.__dict__[param] = float(value)
+                break
+
+        if not found:
+            print(f"error: param \"{param}\" not found")
+            return
+
+        self.options = {
+            "seed": self.seed,
+            "temperature": self.temp,
+            "num_ctx": self.num_ctx,
+            }
 
 
     def write (self, msg, show=False):
