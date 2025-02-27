@@ -11,9 +11,9 @@ def print_cmds ():
           "/p: display prompt (surrounded by **'s)\n"
           "/i: display current input (surrounded by ***'s)\n"
           "/c: clear current input\n"
-          "/s: list settable params\n"
-          "/s param: show param\n"
-          "/s param=value: set param to value\n"
+          "/a: list adjustable params\n"
+          "/a param: show param\n"
+          "/a param=value: adjust param to value\n"
           "//: input /\\n\n"
           "/e: edit prompt\n"
           "/q: quit\n"
@@ -84,8 +84,8 @@ def main ():
                 elif inp == "/c":
                     add = ""
                     continue
-                elif inp == "/s":
-                    c.set_cmd("list")
+                elif inp == "/a":
+                    c.adjust("list")
                     continue
                 elif inp == "//":
                     inp = "/\n"
@@ -98,8 +98,8 @@ def main ():
                     running_ = False
                     break
 
-            elif inp[0:3] == "/s ":
-                c.set_cmd(inp[3:])
+            elif inp[0:3] == "/a ":
+                c.adjust(inp[3:])
                 continue
 
             inp_tail = len(inp) - 1

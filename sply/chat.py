@@ -128,11 +128,11 @@ class chat:
             self.rev_prompt_tail = self.prompt_len - self.rev_prompt_len
  
 
-    def set_cmd (self, cmd):
+    def adjust (self, cmd):
         if cmd.find("=") == -1:
             param = cmd
             if param == "list": 
-                print("settable params: ")
+                print("adjustable params: ")
                 for arg in self.arg_desc:
                     if arg["adjust"]:
                         print(f"    {arg["name"]}")
