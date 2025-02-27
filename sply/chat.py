@@ -147,17 +147,17 @@ class chat:
         for arg in self.arg_desc:
             if not arg["adjust"]:
                 continue
-            name = arg["name"]
-            tp = arg["type"]
-            if name == param:
+            arg_name = arg["name"]
+            arg_type = arg["type"]
+            if arg_name == param:
                 found = True
-                if tp == str:
+                if arg_type == str:
                     self.__dict__[param] = value
-                elif tp == bool:
+                elif arg_type == bool:
                     self.__dict__[param] = True if value == "True" else False
-                elif tp == int:
+                elif arg_type == int:
                     self.__dict__[param] = int(value)
-                elif tp == float:
+                elif arg_type == float:
                     self.__dict__[param] = float(value)
                 break
 

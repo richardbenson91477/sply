@@ -39,17 +39,17 @@ def main ():
             print_usage()
             exit(-1)
         for arg in sply.chat.arg_desc:
-            name = arg["name"]
-            tp = arg["type"]
-            if argv.find(name + "=") == 0:
+            arg_name = arg["name"]
+            arg_type = arg["type"]
+            if argv.find(arg_name + "=") == 0:
                 param, value = argv.split("=")
-                if tp == str:
+                if arg_type == str:
                     chat_args[param] = value
-                elif tp == bool:
+                elif arg_type == bool:
                     chat_args[param] = True if value == "True" else False
-                elif tp == int:
+                elif arg_type == int:
                     chat_args[param] = int(value)
-                elif tp == float:
+                elif arg_type == float:
                     chat_args[param] = float(value)
 
     print("chat_args = ", end="")
