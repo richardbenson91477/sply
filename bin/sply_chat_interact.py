@@ -11,22 +11,23 @@ def print_cmds ():
           "/p: display prompt (surrounded by **'s)\n"
           "/i: display current input (surrounded by ***'s)\n"
           "/c: clear current input\n"
-          "//: input /\\n\n"
-          "/q: quit\n"
-          "/e: edit prompt\n"
-          "/s list: list settable params\n"
+          "/s: list settable params\n"
           "/s param: show param\n"
           "/s param=value: set param to value\n"
+          "//: input /\\n\n"
+          "/e: edit prompt\n"
+          "/q: quit\n"
           "*")
 
 
 def print_usage ():
+    default_args = sply.chat.get_default_args()
     print(f"Usage: {sys.argv[0]} [options]\n"
           f"  where [options] are zero or more of:"
           )
     for arg in sply.chat.arg_desc:
         print(f"    {arg["name"]}=({arg["type"].__name__}): "
-              f"{arg["desc"]} (default: \"{sply.chat.default_args[arg["name"]]}\")"
+              f"{arg["desc"]} (default: \"{default_args[arg["name"]]}\")"
               )
 
 
@@ -39,17 +40,17 @@ def main ():
             exit(-1)
         for arg in sply.chat.arg_desc:
             name = arg["name"]
-            name_len_p1 = len(name) + 1
             tp = arg["type"]
             if argv.find(name + "=") == 0:
+                param, value = argv.split("=")
                 if tp == str:
-                    chat_args[name] = argv[name_len_p1:]
+                    chat_args[param] = value
                 elif tp == bool:
-                    chat_args[name] = True if argv[name_len_p1:] == "True" else False
+                    chat_args[param] = True if value == "True" else False
                 elif tp == int:
-                    chat_args[name] = int(argv[name_len_p1:]) if argv[name_len_p1:] else ""
+                    chat_args[param] = int(value)
                 elif tp == float:
-                    chat_args[name] = float(argv[name_len_p1:]) if argv[name_len_p1:] else ""
+                    chat_args[param] = float(value)
 
     print("chat_args = ", end="")
     print(chat_args)
@@ -83,15 +84,18 @@ def main ():
                 elif inp == "/c":
                     add = ""
                     continue
+                elif inp == "/s":
+                    c.set_cmd("list")
+                    continue
                 elif inp == "//":
                     inp = "/\n"
-                    break
-                elif inp == "/q":
-                    running_ = False
                     break
                 elif inp == "/e":
                     c.edit_prompt()
                     add = ""
+                    break
+                elif inp == "/q":
+                    running_ = False
                     break
 
             elif inp[0:3] == "/s ":
