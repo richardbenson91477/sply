@@ -7,7 +7,7 @@ import sply
 
 def print_cmds ():
     print("\n* commands:\n"
-          "/?: this help\n"
+          "/h: this help\n"
           "/p: display prompt (surrounded by **'s)\n"
           "/i: display current input (surrounded by ***'s)\n"
           "/c: clear current input\n"
@@ -71,7 +71,7 @@ def main ():
                 break
 
             elif inp[0] == "/" and len(inp) == 2:
-                if inp == "/?":
+                if inp == "/h
                     print_cmds()
                     continue
                 elif inp == "/p":

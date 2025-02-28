@@ -2,7 +2,7 @@
 
 ## Using "sply_chat_interact.py"
   * Run "sply_chat_interact.py --help" for command line options and defaults
-  * Enter "/?" for help
+  * Enter "/h for help
   * Suffix input lines with a backslash to extend the input to multiple lines
   * Hit Ctrl-C during generation to interrupt and enter input mode
 
@@ -21,7 +21,7 @@
 ## Non-working models
   * [Mistral-Small-24B-Instruct-2501-Q5_K_M.gguf](https://huggingface.co/bartowski/Mistral-Small-24B-Instruct-2501-GGUF/blob/main/Mistral-Small-24B-Instruct-2501-Q5_K_M.gguf) - Generates _a lot_ of simulated python errors.
 
-## Dealing with gibberish output (in order of importance)
+## Dealing with gibberish output
   * Try a different model - see the [tested working models list](#tested-working-models). Note that "chain of thought reasoning" models aren't well suited as they generate a lot of extraneous output 
   * Modify the prompt to show examples of expected behavior
   * Try a lower temperature value
@@ -34,5 +34,5 @@
   * "prompt_file=" args always have precedence over "prompt=" args
   * "edit_prompt" currently leaves prompt tempfiles intact (for manual review)
   * "make_prompt" is jailbroken - modify to taste, or provide a custom prompt
-  * sp.__init__ passes some alternate default params to chat() - see sply/sp.py
+  * sp.__init__ passes some alternate default params to chat() - see [sply/sp.py](sply/sp.py)
 
