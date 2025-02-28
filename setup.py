@@ -17,7 +17,7 @@ setup_kwargs = {
     'url': 'https://github.com/richardbenson91477/sply',
     'packages': packages,
     'package_data': package_data,
-    'python_requires': '>=3.7',
+    'python_requires': '>=3.8',
     'scripts': ['bin/sply_chat_interact.py']
 }
 
