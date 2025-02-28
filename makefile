@@ -7,7 +7,7 @@ install:
 	pip install --force-reinstall --no-build-isolation --no-deps .
 
 test:
-	PYTHONPATH="." bin/sply_chat_interact.py
+	PYTHONPATH="." bin/sply_chat_interact.py $(test_args)
 
 upload:
 	twine upload dist/*
