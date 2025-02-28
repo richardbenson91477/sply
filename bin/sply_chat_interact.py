@@ -14,7 +14,7 @@ def print_cmds ():
           "/a: list adjustable params and current values\n"
           "/a [param]: display param's value\n"
           "/a [param]=[value]: adjust param to value\n"
-          "//[input]: input /[input]\\n\n"
+          "//[input]: input /[input]\n"
           "/e: edit prompt\n"
           "/q: quit\n"
           "*")
