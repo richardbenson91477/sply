@@ -12,9 +12,9 @@ def print_cmds ():
           "/i: display current input (surrounded by ***'s)\n"
           "/c: clear current input\n"
           "/a: list adjustable params and current values\n"
-          "/a param: display param's value\n"
-          "/a param=value: adjust param to value\n"
-          "//: input /\\n\n"
+          "/a [param]: display param's value\n"
+          "/a [param]=[value]: adjust param to value\n"
+          "//[input]: input /[input]\\n\n"
           "/e: edit prompt\n"
           "/q: quit\n"
           "*")
@@ -70,7 +70,7 @@ def main ():
                 add += "\n"
                 break
 
-            elif inp[0] == "/" and len(inp) == 2:
+            elif inp[0] == "/":
                 if inp == "/h":
                     print_cmds()
                     continue
@@ -86,6 +86,9 @@ def main ():
                 elif inp == "/a":
                     c.adjust("list")
                     continue
+                elif inp[0:3] == "/a ":
+                    c.adjust(inp[3:])
+                    continue
                 elif inp == "//":
                     inp = "/\n"
                     break
@@ -96,10 +99,9 @@ def main ():
                 elif inp == "/q":
                     running_ = False
                     break
-
-            elif inp[0:3] == "/a ":
-                c.adjust(inp[3:])
-                continue
+                elif inp[0:2] == "//":
+                    inp = inp[1:]
+                    pass
 
             inp_tail = len(inp) - 1
             if inp[inp_tail] == "\\":
