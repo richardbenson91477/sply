@@ -116,7 +116,8 @@ class chat:
                 print("adjustable params: ")
                 for param_d in self.param_desc:
                     if param_d["adjustable"]:
-                        print(f"    {param_d["name"]}")
+                        param = param_d["name"]
+                        print(f"  {param} (\"{self.__dict__[param]}\")")
                 return
             found = False
             for param_d in self.param_desc:
