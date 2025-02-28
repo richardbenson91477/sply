@@ -93,6 +93,15 @@ class chat:
         return args
 
 
+    @staticmethod
+    def print_default_args (prefix):
+        default_args = chat.get_default_args()
+        for param_d in chat.param_desc:
+            print(f"{prefix}{param_d["name"]}=({param_d["type"].__name__}): "
+                  f"{param_d["desc"]} (default: \"{default_args[param_d["name"]]}\")"
+                  )
+
+
     def edit_prompt (self):
         prompt_file = tempfile.mktemp()
 

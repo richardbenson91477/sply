@@ -15,20 +15,16 @@ def print_cmds ():
           "/a [param]: display param's value\n"
           "/a [param]=[value]: adjust param to value\n"
           "//[input]: input /[input]\n"
-          "/e: edit prompt\n"
+          "/e: edit prompt and continue chat\n"
           "/q: quit\n"
           "*")
 
 
 def print_usage ():
-    default_args = sply.chat.get_default_args()
     print(f"Usage: {sys.argv[0]} [options]\n"
           f"  where [options] are zero or more of:"
           )
-    for param_d in sply.chat.param_desc:
-        print(f"    {param_d["name"]}=({param_d["type"].__name__}): "
-              f"{param_d["desc"]} (default: \"{default_args[param_d["name"]]}\")"
-              )
+    sply.chat.print_default_args("    ")
 
 
 def main ():
