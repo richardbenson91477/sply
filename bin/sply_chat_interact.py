@@ -84,10 +84,14 @@ def main ():
                     add = ""
                     continue
                 elif inp == "/a":
+                    print("* ", end="")
                     c.adjust("list")
+                    print("*")
                     continue
                 elif inp[0:3] == "/a ":
+                    print("* ", end="")
                     c.adjust(inp[3:])
+                    print("*")
                     continue
                 elif inp == "//":
                     inp = "/\n"
@@ -103,7 +107,7 @@ def main ():
                     inp = inp[1:]
                     pass
                 else:
-                    print(f"unknown command \"{inp}\": try \"/h\"")
+                    print(f"* unknown command \"{inp}\": try \"/h\"\n*")
                     continue
 
             inp_tail = len(inp) - 1

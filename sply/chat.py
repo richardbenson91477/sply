@@ -144,6 +144,8 @@ class chat:
                     self.__dict__[cmd_param] = int(cmd_value)
                 elif arg_type == float:
                     self.__dict__[cmd_param] = float(cmd_value)
+
+                print(self.__dict__[cmd_param])
                 break
 
         if not found:
