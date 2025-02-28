@@ -111,43 +111,43 @@ class chat:
 
     def adjust (self, cmd):
         if cmd.find("=") == -1:
-            param = cmd
-            if param == "list": 
+            cmd_param = cmd
+            if cmd_param == "list": 
                 print("adjustable params: ")
                 for param_d in self.param_desc:
                     if param_d["adjustable"]:
-                        param = param_d["name"]
-                        print(f"  {param} (\"{self.__dict__[param]}\")")
+                        param_name = param_d["name"]
+                        print(f"  {param_name} (\"{self.__dict__[param_name]}\")")
                 return
             found = False
             for param_d in self.param_desc:
-                if param == param_d["name"]:
+                if cmd_param == param_d["name"]:
                     found = True
-                    print(self.__dict__[param])
+                    print(self.__dict__[cmd_param])
             if not found:
-                print(f"error: param \"{param}\" not found")
+                print(f"error: param \"{cmd_param}\" not found")
             return
 
-        param, value = cmd.split("=")
+        cmd_param, cmd_value = cmd.split("=")
         found = False
         for param_d in self.param_desc:
             if not param_d["adjustable"]:
                 continue
-            if param == param_d["name"]:
+            if cmd_param == param_d["name"]:
                 found = True
                 arg_type = param_d["type"]
                 if arg_type == str:
-                    self.__dict__[param] = value
+                    self.__dict__[cmd_param] = value
                 elif arg_type == bool:
-                    self.__dict__[param] = True if value == "True" else False
+                    self.__dict__[cmd_param] = True if value == "True" else False
                 elif arg_type == int:
-                    self.__dict__[param] = int(value)
+                    self.__dict__[cmd_param] = int(value)
                 elif arg_type == float:
-                    self.__dict__[param] = float(value)
+                    self.__dict__[cmd_param] = float(value)
                 break
 
         if not found:
-            print(f"error: param \"{param}\" not found")
+            print(f"error: param \"{cmd_param}\" not found")
             return
 
         self.options = {
