@@ -102,6 +102,9 @@ def main ():
                 elif inp[0:2] == "//":
                     inp = inp[1:]
                     pass
+                else:
+                    print(f"unknown command \"{inp}\": try \"/h\"")
+                    continue
 
             inp_tail = len(inp) - 1
             if inp[inp_tail] == "\\":
