@@ -137,13 +137,13 @@ class chat:
                 found = True
                 arg_type = param_d["type"]
                 if arg_type == str:
-                    self.__dict__[cmd_param] = value
+                    self.__dict__[cmd_param] = cmd_value
                 elif arg_type == bool:
-                    self.__dict__[cmd_param] = True if value == "True" else False
+                    self.__dict__[cmd_param] = True if cmd_value == "True" else False
                 elif arg_type == int:
-                    self.__dict__[cmd_param] = int(value)
+                    self.__dict__[cmd_param] = int(cmd_value)
                 elif arg_type == float:
-                    self.__dict__[cmd_param] = float(value)
+                    self.__dict__[cmd_param] = float(cmd_value)
                 break
 
         if not found:
