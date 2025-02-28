@@ -34,22 +34,22 @@ def print_usage ():
 def main ():
     chat_args = sply.chat.get_default_args()
 
-    for arg in sys.argv[1:]:
-        if arg.find("--help") == 0:
+    for sys_arg in sys.argv[1:]:
+        if sys_arg.find("--help") == 0:
             print_usage()
             exit(-1)
         for param_d in sply.chat.param_desc:
-            if arg.find(param_d["name"] + "=") == 0:
-                arg_param, arg_value = arg.split("=")
-                arg_type = param_d["type"]
-                if arg_type == str:
-                    chat_args[arg_param] = arg_value
-                elif arg_type == bool:
-                    chat_args[arg_param] = True if arg_value == "True" else False
-                elif arg_type == int:
-                    chat_args[arg_param] = int(arg_value)
-                elif arg_type == float:
-                    chat_args[arg_param] = float(arg_value)
+            if sys_arg.find(param_d["name"] + "=") == 0:
+                sys_arg_param, sys_arg_value = sys_arg.split("=")
+                param_type = param_d["type"]
+                if param_type == str:
+                    chat_args[sys_arg_param] = sys_arg_value
+                elif param_type == bool:
+                    chat_args[sys_arg_param] = True if sys_arg_value == "True" else False
+                elif param_type == int:
+                    chat_args[sys_arg_param] = int(sys_arg_value)
+                elif param_type == float:
+                    chat_args[sys_arg_param] = float(sys_arg_value)
 
     print("chat_args = ", end="")
     print(chat_args)
