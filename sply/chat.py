@@ -6,35 +6,35 @@ import tempfile
 from ollama import generate
 
 class chat:
-    arg_desc = (
+    param_desc = (
         {"name": "model_id", "type": str,
-            "default": "default", "adjust": True, "desc": "ollama model to load"},
+            "default": "default", "adjustable": True, "desc": "ollama model to load"},
         {"name": "editor", "type": str,
-            "default": "vim -b", "adjust": True, "desc": "editor path/args for prompt editing"},
+            "default": "vim -b", "adjustable": True, "desc": "editor path/args for prompt editing"},
         {"name": "user_name", "type": str,
-            "default": "John", "adjust": False, "desc": "user name for the auto prompt"},
+            "default": "John", "adjustable": False, "desc": "user name for the auto prompt"},
         {"name": "user_desc", "type": str,
-            "default": "is Jane's friend", "adjust": False, "desc": "user description for the auto prompt"},
+            "default": "is Jane's friend", "adjustable": False, "desc": "user description for the auto prompt"},
         {"name": "ai_name", "type": str,
-            "default": "Jane", "adjust": False, "desc": "AI name for the auto prompt"},
+            "default": "Jane", "adjustable": False, "desc": "AI name for the auto prompt"},
         {"name": "ai_desc", "type": str,
-            "default": "is John's friend", "adjust": False, "desc": "AI description for the auto prompt"},
+            "default": "is John's friend", "adjustable": False, "desc": "AI description for the auto prompt"},
         {"name": "in_suffix", "type": str,
-            "default": "Jane: ", "adjust": True, "desc": "string to auto-insert after input"},
+            "default": "Jane: ", "adjustable": True, "desc": "string to auto-insert after input"},
         {"name": "in_suffix_enabled", "type": bool,
-            "default": True, "adjust": True, "desc": "whether to use the in_suffix"},
+            "default": True, "adjustable": True, "desc": "whether to use the in_suffix"},
         {"name": "rev_prompt", "type": str,
-            "default": "\nJohn: ", "adjust": False, "desc": "chat reverse prompt"},
+            "default": "\nJohn: ", "adjustable": False, "desc": "chat reverse prompt"},
         {"name": "prompt_file", "type": str,
-            "default": "", "adjust": False, "desc": "path to a prompt to initiate the chat"},
+            "default": "", "adjustable": False, "desc": "path to a prompt to initiate the chat"},
         {"name": "prompt", "type": str,
-            "default": "", "adjust": False, "desc": "string prompt to initiate the chat"},
+            "default": "", "adjustable": False, "desc": "string prompt to initiate the chat"},
         {"name": "seed", "type": int,
-            "default": 42, "adjust": True, "desc": "psuedo-random number generator seed for ollama"},
+            "default": 42, "adjustable": True, "desc": "psuedo-random number generator seed for ollama"},
         {"name": "temp", "type": float,
-            "default": 0.8, "adjust": True, "desc": "temperature setting for ollama"},
+            "default": 0.8, "adjustable": True, "desc": "temperature setting for ollama"},
         {"name": "num_ctx", "type": int,
-            "default": 8_000, "adjust": True, "desc": "context size for ollama"},
+            "default": 8_000, "adjustable": True, "desc": "context size for ollama"},
         )
 
     def __init__ (self,
@@ -56,31 +56,11 @@ class chat:
 
         self.default_args = self.get_default_args()
 
-        # TODO: find a way to for-loop this
-        self.model_id = model_id if model_id != "" \
-            else self.default_args["model_id"]
-        self.editor = editor if editor != "" \
-            else self.default_args["editor"]
-        self.user_name = user_name if user_name != "" \
-            else self.default_args["user_name"]
-        self.user_desc = user_desc if user_desc != "" \
-            else self.default_args["user_desc"]
-        self.ai_name = ai_name if ai_name != "" \
-            else self.default_args["ai_name"]
-        self.ai_desc = ai_desc if ai_desc != "" \
-            else self.default_args["ai_desc"]
-        self.in_suffix = in_suffix if in_suffix != "" \
-            else self.default_args["in_suffix"]
-        self.in_suffix_enabled = in_suffix_enabled if in_suffix_enabled != "" \
-            else self.default_args["in_suffix_enabled"]
-        self.rev_prompt = rev_prompt if rev_prompt != "" \
-            else self.default_args["rev_prompt"]
-        self.seed = seed if seed != "" \
-            else self.default_args["seed"]
-        self.temp = temp if temp != "" \
-            else self.default_args["temp"]
-        self.num_ctx = num_ctx if num_ctx != "" \
-            else self.default_args["num_ctx"]
+        locs = locals()
+        for param_d in self.param_desc:
+            param_name = param_d["name"]
+            self.__dict__[param_name] = locs[param_name] if locs[param_name] != "" \
+                else self.default_args[param_name]
 
         self.options = {
             "seed": self.seed,
@@ -108,8 +88,8 @@ class chat:
     @staticmethod
     def get_default_args ():
         args = {}
-        for arg in chat.arg_desc:
-            args[arg["name"]] = arg["default"]
+        for param_d in chat.param_desc:
+            args[param_d["name"]] = param_d["default"]
         return args
 
 
@@ -134,13 +114,13 @@ class chat:
             param = cmd
             if param == "list": 
                 print("adjustable params: ")
-                for arg in self.arg_desc:
-                    if arg["adjust"]:
-                        print(f"    {arg["name"]}")
+                for param_d in self.param_desc:
+                    if param_d["adjustable"]:
+                        print(f"    {param_d["name"]}")
                 return
             found = False
-            for arg in self.arg_desc:
-                if arg["name"] == param:
+            for param_d in self.param_desc:
+                if param == param_d["name"]:
                     found = True
                     print(self.__dict__[param])
             if not found:
@@ -149,13 +129,12 @@ class chat:
 
         param, value = cmd.split("=")
         found = False
-        for arg in self.arg_desc:
-            if not arg["adjust"]:
+        for param_d in self.param_desc:
+            if not param_d["adjustable"]:
                 continue
-            arg_name = arg["name"]
-            arg_type = arg["type"]
-            if arg_name == param:
+            if param == param_d["name"]:
                 found = True
+                arg_type = param_d["type"]
                 if arg_type == str:
                     self.__dict__[param] = value
                 elif arg_type == bool:

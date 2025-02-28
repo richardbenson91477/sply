@@ -25,9 +25,9 @@ def print_usage ():
     print(f"Usage: {sys.argv[0]} [options]\n"
           f"  where [options] are zero or more of:"
           )
-    for arg in sply.chat.arg_desc:
-        print(f"    {arg["name"]}=({arg["type"].__name__}): "
-              f"{arg["desc"]} (default: \"{default_args[arg["name"]]}\")"
+    for param_d in sply.chat.param_desc:
+        print(f"    {param_d["name"]}=({param_d["type"].__name__}): "
+              f"{param_d["desc"]} (default: \"{default_args[param_d["name"]]}\")"
               )
 
 
@@ -38,11 +38,10 @@ def main ():
         if argv.find("--help") == 0:
             print_usage()
             exit(-1)
-        for arg in sply.chat.arg_desc:
-            arg_name = arg["name"]
-            arg_type = arg["type"]
-            if argv.find(arg_name + "=") == 0:
+        for param_d in sply.chat.param_desc:
+            if argv.find(param_d["name"] + "=") == 0:
                 param, value = argv.split("=")
+                arg_type = param_d["type"]
                 if arg_type == str:
                     chat_args[param] = value
                 elif arg_type == bool:
