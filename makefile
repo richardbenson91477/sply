@@ -9,5 +9,8 @@ install:
 test:
 	PYTHONPATH="." bin/sply_chat_interact.py
 
+upload:
+	twine upload dist/*
+
 clean:
 	rm -rf build sply.egg-info dist
