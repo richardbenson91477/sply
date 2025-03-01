@@ -3,7 +3,6 @@
 ## Using "sply_chat_interact.py"
   * Run "sply_chat_interact.py --help" for command line options and defaults
   * Enter "/h for help
-  * Suffix input lines with a backslash to extend the input to multiple lines
   * Hit Ctrl-C during generation to interrupt and enter input mode
 
 ## Tested working models
@@ -20,6 +19,7 @@
 
 ## Non-working models
   * [Mistral-Small-24B-Instruct-2501-Q5_K_M.gguf](https://huggingface.co/bartowski/Mistral-Small-24B-Instruct-2501-GGUF/blob/main/Mistral-Small-24B-Instruct-2501-Q5_K_M.gguf) - Generates _a lot_ of simulated python errors.
+  * [qihoo360_TinyR1-32B-Preview-v0.1-Q6_K.gguf](https://huggingface.co/bartowski/qihoo360_TinyR1-32B-Preview-v0.1-GGUF/blob/main/qihoo360_TinyR1-32B-Preview-v0.1-Q6_K.gguf) - Generates _a lot_ of simulated python errors.
 
 ## Dealing with gibberish output
   * Try a different model - see the [tested working models list](#tested-working-models). Note that "chain of thought reasoning" models aren't well suited as they generate a lot of extraneous output 
