@@ -29,6 +29,8 @@ class chat:
             "default": "", "adjustable": False, "desc": "path to a prompt to initiate the chat"},
         {"name": "prompt", "type": str,
             "default": "", "adjustable": False, "desc": "string prompt to initiate the chat"},
+        {"name": "prompt_redisplay", "type": bool,
+            "default": True, "adjustable": True, "desc": "display the prompt after edit"},
         {"name": "seed", "type": int,
             "default": 42, "adjustable": True, "desc": "psuedo-random number generator seed for ollama"},
         {"name": "temp", "type": float,
@@ -49,6 +51,7 @@ class chat:
             rev_prompt="",
             prompt_file="",
             prompt="",
+            prompt_redisplay="",
             seed="",
             temp="",
             num_ctx="",
@@ -116,6 +119,8 @@ class chat:
         if self.prompt_len >= self.rev_prompt_len:
             self.rev_prompt_tail = self.prompt_len - self.rev_prompt_len
  
+        if self.prompt_redisplay:
+            print(self.prompt, end="", flush=True)
 
     def adjust (self, cmd):
         if cmd.find("=") == -1:
