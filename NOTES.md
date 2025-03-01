@@ -2,7 +2,7 @@
 
 ## Using "sply_chat_interact.py"
   * Run "sply_chat_interact.py --help" for command line options and defaults
-  * Enter "/h for help
+  * Enter "/h" for help
   * Hit Ctrl-C during generation to interrupt and enter input mode
 
 ## Tested working models
@@ -12,7 +12,7 @@
   * [DeepSeek-R1-Distill-Llama-70B-abliterated-IQ3_XXS.gguf](https://huggingface.co/bartowski/huihui-ai_DeepSeek-R1-Distill-Llama-70B-abliterated-GGUF/blob/main/huihui-ai_DeepSeek-R1-Distill-Llama-70B-abliterated-IQ3_XXS.gguf) - Only tested once
   * [DeepSeek-R1-Distill-Qwen-32B-abliterated-IQ4_NL.gguf](https://huggingface.co/bartowski/DeepSeek-R1-Distill-Qwen-32B-abliterated-GGUF/blob/main/DeepSeek-R1-Distill-Qwen-32B-abliterated-IQ4_NL.gguf)
   * [Arcee-Blitz-IQ4_XS.gguf](https://huggingface.co/arcee-ai/Arcee-Blitz-GGUF/blob/main/Arcee-Blitz-IQ4_XS.gguf)
-  * [ibm-granite_granite-3.2-8b-instruct-Q8_0.gguf](https://huggingface.co/bartowski/ibm-granite_granite-3.2-8b-instruct-GGUF/blob/main/ibm-granite_granite-3.2-8b-instruct-Q8_0.gguf) - Not yet _heavily_ tested
+  * [ibm-granite_granite-3.2-8b-instruct-Q8_0.gguf](https://huggingface.co/bartowski/ibm-granite_granite-3.2-8b-instruct-GGUF/blob/main/ibm-granite_granite-3.2-8b-instruct-Q8_0.gguf)
 
 ## Mostly-working models
   * [phi-4-abliterated.Q8_0.gguf](https://huggingface.co/mradermacher/phi-4-abliterated-GGUF/blob/main/phi-4-abliterated.Q8_0.gguf) - Occasionally generates high-strangeness like multiple string results ('this''that') or markdown block-quotes
@@ -34,5 +34,5 @@
   * "prompt_file=" args always have precedence over "prompt=" args
   * "edit_prompt" currently leaves prompt tempfiles intact (for manual review)
   * "make_prompt" is jailbroken - modify to taste, or provide a custom prompt
-  * sp.__init__ passes some alternate default params to chat() - see [sply/sp.py](sply/sp.py)
+  * sp passes some alternate default params to chat - see [sply/sp.py](sply/sp.py)
 
