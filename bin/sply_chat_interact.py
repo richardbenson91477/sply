@@ -61,7 +61,7 @@ def main ():
 
         add = ""
         while True:
-            inp = input()
+            inp = input("> ")
             if not inp:
                 add += "\n"
                 break
