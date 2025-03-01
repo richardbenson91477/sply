@@ -24,7 +24,7 @@ class chat:
         {"name": "in_suffix_enabled", "type": bool,
             "default": True, "adjustable": True, "desc": "whether to use the in_suffix"},
         {"name": "rev_prompt", "type": str,
-            "default": "\nJohn: ", "adjustable": False, "desc": "chat reverse prompt"},
+            "default": "John: ", "adjustable": False, "desc": "chat reverse prompt"},
         {"name": "prompt_file", "type": str,
             "default": "", "adjustable": False, "desc": "path to a prompt to initiate the chat"},
         {"name": "prompt", "type": str,
