@@ -8,7 +8,7 @@ import sply
 def print_cmds ():
     print("\n* commands:\n"
           "[input]: input [input]\\n and return to generation\n"
-          "[input]\\: input [input]\\n and stay in input mode\n" 
+          "[input]\\: input [input]\\n and stay in input mode\n"
           "/h: this help\n"
           "/p: display prompt (surrounded by **'s)\n"
           "/i: display current input (surrounded by ***'s)\n"
