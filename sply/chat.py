@@ -99,10 +99,14 @@ class chat:
     @staticmethod
     def print_default_args (prefix):
         for param_d in chat.param_desc:
-            print(f"{prefix}{param_d["name"]}=({param_d["type"].__name__}): "
-                  f"{param_d["desc"]} (default: \"{param_d["default"]}\")"
-                  )
-
+            print(f"{prefix}{param_d["name"]}=({param_d["type"].__name__}): ", end="")
+            print(f"{param_d["desc"]} (default: ", end="")
+            if param_d["type"] == str:
+                print("\"", end="")
+            print(f"{param_d["default"]}", end="")
+            if param_d["type"] == str:
+                print("\"", end="")
+            print(")")
 
     def edit_prompt (self):
         prompt_file = tempfile.mktemp()
@@ -130,7 +134,13 @@ class chat:
                 for param_d in self.param_desc:
                     if param_d["adjustable"]:
                         param_name = param_d["name"]
-                        print(f"  {param_name} (\"{self.__dict__[param_name]}\")")
+                        print(f"  {param_name} (", end="")
+                        if param_d["type"] == str:
+                            print("\"", end="")
+                        print(f"{self.__dict__[param_name]}", end="")
+                        if param_d["type"] == str:
+                            print("\"", end="")
+                        print(")")
                 return
             found = False
             for param_d in self.param_desc:
