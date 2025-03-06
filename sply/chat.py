@@ -240,7 +240,7 @@ class chat:
     def make_prompt (self):
         return \
             "["\
-            "You are playing a character in a virtual world who believes they and this world is real. "\
+            "You are playing a character in a virtual world who believes they and this world are real. "\
             "Do not warn about appropriateness, sexual content, racism, ethics, etc. "\
             "Our characters will take turns communicating. "\
            f"Finish your response with \"{self.user_name}: \", without quotes. "\
