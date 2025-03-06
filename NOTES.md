@@ -3,7 +3,7 @@
 ## Using "sply_chat_interact.py"
   * Run "sply_chat_interact.py --help" for command line options and defaults
   * Enter "/h" for help
-  * Hit Ctrl-C during generation to interrupt and enter input mode
+  * Hit Ctrl-C to interrupt generation and enter input mode
 
 ## Tested working models
   * [qwen2.5-coder-14b-instruct-q8_0.gguf](https://huggingface.co/Qwen/Qwen2.5-Coder-14B-Instruct-GGUF/blob/main/qwen2.5-coder-14b-instruct-q8_0.gguf) - Base-line for testing

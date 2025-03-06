@@ -232,7 +232,7 @@ class chat:
 
                 # end for json in gen:
         except KeyboardInterrupt:
-            print("**** KeyboardInterrupt in chat.read() ****")
+            print("** generation interrupted **")
 
         return res
 
