@@ -6,12 +6,12 @@ import sply
 
 
 def print_cmds ():
-    print("\n* commands:\n"
+    print("\n[ commands:\n"
           "[input]: input [input]\\n and return to generation\n"
           "[input]\\: input [input]\\n and stay in input mode\n"
           "/h: this help\n"
-          "/p: display prompt (surrounded by **'s)\n"
-          "/i: display current input (surrounded by ***'s)\n"
+          "/p: display [[prompt]]\n"
+          "/i: display [[current input]]\n"
           "/c: clear current input\n"
           "/a: list adjustable params and current values\n"
           "/a [param]: display param's value\n"
@@ -19,7 +19,7 @@ def print_cmds ():
           "//[input]: input /[input]\n"
           "/e: edit prompt and continue chat\n"
           "/q: quit\n"
-          "*")
+          "]")
 
 
 def print_usage ():
@@ -73,23 +73,23 @@ def main ():
                     print_cmds()
                     continue
                 elif inp == "/p":
-                    print("**" + c.prompt + "**")
+                    print(f"[[{c.prompt}]]")
                     continue
                 elif inp == "/i":
-                    print("***" + add + "***")
+                    print(f"[[{add}]]")
                     continue
                 elif inp == "/c":
                     add = ""
                     continue
                 elif inp == "/a":
-                    print("* ", end="")
+                    print("[ ", end="")
                     c.adjust("list")
-                    print("*")
+                    print("]")
                     continue
                 elif inp[0:3] == "/a ":
-                    print("* ", end="")
+                    print("[ ", end="")
                     c.adjust(inp[3:])
-                    print("*")
+                    print("]")
                     continue
                 elif inp == "//":
                     inp = "/\n"
@@ -105,7 +105,7 @@ def main ():
                     inp = inp[1:]
                     pass
                 else:
-                    print(f"* unknown command \"{inp}\": try \"/h\"\n*")
+                    print(f"[ unknown command \"{inp}\": try \"/h\" ]")
                     continue
 
             inp_tail = len(inp) - 1
