@@ -6,20 +6,20 @@ import sply
 
 
 def print_cmds ():
-    print("\n[ commands:\n"
-          "[input]: input [input]\\n and return to generation\n"
-          "[input]\\: input [input]\\n and stay in input mode\n"
-          "/h: this help\n"
-          "/p: display [[prompt]]\n"
-          "/i: display [[current input]]\n"
-          "/c: clear current input\n"
-          "/a: list adjustable params and current values\n"
-          "/a [param]: display param's value\n"
-          "/a [param]=[value]: adjust param to value\n"
-          "//[input]: input /[input]\n"
-          "/e: edit prompt and continue chat\n"
-          "/q: quit\n"
-          "]")
+    print("commands:\n"
+          "  [input]: input [input]\\n and return to generation\n"
+          "  [input]\\: input [input]\\n and stay in input mode\n"
+          "  /h: this help\n"
+          "  /p: display [[prompt]]\n"
+          "  /i: display [[current input]]\n"
+          "  /c: clear current input\n"
+          "  /a: list adjustable params and current values\n"
+          "  /a [param]: display param's value\n"
+          "  /a [param]=[value]: adjust param to value\n"
+          "  //[input]: input /[input]\n"
+          "  /e: edit prompt and continue chat\n"
+          "  /q: quit\n"
+          )
 
 
 def print_usage ():
@@ -82,14 +82,10 @@ def main ():
                     add = ""
                     continue
                 elif inp == "/a":
-                    print("[ ", end="")
                     c.adjust("list")
-                    print("]")
                     continue
                 elif inp[0:3] == "/a ":
-                    print("[ ", end="")
                     c.adjust(inp[3:])
-                    print("]")
                     continue
                 elif inp == "//":
                     inp = "/\n"
@@ -105,7 +101,7 @@ def main ():
                     inp = inp[1:]
                     pass
                 else:
-                    print(f"[ unknown command \"{inp}\": try \"/h\" ]")
+                    print(f"unknown command \"{inp}\": try \"/h\"")
                     continue
 
             inp_tail = len(inp) - 1
