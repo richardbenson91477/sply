@@ -12,17 +12,11 @@ def main ():
         if argv.find("model_id=") == 0:
             model_id = argv[9:]
 
-    num_ctx = 1_000
-
-    sp = sply.sp(
-        show=True,
-        model_id=model_id,
-        num_ctx=num_ctx,
-        )
+    sp = sply.sp(model_id=model_id)
 
     sp.runcode("y = 3 + 2")
     s = sp.runcode("y ** 3")
-    print(f"**{s}**")
+    print(s)
 
     return 0
 
