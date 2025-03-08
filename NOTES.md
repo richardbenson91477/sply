@@ -22,6 +22,8 @@
     - fails [sp_pow.py](examples/sp_pow.py)
   * [Captain-Eris-Diogenes_Twilight-V0.420-12B-Q6_K_L.gguf](https://huggingface.co/bartowski/Captain-Eris-Diogenes_Twilight-V0.420-12B-GGUF/blob/main/Captain-Eris-Diogenes_Twilight-V0.420-12B-Q6_K_L.gguf)
     - fails [sp_pow.py](examples/sp_pow.py)
+  * [huihui-ai_Mistral-Small-24B-Instruct-2501-abliterated-IQ4_XS.gguf](https://huggingface.co/bartowski/huihui-ai_Mistral-Small-24B-Instruct-2501-abliterated-GGUF/blob/main/huihui-ai_Mistral-Small-24B-Instruct-2501-abliterated-IQ4_XS.gguf)
+    - fails [sp_pow.py](examples/sp_pow.py)
 
 ## Non-working models
   * [Mistral-Small-24B-Instruct-2501-Q5_K_M.gguf](https://huggingface.co/bartowski/Mistral-Small-24B-Instruct-2501-GGUF/blob/main/Mistral-Small-24B-Instruct-2501-Q5_K_M.gguf)
