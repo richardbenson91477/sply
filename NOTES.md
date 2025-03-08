@@ -9,12 +9,13 @@
   * [qwen2.5-coder-14b-instruct-q8_0.gguf](https://huggingface.co/Qwen/Qwen2.5-Coder-14B-Instruct-GGUF/blob/main/qwen2.5-coder-14b-instruct-q8_0.gguf) - Base-line for testing
   * [Qwen2.5-Coder-7B-Instruct-abliterated-Q8_0.gguf](https://huggingface.co/bartowski/Qwen2.5-Coder-7B-Instruct-abliterated-GGUF/blob/main/Qwen2.5-Coder-7B-Instruct-abliterated-Q8_0.gguf)
   * [Lamarck-14B-v0.7-Q8_0.gguf](https://huggingface.co/bartowski/Lamarck-14B-v0.7-GGUF/blob/main/Lamarck-14B-v0.7-Q8_0.gguf)
-  * [DeepSeek-R1-Distill-Llama-70B-abliterated-IQ3_XXS.gguf](https://huggingface.co/bartowski/huihui-ai_DeepSeek-R1-Distill-Llama-70B-abliterated-GGUF/blob/main/huihui-ai_DeepSeek-R1-Distill-Llama-70B-abliterated-IQ3_XXS.gguf) - Only tested once
+  * [DeepSeek-R1-Distill-Llama-70B-abliterated-IQ3_XXS.gguf](https://huggingface.co/bartowski/huihui-ai_DeepSeek-R1-Distill-Llama-70B-abliterated-GGUF/blob/main/huihui-ai_DeepSeek-R1-Distill-Llama-70B-abliterated-IQ3_XXS.gguf) (Only tested once)
   * [DeepSeek-R1-Distill-Qwen-32B-abliterated-IQ4_NL.gguf](https://huggingface.co/bartowski/DeepSeek-R1-Distill-Qwen-32B-abliterated-GGUF/blob/main/DeepSeek-R1-Distill-Qwen-32B-abliterated-IQ4_NL.gguf)
   * [ibm-granite_granite-3.2-8b-instruct-Q8_0.gguf](https://huggingface.co/bartowski/ibm-granite_granite-3.2-8b-instruct-GGUF/blob/main/ibm-granite_granite-3.2-8b-instruct-Q8_0.gguf)
   * [c4ai-command-r7b-12-2024-Q8_0.gguf](https://huggingface.co/bartowski/c4ai-command-r7b-12-2024-GGUF/blob/main/c4ai-command-r7b-12-2024-Q8_0.gguf) (Q6_K_L also tested working)
-  * [arcee-ai_Arcee-Blitz-Q6_K_L.gguf](https://huggingface.co/bartowski/arcee-ai_Arcee-Blitz-GGUF/blob/main/arcee-ai_Arcee-Blitz-Q6_K_L.gguf) (IQ4_XS also tested working)
-  * [QwQ-32B-Q4_K_M.gguf](https://huggingface.co/unsloth/QwQ-32B-GGUF/blob/main/QwQ-32B-Q4_K_M.gguf) - lightly tested
+  * [arcee-ai_Arcee-Blitz-Q6_K_L.gguf](https://huggingface.co/bartowski/arcee-ai_Arcee-Blitz-GGUF/blob/main/arcee-ai_Arcee-Blitz-Q6_K_L.gguf) (IQ4_XS and IQ4_NL also tested working)
+  * [QwQ-32B-Q4_K_M.gguf](https://huggingface.co/unsloth/QwQ-32B-GGUF/blob/main/QwQ-32B-Q4_K_M.gguf) (lightly tested)
+  * [Captain-Eris-Diogenes_Twilight-V0.420-12B-Q6_K_L.gguf](https://huggingface.co/bartowski/Captain-Eris-Diogenes_Twilight-V0.420-12B-GGUF/blob/main/Captain-Eris-Diogenes_Twilight-V0.420-12B-Q6_K_L.gguf) (creative!)
 
 ## Mostly-working models
   * [phi-4-abliterated.Q8_0.gguf](https://huggingface.co/mradermacher/phi-4-abliterated-GGUF/blob/main/phi-4-abliterated.Q8_0.gguf) - Occasionally generates high-strangeness like multiple string results ('this''that') or markdown block-quotes
