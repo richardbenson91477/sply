@@ -9,6 +9,7 @@
   * [qwen2.5-coder-14b-instruct-q8_0.gguf](https://huggingface.co/Qwen/Qwen2.5-Coder-14B-Instruct-GGUF/blob/main/qwen2.5-coder-14b-instruct-q8_0.gguf)
     - Base-line for testing
   * [Qwen2.5-Coder-14B-IQ4_XS.gguf](https://huggingface.co/bartowski/Qwen2.5-Coder-14B-GGUF/blob/main/Qwen2.5-Coder-14B-IQ4_XS.gguf)
+  * [QwQ-Snowdrop.i1-IQ3_XXS.gguf](https://huggingface.co/mradermacher/QwQ-Snowdrop-i1-GGUF/blob/main/QwQ-Snowdrop.i1-IQ3_XXS.gguf)
 
 ## Mostly-working models
   * [phi-4-abliterated.Q8_0.gguf](https://huggingface.co/mradermacher/phi-4-abliterated-GGUF/blob/main/phi-4-abliterated.Q8_0.gguf)
@@ -29,7 +30,7 @@
     - Generates _a lot_ of simulated python errors
 
 ## On reasoning models
-  * "Reasoning" models aren't _currently_ well suited, as they generate a lot of extraneous "thinking" output. That being said, [DeepScaleR-1.5B-Preview-abliterated.IQ4_XS.gguf](https://huggingface.co/mradermacher/DeepScaleR-1.5B-Preview-abliterated-GGUF/blob/main/DeepScaleR-1.5B-Preview-abliterated.IQ4_XS.gguf), even at it's miniscule size, can solve [sp_pow.py](examples/sp_pow.py) correctly after considerable "thinking out loud." There may be a use case for this, likely involving either a lot of "hand holding" or an architectural change to hide the thinking "behind the scenes."
+  * "Reasoning" models aren't _currently_ well suited, if they generate a lot of "thinking out loud" output. That being said, [DeepScaleR-1.5B-Preview-abliterated.IQ4_XS.gguf](https://huggingface.co/mradermacher/DeepScaleR-1.5B-Preview-abliterated-GGUF/blob/main/DeepScaleR-1.5B-Preview-abliterated.IQ4_XS.gguf), even at it's miniscule size, can solve [sp_pow.py](examples/sp_pow.py) correctly after some self-examination. There may be a use case for this, likely involving either a lot of "hand holding" or an architectural change to hide the thinking "behind the scenes."
 
 ## Dealing with incorrect output
   * Try a different model - see the [tested working models list](#tested-working-models).
