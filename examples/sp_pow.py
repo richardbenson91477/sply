@@ -8,6 +8,7 @@ import sply
 def main ():
     model_id = "default-code"
     temp = 0.0
+    num_ctx = 1_000
 
     for argv in sys.argv[1:]:
         if argv.find("model_id=") == 0:
@@ -15,13 +16,18 @@ def main ():
         elif argv.find("temp=") == 0:
             temp = float(argv[5:])
 
-    sp = sply.sp(model_id=model_id, temp=temp)
+    sp = sply.sp(
+        show=True,
+        model_id=model_id,
+        num_ctx=num_ctx,
+        temp=temp,
+        )
 
     sp.runcode("y = 3 + 2")
-    s = sp.runcode("y ** 3")
-    print(s)
+    sp.runcode("print (y ** 3)")
 
     return 0
+
 
 if __name__ == "__main__":
     exit(main())

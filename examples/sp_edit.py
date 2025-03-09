@@ -8,14 +8,13 @@ import sply
 def main ():
     model_id = "default-code"
     temp = 0.0
+    num_ctx = 1_000
 
     for argv in sys.argv[1:]:
         if argv.find("model_id=") == 0:
             model_id = argv[9:]
         elif argv.find("temp=") == 0:
             temp = float(argv[5:])
-
-    num_ctx = 1_000
 
     sp = sply.sp(
         show=True,
