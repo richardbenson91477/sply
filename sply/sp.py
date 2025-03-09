@@ -66,15 +66,15 @@ class sp:
         return \
             "[ "\
             "The following is an ongoing log of a python interpreter session. "\
-            "There is no reason that markdown quoted blocks should appear here."\
+            "There is no reason that markdown comments should appear in the log. "\
             " ]\n"\
-            ">>> x = 1\n"\
-            ">>> print(x)\n"\
+            ">>> a = 1\n"\
+            ">>> print(a)\n"\
             "1\n"\
-            ">>> y = x + 1\n"\
-            ">>> print(x+y)\n"\
+            ">>> b = a + 1\n"\
+            ">>> print(a + b)\n"\
             "3\n"\
-            ">>> del x\n" \
-            ">>> del y\n" \
+            ">>> del a\n" \
+            ">>> del b\n" \
             ">>> "
 
