@@ -27,8 +27,6 @@
 ## Non-working models
   * [Mistral-Small-24B-Instruct-2501-Q5_K_M.gguf](https://huggingface.co/bartowski/Mistral-Small-24B-Instruct-2501-GGUF/blob/main/Mistral-Small-24B-Instruct-2501-Q5_K_M.gguf)
     - Generates _a lot_ of simulated python errors
-  * [qihoo360_TinyR1-32B-Preview-v0.1-Q6_K.gguf](https://huggingface.co/bartowski/qihoo360_TinyR1-32B-Preview-v0.1-GGUF/blob/main/qihoo360_TinyR1-32B-Preview-v0.1-Q6_K.gguf)
-    - Generates _a lot_ of simulated python errors
 
 ## On reasoning models
   * "Reasoning" models aren't _currently_ well suited, as they generate a lot of extraneous "thinking" output. That being said, [DeepScaleR-1.5B-Preview-abliterated.IQ4_XS.gguf](https://huggingface.co/mradermacher/DeepScaleR-1.5B-Preview-abliterated-GGUF/blob/main/DeepScaleR-1.5B-Preview-abliterated.IQ4_XS.gguf), even at it's miniscule size, can solve [sp_pow.py](examples/sp_pow.py) correctly after considerable "thinking out loud." There may be a use case for this, likely involving either a lot of "hand holding" or an architectural change to hide the thinking "behind the scenes."
