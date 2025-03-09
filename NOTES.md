@@ -12,7 +12,7 @@
 
 ## Mostly-working models
   * [phi-4-abliterated.Q8_0.gguf](https://huggingface.co/mradermacher/phi-4-abliterated-GGUF/blob/main/phi-4-abliterated.Q8_0.gguf)
-    - Occasionally generates high-strangeness like multiple string results ('this''that'), markdown block-quotes, or comments
+    - Occasionally generates comments, markdown block-quoted text, and so on
   * [Qwen2.5-Coder-7B-Instruct-abliterated-Q8_0.gguf](https://huggingface.co/bartowski/Qwen2.5-Coder-7B-Instruct-abliterated-GGUF/blob/main/Qwen2.5-Coder-7B-Instruct-abliterated-Q8_0.gguf)
     - fails [sp_pow.py](examples/sp_pow.py)
   * [ibm-granite_granite-3.2-8b-instruct-Q8_0.gguf](https://huggingface.co/bartowski/ibm-granite_granite-3.2-8b-instruct-GGUF/blob/main/ibm-granite_granite-3.2-8b-instruct-Q8_0.gguf)
@@ -30,8 +30,11 @@
   * [qihoo360_TinyR1-32B-Preview-v0.1-Q6_K.gguf](https://huggingface.co/bartowski/qihoo360_TinyR1-32B-Preview-v0.1-GGUF/blob/main/qihoo360_TinyR1-32B-Preview-v0.1-Q6_K.gguf)
     - Generates _a lot_ of simulated python errors
 
-## Dealing with gibberish output
-  * Try a different model - see the [tested working models list](#tested-working-models). Note that "chain of thought reasoning" models aren't well suited as they generate a lot of extraneous output
+## On reasoning models
+  * "Reasoning" models aren't _currently_ well suited, as they generate a lot of extraneous "thinking" output. That being said, [DeepScaleR-1.5B-Preview-abliterated.IQ4_XS.gguf](https://huggingface.co/mradermacher/DeepScaleR-1.5B-Preview-abliterated-GGUF/blob/main/DeepScaleR-1.5B-Preview-abliterated.IQ4_XS.gguf), even at it's miniscule size, can solve [sp_pow.py](examples/sp_pow.py) correctly after considerable "thinking out loud." There may be a use case for this, likely involving either a lot of "hand holding" or an architectural change to hide the thinking "behind the scenes."
+
+## Dealing with incorrect output
+  * Try a different model - see the [tested working models list](#tested-working-models).
   * Modify the prompt to show examples of expected behavior
   * Try a lower temperature value
   * Try an alternate seed number
