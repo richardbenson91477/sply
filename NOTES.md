@@ -8,6 +8,7 @@
 ## Tested working models
   * [qwen2.5-coder-14b-instruct-q8_0.gguf](https://huggingface.co/Qwen/Qwen2.5-Coder-14B-Instruct-GGUF/blob/main/qwen2.5-coder-14b-instruct-q8_0.gguf)
     - Base-line for testing
+  * [Qwen2.5-Coder-14B-IQ4_XS.gguf](https://huggingface.co/bartowski/Qwen2.5-Coder-14B-GGUF/blob/main/Qwen2.5-Coder-14B-IQ4_XS.gguf)
 
 ## Mostly-working models
   * [phi-4-abliterated.Q8_0.gguf](https://huggingface.co/mradermacher/phi-4-abliterated-GGUF/blob/main/phi-4-abliterated.Q8_0.gguf)
