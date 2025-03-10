@@ -7,21 +7,17 @@ import sply
 
 def main ():
     model_id = "default-code"
-    temp = 0.0
     num_ctx = 1_000
 
     for argv in sys.argv[1:]:
         if argv.find("model_id=") == 0:
             model_id = argv[9:]
-        elif argv.find("temp=") == 0:
-            temp = float(argv[5:])
 
     # create a simulated python
     sp = sply.sp(
         show=True,
         model_id=model_id,
         num_ctx=num_ctx,
-        temp=temp,
         )
 
     # set realish y's value to 1

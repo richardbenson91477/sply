@@ -16,22 +16,17 @@ prompt = "[ "\
 
 def main ():
     model_id = "default-code"
-    temp = 0.0
     num_ctx = 1_000
 
     for argv in sys.argv[1:]:
         if argv.find("model_id=") == 0:
             model_id = argv[9:]
-        if argv.find("temp=") == 0:
-            temp = float(argv[5:])
 
     c = sply.chat(
         model_id=model_id,
         rev_prompt="\nscheme@(guile-user)> ",
         prompt=prompt,
         in_suffix_enabled=False,
-        seed=random.randint(0, 2 << 32),
-        temp=temp,
         num_ctx=num_ctx,
         )
 
