@@ -2,7 +2,7 @@
 
 ## Table of Contents
 
-- [Using "sply_chat_interact.py"](#using-sply-chat-interact-py)
+- [Using "sply_chat_interact.py"](#using-sply_chat_interactpy)
 - [Tested working models](#tested-working-models)
 - [Mostly-working models](#mostly-working-models)
 - [Non-working models](#non-working-models)
