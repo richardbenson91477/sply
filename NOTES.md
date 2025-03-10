@@ -33,7 +33,7 @@
   * "Reasoning" models aren't _currently_ well suited, if they generate a lot of "thinking out loud" output. That being said, [DeepScaleR-1.5B-Preview-abliterated.IQ4_XS.gguf](https://huggingface.co/mradermacher/DeepScaleR-1.5B-Preview-abliterated-GGUF/blob/main/DeepScaleR-1.5B-Preview-abliterated.IQ4_XS.gguf), even at it's miniscule size, can solve [sp_pow.py](examples/sp_pow.py) correctly after some self-examination. There may be a use case for this, likely involving either a lot of "hand holding" or an architectural change to hide the thinking "behind the scenes."
 
 ## Dealing with incorrect output
-  * Try a different model - see the [tested working models list](#tested-working-models).
+  * Try a different model - see the [tested working models list](#tested-working-models)
   * Modify the prompt to show examples of expected behavior
   * Try a lower temperature value
   * Try an alternate seed number
