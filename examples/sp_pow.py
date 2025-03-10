@@ -19,7 +19,7 @@ def main ():
         elif argv.find("temp=") == 0:
             temp = float(argv[5:])
         elif argv.find("num_ctx=") == 0:
-            num_ctx = float(argv[8:])
+            num_ctx = int(argv[8:])
 
     sp = sply.sp(
         show=True,
