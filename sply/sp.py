@@ -64,11 +64,11 @@ class sp:
 
     def default_prompt (self):
         return \
-            "[ "\
-            "The following is an ongoing python interpreter session log. "\
-            "You must correct any incorrect or missing output that you encounter. "\
-            "There is no reason that markdown quoted blocks should appear here. "\
-            "]\n"\
+            ">>> # "\
+            "This is part of an ongoing python interpreter session. "\
+            "Do not correct the code. "\
+            "You must double check the outputs. "\
+            "\n"\
             ">>> x = 1\n"\
             ">>> print(x)\n"\
             "1\n"\
