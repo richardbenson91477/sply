@@ -6,8 +6,8 @@ import sply
 
 prompt = "[ "\
          "The following is an ongoing log of a guile REPL. "\
-         "There is no reason that markdown quoted blocks should appear here."\
-         " ]\n"\
+         "There is no reason that markdown quoted blocks should appear here. "\
+         "]\n"\
          "scheme@(guile-user)> (+ 1 1)\n"\
          "$1 = 2\n"\
          "scheme@(guile-user)> (+ 2 1)\n"\
@@ -17,6 +17,7 @@ prompt = "[ "\
 def main ():
     model_id = "default-code"
     temp = 0.0
+    num_ctx = 1_000
 
     for argv in sys.argv[1:]:
         if argv.find("model_id=") == 0:
@@ -31,7 +32,7 @@ def main ():
         in_suffix_enabled=False,
         seed=random.randint(0, 2 << 32),
         temp=temp,
-        num_ctx=1_000,
+        num_ctx=num_ctx,
         )
 
     print(c.prompt, end="", flush=True)

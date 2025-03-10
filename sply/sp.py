@@ -67,7 +67,7 @@ class sp:
             "[ "\
             "The following is an ongoing log of a python interpreter session. "\
             "There is no reason that markdown comments should appear in the log. "\
-            " ]\n"\
+            "]\n"\
             ">>> a = 1\n"\
             ">>> print(a)\n"\
             "1\n"\
