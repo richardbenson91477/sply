@@ -26,6 +26,9 @@
     - Occasionally generates comments, markdown block-quoted text, and so on
   * [Qwen2.5-Coder-7B-Instruct-abliterated-Q8_0.gguf](https://huggingface.co/bartowski/Qwen2.5-Coder-7B-Instruct-abliterated-GGUF/blob/main/Qwen2.5-Coder-7B-Instruct-abliterated-Q8_0.gguf)
     - fails [sp_pow.py](examples/sp_pow.py)
+  * [Qwen2.5-Coder-1.5B-Instruct-abliterated-IQ4_XS.gguf](https://huggingface.co/bartowski/Qwen2.5-Coder-1.5B-Instruct-abliterated-GGUF/blob/main/Qwen2.5-Coder-1.5B-Instruct-abliterated-IQ4_XS.gguf)
+    - fails [sp_pow.py](examples/sp_pow.py)
+    - tiny though!
   * [ibm-granite_granite-3.2-8b-instruct-Q8_0.gguf](https://huggingface.co/bartowski/ibm-granite_granite-3.2-8b-instruct-GGUF/blob/main/ibm-granite_granite-3.2-8b-instruct-Q8_0.gguf)
     - fails [sp_pow.py](examples/sp_pow.py)
   * [c4ai-command-r7b-12-2024-Q8_0.gguf](https://huggingface.co/bartowski/c4ai-command-r7b-12-2024-GGUF/blob/main/c4ai-command-r7b-12-2024-Q8_0.gguf)
