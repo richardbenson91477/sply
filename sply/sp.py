@@ -68,13 +68,13 @@ class sp:
             "The following is an ongoing log of a python interpreter session. "\
             "There is no reason that markdown comments should appear in the log. "\
             "]\n"\
-            ">>> a = 1\n"\
-            ">>> print(a)\n"\
+            ">>> _x = 1\n"\
+            ">>> print(_x)\n"\
             "1\n"\
-            ">>> b = a + 1\n"\
-            ">>> print(a + b)\n"\
+            ">>> _y = _x + 1\n"\
+            ">>> print(_y + _x)\n"\
             "3\n"\
-            ">>> del a\n" \
-            ">>> del b\n" \
+            ">>> print(_y ** 3)\n"\
+            "8\n"\
             ">>> "
 

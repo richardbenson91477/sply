@@ -31,6 +31,7 @@ def main ():
 
     sp.runcode("y = 3 + 2")
     sp.runcode("print (y ** 3)")
+    sp.runcode("print (pow (y, 3))")
 
     return 0
 
