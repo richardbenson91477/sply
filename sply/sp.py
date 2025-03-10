@@ -65,16 +65,17 @@ class sp:
     def default_prompt (self):
         return \
             "[ "\
-            "The following is an ongoing log of a python interpreter session. "\
-            "There is no reason that markdown comments should appear in the log. "\
+            "The following is an ongoing python interpreter session log. "\
+            "You must correct any incorrect or missing output that you encounter. "\
+            "There is no reason that markdown quoted blocks should appear here. "\
             "]\n"\
-            ">>> _x = 1\n"\
-            ">>> print(_x)\n"\
+            ">>> x = 1\n"\
+            ">>> print(x)\n"\
             "1\n"\
-            ">>> _y = _x + 1\n"\
-            ">>> print(_y + _x)\n"\
+            ">>> y = x + 1\n"\
+            ">>> print(y + x)\n"\
             "3\n"\
-            ">>> print(_y ** 3)\n"\
-            "8\n"\
+            ">>> print(y ** 4)\n"\
+            "16\n"\
             ">>> "
 
