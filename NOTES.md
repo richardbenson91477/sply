@@ -51,6 +51,7 @@
   * When all else fails, Ctrl-C + "edit_prompt()" are your friends
 
 ## Misc
+  * The model lists are very subject to change, as the model results can be unpredicatable with code changes!
   * The default prompt editor is "vim -b" - customize with the "editor=" options and parameters
   * "prompt_file=" args always have precedence over "prompt=" args
   * "edit_prompt" currently leaves prompt tempfiles intact (for manual review)
