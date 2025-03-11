@@ -12,7 +12,7 @@
 
 ## Using "sply_chat_interact.py"
   * Run "sply_chat_interact.py --help" for command line options and defaults
-  * Enter "/h" for help
+  * Enter "/h" at the input prompt ("> ") for help
   * Hit Ctrl-C to interrupt generation and enter input mode
 
 ## Tested working models
