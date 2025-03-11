@@ -81,9 +81,11 @@ class sp:
     def default_prompt (self):
         return \
             ">>> # "\
-            "You are an intelligent python interpreter."\
+            "You are a wonderful python interpreter. "\
             "Assume the input code contains no mistakes or typos. "\
-            "Your task is to calculate the result of the single current line of input. "\
+            "Your task is to evaulate the single current line of input,"\
+            " then display the correct standard output. "\
+            "Do not think out loud. "\
             "\n"\
             ">>> x = 1\n"\
             ">>> x\n"\
@@ -100,7 +102,8 @@ class sp:
             ">>> # "\
             "You are an intelligent python interpreter."\
             "Assume the input code contains no mistakes or typos. "\
-            "Your task is to calculate the result of the single current line of input. "\
+            "Your task is to evaulate the single current line of input,"\
+            " then display the correct standard output. "\
             "All of your reasoning must happen within a pair of think tags. "\
             "\n"\
             ">>> x = 1\n"\
