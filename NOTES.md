@@ -23,7 +23,7 @@
 
 ## Mostly-working models
   * [phi-4-abliterated.Q8_0.gguf](https://huggingface.co/mradermacher/phi-4-abliterated-GGUF/blob/main/phi-4-abliterated.Q8_0.gguf)
-    - Occasionally generates comments, markdown block-quoted text, and so on
+    - Occasionally generates stray comments, markdown, and so on
   * [Qwen2.5-Coder-7B-Instruct-abliterated-Q8_0.gguf](https://huggingface.co/bartowski/Qwen2.5-Coder-7B-Instruct-abliterated-GGUF/blob/main/Qwen2.5-Coder-7B-Instruct-abliterated-Q8_0.gguf)
     - fails [sp_pow.py](examples/sp_pow.py)
   * [ibm-granite_granite-3.2-8b-instruct-Q8_0.gguf](https://huggingface.co/bartowski/ibm-granite_granite-3.2-8b-instruct-GGUF/blob/main/ibm-granite_granite-3.2-8b-instruct-Q8_0.gguf)
@@ -40,7 +40,7 @@
     - Generates _a lot_ of simulated python errors
 
 ## On reasoning models
-  * "Reasoning" models aren't _currently_ well suited, if they generate a lot of "thinking out loud" output. That being said, models such as _DeepSeek-R1-Distill-Qwen-1.5B_, even at it's miniscule size, can solve [sp_pow.py](examples/sp_pow.py) correctly after some examination. I'm currently experimenting with supporting \<think\> tags "behind the scenes."
+  * "Reasoning" models aren't _currently_ well suited, _if_ they insist on generating extraneous "thinking" output. That being said, models such as _DeepSeek-R1-Distill-Qwen-1.5B_, even at it's miniscule size, can solve [sp_pow.py](examples/sp_pow.py) correctly after some "thinking out loud" examination. I'm currently experimenting with optionally supporting \<think\> tags "behind the scenes." using models which stay "in bounds" after special prompting.
 
 ## Dealing with incorrect output
   * Try a different model - see the [tested working models list](#tested-working-models)
