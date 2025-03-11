@@ -30,8 +30,8 @@ def main ():
         )
 
     sp.runcode("i = 3 + 2")
-    sp.runcode("print (i ** 3)")
-    sp.runcode("print (pow (i, 3))")
+    sp.runcode("print(i ** 3)")
+    sp.runcode("print(pow (i, 3))")
 
     return 0
 

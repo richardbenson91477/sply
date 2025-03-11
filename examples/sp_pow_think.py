@@ -27,6 +27,7 @@ def main ():
         num_ctx=num_ctx,
         temp=temp,
         seed=seed,
+        think=True,
         )
 
     sp.runcode("i = 3 + 2")

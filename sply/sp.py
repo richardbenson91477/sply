@@ -13,9 +13,13 @@ class sp:
             seed="",
             temp="",
             num_ctx="",
+            think="",
             ):
 
         self.show = show if show != "" \
+            else False
+
+        self.think = think if think != "" \
             else False
 
         chat_args = {}
@@ -36,7 +40,10 @@ class sp:
         elif prompt:
             chat_args["prompt"] = prompt
         else:
-            chat_args["prompt"] = self.default_prompt()
+            if self.think:
+                chat_args["prompt"] = self.think_prompt()
+            else:
+                chat_args["prompt"] = self.default_prompt()
 
         self.rev_prompt = chat_args["rev_prompt"]
         self.rev_prompt_len = len(self.rev_prompt)
@@ -77,11 +84,28 @@ class sp:
             "You are an intelligent python interpreter."\
             "Assume the input code contains no mistakes or typos. "\
             "Your task is to calculate the result of the single previous line of input. "\
+            "\n"\
+            ">>> x = 1\n"\
+            ">>> x\n"\
+            "1\n"\
+            ">>> y = x + 1\n"\
+            ">>> y + x\n"\
+            "3\n"\
+            ">>> y ** 4\n"\
+            "16\n"\
+            ">>> "
+
+    def think_prompt (self):
+        return \
+            ">>> # "\
+            "You are an intelligent python interpreter."\
+            "Assume the input code contains no mistakes or typos. "\
+            "Your task is to calculate the result of the single previous line of input. "\
             "All of your reasoning must happen within a pair of think tags. "\
             "\n"\
             ">>> x = 1\n"\
             ">>> x\n"\
-            "<think>x was set to 1, and x was evaluated, so I will simply output \"1\" on the next line.</think>\n"\
+            "<think>x was set to 1, and x was evaluated, so I will simply output x's value on the next line.</think>\n"\
             "1\n"\
             ">>> y = x + 1\n"\
             ">>> y + x\n"\
