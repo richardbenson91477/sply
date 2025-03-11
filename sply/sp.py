@@ -83,7 +83,7 @@ class sp:
             ">>> # "\
             "You are an intelligent python interpreter."\
             "Assume the input code contains no mistakes or typos. "\
-            "Your task is to calculate the result of the single previous line of input. "\
+            "Your task is to calculate the result of the single current line of input. "\
             "\n"\
             ">>> x = 1\n"\
             ">>> x\n"\
@@ -100,7 +100,7 @@ class sp:
             ">>> # "\
             "You are an intelligent python interpreter."\
             "Assume the input code contains no mistakes or typos. "\
-            "Your task is to calculate the result of the single previous line of input. "\
+            "Your task is to calculate the result of the single current line of input. "\
             "All of your reasoning must happen within a pair of think tags. "\
             "\n"\
             ">>> x = 1\n"\
