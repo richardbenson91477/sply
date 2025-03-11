@@ -76,16 +76,17 @@ class sp:
             ">>> # "\
             "You are an intelligent python interpreter."\
             "Assume the input code contains no mistakes or typos. "\
-            "Your task is to calculate the result to the previous line of input and print that result. "\
+            "Your task is to calculate the result of the single previous line of input. "\
             "All of your reasoning must happen within a pair of think tags. "\
             "\n"\
             ">>> x = 1\n"\
-            ">>> print(x)\n"\
+            ">>> x\n"\
+            "<think>x was set to 1, and x was evaluated, so I will simply output \"1\" on the next line.</think>\n"\
             "1\n"\
             ">>> y = x + 1\n"\
-            ">>> print(y + x)\n"\
+            ">>> y + x\n"\
             "3\n"\
-            ">>> print(y ** 4)\n"\
+            ">>> y ** 4\n"\
             "16\n"\
             ">>> "
 
