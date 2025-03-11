@@ -54,6 +54,15 @@ class sp:
         return res
 
 
+    def runcode_think (self, msg):
+        self.c.write(msg + "\n<think>The user wants the most accurate result to the previous expresion.", show=self.show)
+        res = self.c.read(show=self.show)
+        # res.rfind("</think>")
+        if res.rfind(self.rev_prompt) == len(res) - self.rev_prompt_len:
+            res = res[:-self.rev_prompt_len]
+        return res
+
+
     def edit_prompt (self):
         self.c.edit_prompt()
         res = self.c.read(show=self.show)
