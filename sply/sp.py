@@ -55,7 +55,7 @@ class sp:
 
 
     def runcode_think (self, msg):
-        self.c.write(msg + "\n<think>The user wants the most accurate result to the previous expresion.", show=self.show)
+        self.c.write(msg + "\n<think>", show=self.show)
         res = self.c.read(show=self.show)
         # res.rfind("</think>")
         if res.rfind(self.rev_prompt) == len(res) - self.rev_prompt_len:
@@ -74,9 +74,9 @@ class sp:
     def default_prompt (self):
         return \
             ">>> # "\
-            "This is part of an ongoing python interpreter session. "\
-            "Do not correct the code. "\
-            "You must double check the outputs. "\
+            "You are playing the part of a python interpreter."\
+            "The input code contains no mistakes or typos. "\
+            "All thinking must happen inside think tags. "\
             "\n"\
             ">>> x = 1\n"\
             ">>> print(x)\n"\
