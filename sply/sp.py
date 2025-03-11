@@ -74,9 +74,10 @@ class sp:
     def default_prompt (self):
         return \
             ">>> # "\
-            "You are playing the part of a python interpreter."\
-            "The input code contains no mistakes or typos. "\
-            "All thinking must happen inside think tags. "\
+            "You are an intelligent python interpreter."\
+            "Assume the input code contains no mistakes or typos. "\
+            "Your task is to calculate the result to the previous line of input and print that result. "\
+            "All of your reasoning must happen within a pair of think tags. "\
             "\n"\
             ">>> x = 1\n"\
             ">>> print(x)\n"\

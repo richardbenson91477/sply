@@ -40,7 +40,7 @@
     - Generates _a lot_ of simulated python errors
 
 ## On reasoning models
-  * "Reasoning" models aren't _currently_ well suited, if they generate a lot of "thinking out loud" output. That being said, models such as _DeepSeek-R1-Distill-Qwen-1.5B_, even at it's miniscule size, can solve [sp_pow.py](examples/sp_pow.py) correctly after some self-examination. I'm currently investigating supporting \<think\> tags "behind the scenes."
+  * "Reasoning" models aren't _currently_ well suited, if they generate a lot of "thinking out loud" output. That being said, models such as _DeepSeek-R1-Distill-Qwen-1.5B_, even at it's miniscule size, can solve [sp_pow.py](examples/sp_pow.py) correctly after some examination. I'm currently experimenting with supporting \<think\> tags "behind the scenes."
 
 ## Dealing with incorrect output
   * Try a different model - see the [tested working models list](#tested-working-models)
