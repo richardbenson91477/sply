@@ -3,8 +3,8 @@
 ## Table of Contents
 
 - [Using "sply_chat_interact.py"](#using-sply_chat_interactpy)
-- [Tested working models](#tested-working-models)
-- [Mostly-working models](#mostly-working-models)
+- [Best-working models](#best-working-models)
+- [Generally working models](#generally-working-models)
 - [Non-working models](#non-working-models)
 - [On reasoning models](#on-reasoning-models)
 - [Dealing with incorrect output](#dealing-with-incorrect-output)
@@ -15,13 +15,13 @@
   * Enter "/h" at the input prompt ("> ") for help
   * Hit Ctrl-C to interrupt generation and enter input mode
 
-## Tested working models
+## Best-working models
   * [qwen2.5-coder-14b-instruct-q8_0.gguf](https://huggingface.co/Qwen/Qwen2.5-Coder-14B-Instruct-GGUF/blob/main/qwen2.5-coder-14b-instruct-q8_0.gguf)
     - Base-line for testing
   * [Qwen2.5-Coder-14B-IQ4_XS.gguf](https://huggingface.co/bartowski/Qwen2.5-Coder-14B-GGUF/blob/main/Qwen2.5-Coder-14B-IQ4_XS.gguf)
   * [QwQ-Snowdrop.i1-IQ3_XXS.gguf](https://huggingface.co/mradermacher/QwQ-Snowdrop-i1-GGUF/blob/main/QwQ-Snowdrop.i1-IQ3_XXS.gguf)
 
-## Mostly-working models
+## Generally working models
   * [c4ai-command-r7b-12-2024-Q8_0.gguf](https://huggingface.co/bartowski/c4ai-command-r7b-12-2024-GGUF/blob/main/c4ai-command-r7b-12-2024-Q8_0.gguf)
     - Currently fails [sp_pow.py](examples/sp_pow.py) but passes [sp_pow_think.py](examples/sp_pow_think.py)
   * [ibm-granite_granite-3.2-8b-instruct-Q8_0.gguf](https://huggingface.co/bartowski/ibm-granite_granite-3.2-8b-instruct-GGUF/blob/main/ibm-granite_granite-3.2-8b-instruct-Q8_0.gguf)
@@ -41,7 +41,7 @@
   * "Reasoning" and other models which have a tendency to generate a lot of "thinking out loud" can sometimes be fixed with special prompting.
 
 ## Dealing with incorrect output
-  * Try a different model - see the [tested working models list](#tested-working-models)
+  * Try a different model - see the [best-working models list](#best-working-models)
   * Modify the prompt to show examples of expected behavior
   * Try a lower temperature value
   * Try an alternate seed number
