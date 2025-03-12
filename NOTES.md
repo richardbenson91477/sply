@@ -26,6 +26,7 @@
   * [Marco-o1-Q8_0.gguf](https://huggingface.co/bartowski/Marco-o1-GGUF/blob/main/Marco-o1-Q8_0.gguf)
   * [phi-4-abliterated.Q8_0.gguf](https://huggingface.co/mradermacher/phi-4-abliterated-GGUF/blob/main/phi-4-abliterated.Q8_0.gguf)
   * [huihui-ai_Mistral-Small-24B-Instruct-2501-abliterated-IQ4_XS.gguf](https://huggingface.co/bartowski/huihui-ai_Mistral-Small-24B-Instruct-2501-abliterated-GGUF/blob/main/huihui-ai_Mistral-Small-24B-Instruct-2501-abliterated-IQ4_XS.gguf)
+  * [gemma-3-12b-it-Q8_0.gguf](https://huggingface.co/ggml-org/gemma-3-12b-it-GGUF/blob/main/gemma-3-12b-it-Q8_0.gguf)
 
 ## Non-working models
   * [Mistral-Small-24B-Instruct-2501-Q5_K_M.gguf](https://huggingface.co/bartowski/Mistral-Small-24B-Instruct-2501-GGUF/blob/main/Mistral-Small-24B-Instruct-2501-Q5_K_M.gguf)
