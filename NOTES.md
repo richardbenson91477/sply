@@ -23,15 +23,10 @@
 
 ## Generally working models
   * [c4ai-command-r7b-12-2024-Q8_0.gguf](https://huggingface.co/bartowski/c4ai-command-r7b-12-2024-GGUF/blob/main/c4ai-command-r7b-12-2024-Q8_0.gguf)
-    - Currently fails [sp_pow.py](examples/sp_pow.py) but passes [sp_pow_think.py](examples/sp_pow_think.py)
   * [ibm-granite_granite-3.2-8b-instruct-Q8_0.gguf](https://huggingface.co/bartowski/ibm-granite_granite-3.2-8b-instruct-GGUF/blob/main/ibm-granite_granite-3.2-8b-instruct-Q8_0.gguf)
-    - Currently fails [sp_pow.py](examples/sp_pow.py) but passes [sp_pow_think.py](examples/sp_pow_think.py)
   * [Marco-o1-Q8_0.gguf](https://huggingface.co/bartowski/Marco-o1-GGUF/blob/main/Marco-o1-Q8_0.gguf)
-    - Currently fails [sp_pow.py](examples/sp_pow.py) but passes [sp_pow_think.py](examples/sp_pow_think.py)
   * [phi-4-abliterated.Q8_0.gguf](https://huggingface.co/mradermacher/phi-4-abliterated-GGUF/blob/main/phi-4-abliterated.Q8_0.gguf)
-    - Occasionally generates stray comments, markdown, and such
   * [huihui-ai_Mistral-Small-24B-Instruct-2501-abliterated-IQ4_XS.gguf](https://huggingface.co/bartowski/huihui-ai_Mistral-Small-24B-Instruct-2501-abliterated-GGUF/blob/main/huihui-ai_Mistral-Small-24B-Instruct-2501-abliterated-IQ4_XS.gguf)
-    - Currently fails [sp_pow.py](examples/sp_pow.py) but passes [sp_pow_think.py](examples/sp_pow_think.py)
 
 ## Non-working models
   * [Mistral-Small-24B-Instruct-2501-Q5_K_M.gguf](https://huggingface.co/bartowski/Mistral-Small-24B-Instruct-2501-GGUF/blob/main/Mistral-Small-24B-Instruct-2501-Q5_K_M.gguf)

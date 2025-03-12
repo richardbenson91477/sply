@@ -112,7 +112,7 @@ class sp:
             "\n"\
             ">>> x = 1\n"\
             ">>> x\n"\
-            "<think>x was set to 1, and x was evaluated, so I will simply output x's value on the next line.</think>"\
+            "<think>x was set to 1, and x was evaluated, so I will simply output x's value.</think>"\
             "1\n"\
             ">>> y = x + 1\n"\
             ">>> y + x\n"\
