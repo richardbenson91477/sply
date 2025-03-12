@@ -4,10 +4,14 @@ import sys
 import random
 import sply
 
-prompt = "[ "\
-         "The following is an ongoing log of a guile REPL. "\
-         "There is no reason that markdown quoted blocks should appear here. "\
-         "]\n"\
+prompt = ";; "\
+         "You are a guile interpreter. "\
+         "Assume the input code contains no mistakes or typos. "\
+         "Your task is to evaulate the single current line of input,"\
+         " then display the correct standard output. "\
+         "Do not think out loud. "\
+         "You will not generate markdown comments (```). "\
+         "\n"\
          "scheme@(guile-user)> (+ 1 1)\n"\
          "$1 = 2\n"\
          "scheme@(guile-user)> (+ 2 1)\n"\
