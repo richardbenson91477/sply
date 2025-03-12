@@ -64,7 +64,9 @@ class sp:
     def runcode_think (self, msg):
         self.c.write(msg + "\n<think>", show=self.show)
         res = self.c.read(show=self.show)
-        # res.rfind("</think>")
+        think_tag_end = res.rfind("</think>")
+        if think_tag_end != -1:
+            res = res[think_tag_end + 8:]
         if res.rfind(self.rev_prompt) == len(res) - self.rev_prompt_len:
             res = res[:-self.rev_prompt_len]
         return res
@@ -86,7 +88,7 @@ class sp:
             "Your task is to evaulate the single current line of input,"\
             " then display the correct standard output. "\
             "Do not think out loud. "\
-            "You will not generate markdown comments (```). "\
+            "You will not generate markdown code blocks. "\
             "\n"\
             ">>> x = 1\n"\
             ">>> x\n"\
@@ -106,11 +108,11 @@ class sp:
             "Your task is to evaulate the single current line of input,"\
             " then display the correct standard output. "\
             "All of your reasoning must happen within a pair of think tags. "\
-            "You will not generate markdown comments (```). "\
+            "You will not generate markdown code blocks. "\
             "\n"\
             ">>> x = 1\n"\
             ">>> x\n"\
-            "<think>x was set to 1, and x was evaluated, so I will simply output x's value on the next line.</think>\n"\
+            "<think>x was set to 1, and x was evaluated, so I will simply output x's value on the next line.</think>"\
             "1\n"\
             ">>> y = x + 1\n"\
             ">>> y + x\n"\
