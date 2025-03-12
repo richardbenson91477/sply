@@ -88,7 +88,7 @@ class sp:
             "Your task is to evaulate the single current line of input,"\
             " then display the correct standard output. "\
             "Do not think out loud. "\
-            "You will not generate markdown code blocks. "\
+            "You will not generate markdown code blocks or JSON responses. "\
             "\n"\
             ">>> x = 1\n"\
             ">>> x\n"\
@@ -103,12 +103,13 @@ class sp:
     def think_prompt (self):
         return \
             ">>> # "\
-            "You are an intelligent python interpreter."\
+            "You are an LLM powered python interpreter."\
             "Assume the input code contains no mistakes or typos. "\
             "Your task is to evaulate the single current line of input,"\
             " then display the correct standard output. "\
-            "All of your reasoning must happen within a pair of think tags. "\
-            "You will not generate markdown code blocks. "\
+            "All of your thinking must happen within a pair of think tags,"\
+            " where you will verify your results to yourself before closing. "\
+            "You will not generate markdown code blocks or JSON responses. "\
             "\n"\
             ">>> x = 1\n"\
             ">>> x\n"\
