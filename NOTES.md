@@ -22,25 +22,23 @@
   * [QwQ-Snowdrop.i1-IQ3_XXS.gguf](https://huggingface.co/mradermacher/QwQ-Snowdrop-i1-GGUF/blob/main/QwQ-Snowdrop.i1-IQ3_XXS.gguf)
 
 ## Mostly-working models
-  * [phi-4-abliterated.Q8_0.gguf](https://huggingface.co/mradermacher/phi-4-abliterated-GGUF/blob/main/phi-4-abliterated.Q8_0.gguf)
-    - Occasionally generates stray comments, markdown, and so on
-  * [Qwen2.5-Coder-7B-Instruct-abliterated-Q8_0.gguf](https://huggingface.co/bartowski/Qwen2.5-Coder-7B-Instruct-abliterated-GGUF/blob/main/Qwen2.5-Coder-7B-Instruct-abliterated-Q8_0.gguf)
-    - fails [sp_pow.py](examples/sp_pow.py)
-  * [ibm-granite_granite-3.2-8b-instruct-Q8_0.gguf](https://huggingface.co/bartowski/ibm-granite_granite-3.2-8b-instruct-GGUF/blob/main/ibm-granite_granite-3.2-8b-instruct-Q8_0.gguf)
-    - fails [sp_pow.py](examples/sp_pow.py)
   * [c4ai-command-r7b-12-2024-Q8_0.gguf](https://huggingface.co/bartowski/c4ai-command-r7b-12-2024-GGUF/blob/main/c4ai-command-r7b-12-2024-Q8_0.gguf)
-    - fails [sp_pow.py](examples/sp_pow.py)
-  * [arcee-ai_Arcee-Blitz-IQ4_NL.gguf](https://huggingface.co/bartowski/arcee-ai_Arcee-Blitz-GGUF/blob/main/arcee-ai_Arcee-Blitz-IQ4_NL.gguf)
-    - fails [sp_pow.py](examples/sp_pow.py)
+    - Currently fails [sp_pow.py](examples/sp_pow.py) but passes [sp_pow_think.py](examples/sp_pow_think.py)
+  * [ibm-granite_granite-3.2-8b-instruct-Q8_0.gguf](https://huggingface.co/bartowski/ibm-granite_granite-3.2-8b-instruct-GGUF/blob/main/ibm-granite_granite-3.2-8b-instruct-Q8_0.gguf)
+    - Currently fails [sp_pow.py](examples/sp_pow.py) but passes [sp_pow_think.py](examples/sp_pow_think.py)
+  * [Marco-o1-Q8_0.gguf](https://huggingface.co/bartowski/Marco-o1-GGUF/blob/main/Marco-o1-Q8_0.gguf)
+    - Currently fails [sp_pow.py](examples/sp_pow.py) but passes [sp_pow_think.py](examples/sp_pow_think.py)
+  * [phi-4-abliterated.Q8_0.gguf](https://huggingface.co/mradermacher/phi-4-abliterated-GGUF/blob/main/phi-4-abliterated.Q8_0.gguf)
+    - Occasionally generates stray comments, markdown, and such
   * [huihui-ai_Mistral-Small-24B-Instruct-2501-abliterated-IQ4_XS.gguf](https://huggingface.co/bartowski/huihui-ai_Mistral-Small-24B-Instruct-2501-abliterated-GGUF/blob/main/huihui-ai_Mistral-Small-24B-Instruct-2501-abliterated-IQ4_XS.gguf)
-    - fails [sp_pow.py](examples/sp_pow.py)
+    - Currently fails [sp_pow.py](examples/sp_pow.py) but passes [sp_pow_think.py](examples/sp_pow_think.py)
 
 ## Non-working models
   * [Mistral-Small-24B-Instruct-2501-Q5_K_M.gguf](https://huggingface.co/bartowski/Mistral-Small-24B-Instruct-2501-GGUF/blob/main/Mistral-Small-24B-Instruct-2501-Q5_K_M.gguf)
-    - Generates _a lot_ of simulated python errors
+    - Currently generates _a lot_ of simulated python errors
 
 ## On reasoning models
-  * "Reasoning" models aren't _currently_ well suited, _if_ they insist on generating extraneous "thinking" output. That being said, models such as _DeepSeek-R1-Distill-Qwen-1.5B_, even at it's miniscule size, can solve [sp_pow.py](examples/sp_pow.py) correctly after some "thinking out loud" examination. I'm currently experimenting with optionally supporting \<think\> tags "behind the scenes." using models which stay "in bounds" after special prompting.
+  * "Reasoning" and other models which have a tendency to generate a lot of "thinking out loud" can sometimes be fixed with special prompting.
 
 ## Dealing with incorrect output
   * Try a different model - see the [tested working models list](#tested-working-models)
@@ -51,10 +49,9 @@
   * When all else fails, Ctrl-C + "edit_prompt()" are your friends
 
 ## Misc
-  * The model lists are very subject to change, as the model results can be unpredicatable with code changes!
+  * The model lists are very subject to change
   * The default prompt editor is "vim -b" - customize with the "editor=" options and parameters
   * "prompt_file=" args always have precedence over "prompt=" args
   * "edit_prompt" currently leaves prompt tempfiles intact (for manual review)
   * "make_prompt" is jailbroken - modify to taste, or provide a custom prompt
-  * sp passes some alternate default params to chat - see [sply/sp.py](sply/sp.py)
 
