@@ -17,7 +17,7 @@
 
 ## Best-working models
   * [qwen2.5-coder-14b-instruct-q8_0.gguf](https://huggingface.co/Qwen/Qwen2.5-Coder-14B-Instruct-GGUF/blob/main/qwen2.5-coder-14b-instruct-q8_0.gguf)
-    - Base-line for testing; all of the examples work
+    - Base-line for testing; if something doesn't work, it's taken to be the library's fault
   * [Qwen2.5-Coder-14B-IQ4_XS.gguf](https://huggingface.co/bartowski/Qwen2.5-Coder-14B-GGUF/blob/main/Qwen2.5-Coder-14B-IQ4_XS.gguf)
   * [QwQ-Snowdrop.i1-IQ3_XXS.gguf](https://huggingface.co/mradermacher/QwQ-Snowdrop-i1-GGUF/blob/main/QwQ-Snowdrop.i1-IQ3_XXS.gguf)
 
