@@ -36,7 +36,7 @@ class sp:
         elif prompt:
             chat_args["prompt"] = prompt
         else:
-            chat_args["prompt"] = self.default_prompt()
+            chat_args["prompt"] = self.prompt_default()
 
         self.rev_prompt = chat_args["rev_prompt"]
         self.rev_prompt_len = len(self.rev_prompt)
@@ -47,7 +47,7 @@ class sp:
 
 
     def runcode (self, msg):
-        self.c.write(msg + "\n", show=self.show)
+        self.c.write(f"{msg}\n", show=self.show)
         res = self.c.read(show=self.show)
         if res.rfind(self.rev_prompt) == len(res) - self.rev_prompt_len:
             res = res[:-self.rev_prompt_len]
@@ -55,7 +55,7 @@ class sp:
 
 
     def runcode_think (self, msg):
-        self.c.write(msg + "\n<think>", show=self.show)
+        self.c.write(f"{msg}\n<think>", show=self.show)
         res = self.c.read(show=self.show)
         think_tag_end = res.rfind("</think>")
         if think_tag_end != -1:
@@ -65,9 +65,16 @@ class sp:
         return res
 
 
-    def runcode_instruct (self, msg):
-        self.c.write("<|im_start|>user\n", show=self.show)
-        self.c.write(msg + "\n<|im_end|>\n<|im_start|>assistant\n", show=self.show)
+    def runcode_im (self, msg):
+        self.c.write(f"<|im_start|>user\n{msg}\n<|im_end|>\n<|im_start|>assistant\n", show=self.show)
+        res = self.c.read(show=self.show)
+        if res.rfind(self.rev_prompt) == len(res) - self.rev_prompt_len:
+            res = res[:-self.rev_prompt_len]
+        return res
+
+
+    def runcode_im_think (self, msg):
+        self.c.write(f"<|im_start|>user\n{msg}\n<|im_end|>\n<|im_start|>assistant\n", show=self.show)
         res = self.c.read(show=self.show)
         think_tag_end = res.rfind("</think>")
         if think_tag_end != -1:
@@ -86,51 +93,60 @@ class sp:
 
 
     @staticmethod
-    def default_prompt ():
+    def prompt_base ():
         return \
-            ">>> # "\
             "You are acting as a python interpreter. "\
             "Assume the input code contains no mistakes or typos. "\
             "Your task is to evaulate the single current line of input,"\
             " then display the correct standard output. "\
-            "Do not think out loud. "\
-            "Do not generate markdown code blocks or JSON responses. "\
-            "\n"\
+            "Do not generate markdown code blocks or JSON responses. "
+
+
+    @staticmethod
+    def prompt_default ():
+        return \
+            ">>> # " + sp.prompt_base() +\
+            "Do not think out loud.\n"\
             ">>> x = 1\n"\
             ">>> x\n"\
             "1\n"\
             ">>> "
 
+
     @staticmethod
-    def think_prompt ():
+    def prompt_think ():
         return \
-            ">>> # "\
-            "You are an LLM powered python interpreter. "\
-            "Assume the input code contains no mistakes or typos. "\
-            "Your task is to evaulate the single current line of input,"\
-            " then display the correct standard output. "\
+            ">>> # " + sp.prompt_base() +\
             "All of your thinking must happen within a pair of think tags,"\
-            " where you will verify your results to yourself before closing. "\
-            "You will not generate markdown code blocks or JSON responses. "\
-            "\n"\
+            " where you will verify your results to yourself before closing.\n"\
             ">>> x = 1\n"\
             ">>> x\n"\
             "<think>x was set to 1, and x was evaluated, so I will simply output x's value.</think>"\
             "1\n"\
             ">>> "
 
+
     @staticmethod
-    def instruct_prompt ():
+    def prompt_im ():
         return \
-            "<|im_start|>system\n"\
-            "You are an intelligent python interpreter. "\
-            "Assume the input code contains no mistakes or typos. "\
-            "Your task is to evaulate your input,"\
-            " then display the correct standard output. "\
+            "<|im_start|>system\n" + sp.prompt_base() +\
+            "Do not think out loud.\n"\
+            "<|im_end|>\n"\
+            "<|im_start|>user\n"\
+            "x = 1\n"\
+            "x\n"\
+            "<|im_end|>\n"\
+            "<|im_start|>assistant\n"\
+            "1\n"\
+            "<|im_end|>\n"
+
+
+    @staticmethod
+    def prompt_im_think ():
+        return \
+            "<|im_start|>system\n" + sp.prompt_base() +\
             "All of your thinking must happen within a pair of think tags,"\
-            " where you will verify your results to yourself before closing. "\
-            "You will not generate markdown code blocks or JSON responses. "\
-            "\n"\
+            " where you will verify your results to yourself before closing.\n"\
             "<|im_end|>\n"\
             "<|im_start|>user\n"\
             "x = 1\n"\
@@ -140,4 +156,5 @@ class sp:
             "<think>x was set to 1, and x was evaluated, so I will simply output x's value.</think>"\
             "1\n"\
             "<|im_end|>\n"
+
 

@@ -27,15 +27,15 @@ def main ():
         seed=seed,
         temp=temp,
         num_ctx=num_ctx,
-        prompt=sply.sp.prompt_think(),
+        prompt=sply.sp.prompt_im_think(),
         )
 
     sp.runcode("i = 3 + 2")
 
-    res = sp.runcode_think("print(i ** 3)")
+    res = sp.runcode_im_think("print(i ** 3)")
     print(f"**{res}**")
 
-    res = sp.runcode_think("print (pow (i, 3))")
+    res = sp.runcode_im_think("print (pow (i, 3))")
     print(f"**{res}**")
 
     return 0
