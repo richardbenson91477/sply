@@ -13,13 +13,9 @@ class sp:
             seed="",
             temp="",
             num_ctx="",
-            think="",
             ):
 
         self.show = show if show != "" \
-            else False
-
-        self.think = think if think != "" \
             else False
 
         chat_args = {}
@@ -73,6 +69,9 @@ class sp:
         self.c.write("<|im_start|>user\n", show=self.show)
         self.c.write(msg + "\n<|im_end|>\n<|im_start|>assistant\n", show=self.show)
         res = self.c.read(show=self.show)
+        think_tag_end = res.rfind("</think>")
+        if think_tag_end != -1:
+            res = res[think_tag_end + 8:]
         if res.rfind(self.rev_prompt) == len(res) - self.rev_prompt_len:
             res = res[:-self.rev_prompt_len]
         return res
