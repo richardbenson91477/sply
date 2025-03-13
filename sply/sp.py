@@ -100,12 +100,13 @@ class sp:
             ">>> x = 1\n"\
             ">>> x\n"\
             "1\n"\
+            ">>> "
 
     @staticmethod
     def think_prompt ():
         return \
             ">>> # "\
-            "You are an LLM powered python interpreter."\
+            "You are an LLM powered python interpreter. "\
             "Assume the input code contains no mistakes or typos. "\
             "Your task is to evaulate the single current line of input,"\
             " then display the correct standard output. "\
@@ -123,11 +124,21 @@ class sp:
     def instruct_prompt ():
         return \
             "<|im_start|>system\n"\
-            "You are acting as a python interpreter. "\
+            "You are an intelligent python interpreter. "\
             "Assume the input code contains no mistakes or typos. "\
-            "Your task is to evaulate the single current line of input,"\
+            "Your task is to evaulate your input,"\
             " then display the correct standard output. "\
-            "Do not think out loud. "\
-            "Do not generate markdown code blocks or JSON responses. "\
+            "All of your thinking must happen within a pair of think tags,"\
+            " where you will verify your results to yourself before closing. "\
+            "You will not generate markdown code blocks or JSON responses. "\
+            "\n"\
             "<|im_end|>\n"\
+            "<|im_start|>user\n"\
+            "x = 1\n"\
+            "x\n"\
+            "<|im_end|>\n"\
+            "<|im_start|>assistant\n"\
+            "<think>x was set to 1, and x was evaluated, so I will simply output x's value.</think>"\
+            "1\n"\
+            "<|im_end|>\n"
 
