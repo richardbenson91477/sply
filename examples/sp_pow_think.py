@@ -24,10 +24,10 @@ def main ():
     sp = sply.sp(
         show=True,
         model_id=model_id,
-        num_ctx=num_ctx,
-        temp=temp,
         seed=seed,
-        think=True,
+        temp=temp,
+        num_ctx=num_ctx,
+        prompt=sply.sp.think_prompt(),
         )
 
     sp.runcode("i = 3 + 2")

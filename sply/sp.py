@@ -40,10 +40,7 @@ class sp:
         elif prompt:
             chat_args["prompt"] = prompt
         else:
-            if self.think:
-                chat_args["prompt"] = self.think_prompt()
-            else:
-                chat_args["prompt"] = self.default_prompt()
+            chat_args["prompt"] = self.default_prompt()
 
         self.rev_prompt = chat_args["rev_prompt"]
         self.rev_prompt_len = len(self.rev_prompt)
@@ -72,6 +69,15 @@ class sp:
         return res
 
 
+    def runcode_instruct (self, msg):
+        self.c.write("<|im_start|>user\n", show=self.show)
+        self.c.write(msg + "\n<|im_end|>\n<|im_start|>assistant\n", show=self.show)
+        res = self.c.read(show=self.show)
+        if res.rfind(self.rev_prompt) == len(res) - self.rev_prompt_len:
+            res = res[:-self.rev_prompt_len]
+        return res
+
+
     def edit_prompt (self):
         self.c.edit_prompt()
         res = self.c.read(show=self.show)
@@ -80,27 +86,23 @@ class sp:
         return res
 
 
-    def default_prompt (self):
+    @staticmethod
+    def default_prompt ():
         return \
             ">>> # "\
-            "You are a python interpreter. "\
+            "You are acting as a python interpreter. "\
             "Assume the input code contains no mistakes or typos. "\
             "Your task is to evaulate the single current line of input,"\
             " then display the correct standard output. "\
             "Do not think out loud. "\
-            "You will not generate markdown code blocks or JSON responses. "\
+            "Do not generate markdown code blocks or JSON responses. "\
             "\n"\
             ">>> x = 1\n"\
             ">>> x\n"\
             "1\n"\
-            ">>> y = x + 1\n"\
-            ">>> y + x\n"\
-            "3\n"\
-            ">>> y ** 4\n"\
-            "16\n"\
-            ">>> "
 
-    def think_prompt (self):
+    @staticmethod
+    def think_prompt ():
         return \
             ">>> # "\
             "You are an LLM powered python interpreter."\
@@ -115,10 +117,17 @@ class sp:
             ">>> x\n"\
             "<think>x was set to 1, and x was evaluated, so I will simply output x's value.</think>"\
             "1\n"\
-            ">>> y = x + 1\n"\
-            ">>> y + x\n"\
-            "3\n"\
-            ">>> y ** 4\n"\
-            "16\n"\
             ">>> "
+
+    @staticmethod
+    def instruct_prompt ():
+        return \
+            "<|im_start|>system\n"\
+            "You are acting as a python interpreter. "\
+            "Assume the input code contains no mistakes or typos. "\
+            "Your task is to evaulate the single current line of input,"\
+            " then display the correct standard output. "\
+            "Do not think out loud. "\
+            "Do not generate markdown code blocks or JSON responses. "\
+            "<|im_end|>\n"\
 
