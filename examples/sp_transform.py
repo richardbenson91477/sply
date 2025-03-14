@@ -6,14 +6,18 @@ import sply
 
 
 def main ():
-    model_id = "default-code"
+    backend = ""
+    model_id = ""
     for argv in sys.argv[1:]:
+        if argv.find("backend=") == 0:
+            backend = argv[8:]
         if argv.find("model_id=") == 0:
             model_id = argv[9:]
 
     # create a simulated python
     sp = sply.sp(
         show=True,
+        backend=backend,
         model_id=model_id,
         num_ctx=1_000,
         )

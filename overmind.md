@@ -35,9 +35,10 @@
 
 ## Environment variables
   * $overmind_show: if "True", show otherwise hidden generation for debugging
-  * $overmind_model_id: ollama model to load
+  * $overmind_backend: LLM backend
+  * $overmind_model_id: LLM model
   * $overmind_editor: editor path for prompt editing
-  * $overmind_seed: psuedo-random number generator seed for ollama
-  * $overmind_temp: temperature setting for ollama
-  * $overmind_num_ctx: context size for ollama
+  * $overmind_seed: psuedo-random number generator seed for the LLM backend
+  * $overmind_temp: temperature setting for the LLM backend
+  * $overmind_num_ctx: context size for the LLM backend
 

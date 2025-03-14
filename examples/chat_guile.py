@@ -19,12 +19,16 @@ prompt = "; "\
 
 
 def main ():
+    backend = ""
     model_id = "default-code"
     for argv in sys.argv[1:]:
+        if argv.find("backend=") == 0:
+            backend = argv[8:]
         if argv.find("model_id=") == 0:
             model_id = argv[9:]
 
     c = sply.chat(
+        backend=backend,
         model_id=model_id,
         rev_prompt="\nscheme@(guile-user)> ",
         prompt=prompt,

@@ -6,6 +6,7 @@ from .chat import chat
 class sp:
     def __init__ (self,
             show="",
+            backend="",
             model_id="",
             editor="",
             prompt_file="",
@@ -19,6 +20,7 @@ class sp:
             else False
 
         chat_args = {}
+        chat_args["backend"] = backend
         chat_args["model_id"] = model_id if model_id != "" \
             else "default-code"
         chat_args["editor"] = editor

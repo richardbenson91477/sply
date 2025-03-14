@@ -10,10 +10,7 @@ from sp_examples import sp_example_conf
 def main ():
     ex = sp_example_conf(
         mode="think",
-        model_id="default-code", 
-        seed = "",
-        temp = 0.0,
-        num_ctx = 1_000,
+        num_ctx=1_000,
         show=True,
         )
 
@@ -21,6 +18,7 @@ def main ():
         return -1
 
     sp = sply.sp(
+        backend=ex.backend,
         model_id=ex.model_id,
         seed=ex.seed,
         temp=ex.temp,

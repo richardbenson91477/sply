@@ -4,6 +4,7 @@ import random
 import sply
 
 show = False
+backend = ""
 model_id = ""
 editor = ""
 seed = ""
@@ -13,6 +14,10 @@ num_ctx = ""
 env_var = os.getenv("overmind_show")
 if env_var == "True":
     show = True
+
+env_var = os.getenv("overmind_backend")
+if env_var:
+    backend = env_var
 
 env_var = os.getenv("overmind_model_id")
 if env_var:
@@ -51,6 +56,7 @@ if show:
 
 sp = sply.sp(
     show=show,
+    backend=backend,
     model_id=model_id,
     editor=editor,
     prompt=prompt,

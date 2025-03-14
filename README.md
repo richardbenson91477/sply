@@ -25,10 +25,13 @@ pip install sply
 ## Requirements
   * The [Ollama Python Library](https://pypi.org/project/ollama/) (https://pypi.org/project/ollama/)
 
+## Optional
+  * The [llama-cpp-python library](https://pypi.org/project/llama-cpp-python/) (https://pypi.org/project/llama-cpp-python/)
+
 ## Example usage
 ```python
 >>> import sply
->>> sp = sply.sp(model_id="default-code") # create a simulated python interpreter
+>>> sp = sply.sp(model_id="qwen2.5-coder") # create a simulated python interpreter
 >>> y = 1
 >>> sp.runcode(f"y = {y} + 1") # set y in simulated python to realish y + 1
 ''

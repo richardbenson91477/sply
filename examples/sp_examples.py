@@ -2,9 +2,17 @@
 import sply
 
 class sp_example_conf:
-    def __init__(self, show, mode, model_id, seed, temp, num_ctx):
+    def __init__(self,
+            show="",
+            mode="",
+            backend="",
+            model_id="",
+            seed="",
+            temp="",
+            num_ctx=""):
         self.show = show
         self.mode = mode
+        self.backend = backend
         self.model_id = model_id
         self.seed = seed
         self.temp = temp
@@ -16,8 +24,9 @@ class sp_example_conf:
             if arg.find("--help") == 0:
                 print(f"usage: {args[0]}"\
                     f" [--help]"\
-                    f" [mode=\"plain\"|\"think\" ({self.mode})]"\
-                    f" [model_id=\"model_id\" ({self.model_id})]"\
+                    f" [mode=\"plain\"|\"think\" (\"{self.mode}\")]"\
+                    f" [backend=\"ollama\"|\"llcpp\" (\"{self.backend}\")]"\
+                    f" [model_id=\"model_id\" (\"{self.model_id}\")]"\
                     f" [seed=\"seed\" ({self.seed})]"\
                     f" [temp=\"temp\" ({self.temp})]"\
                     f" [num_ctx=\"num_ctx\" ({self.num_ctx})]"\
@@ -26,6 +35,8 @@ class sp_example_conf:
                 return False
             elif arg.find("mode=") == 0:
                 self.mode = arg[5:]
+            elif arg.find("backend=") == 0:
+                self.backend = arg[8:]
             elif arg.find("model_id=") == 0:
                 self.model_id = arg[9:]
             elif arg.find("seed=") == 0:

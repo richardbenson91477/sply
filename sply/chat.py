@@ -3,12 +3,13 @@
 import random
 import subprocess
 import tempfile
-from ollama import generate
 
 class chat:
     param_desc = (
+        {"name": "backend", "type": str,
+            "default": "ollama", "adjustable": True, "desc": "LLM backend (\"ollama\" | \"llcpp\")"},
         {"name": "model_id", "type": str,
-            "default": "default", "adjustable": True, "desc": "ollama model to load"},
+            "default": "default", "adjustable": True, "desc": "model for the LLM backend"},
         {"name": "editor", "type": str,
             "default": "vim -b", "adjustable": True, "desc": "editor path/args for prompt editing"},
         {"name": "user_name", "type": str,
@@ -32,14 +33,15 @@ class chat:
         {"name": "prompt_redisplay", "type": bool,
             "default": True, "adjustable": True, "desc": "display the prompt after edit"},
         {"name": "seed", "type": int,
-            "default": 42, "adjustable": True, "desc": "psuedo-random number generator seed for ollama"},
+            "default": 42, "adjustable": True, "desc": "psuedo-random number generator seed for the LLM backend"},
         {"name": "temp", "type": float,
-            "default": 0.8, "adjustable": True, "desc": "temperature setting for ollama"},
+            "default": 0.8, "adjustable": True, "desc": "temperature setting for the LLM backend"},
         {"name": "num_ctx", "type": int,
-            "default": 8_000, "adjustable": True, "desc": "context size for ollama"},
+            "default": 8_000, "adjustable": True, "desc": "context size for the LLM backend"},
         )
 
     def __init__ (self,
+            backend="",
             model_id="",
             editor="",
             user_name="",
@@ -81,19 +83,32 @@ class chat:
         else:
             self.rev_prompt_tail = 0
 
-        self.llcpp = False
+        self.update_backend(init=True)
 
-        if self.llcpp:
-            from llama_cpp import Llama
-            self.llm = Llama(model_path=self.model_id)
-            self.gen_func = self.gen_func_llamacpp 
-        else:
+
+    def update_backend(self, init=False, reload=False):
+        if self.backend == "ollama":
+            if init:
+                from ollama import generate
+                self.ollama_generate = generate
+                self.gen_func = self.gen_func_ollama
+            if reload:
+                self.gen_func = self.gen_func_ollama
+
             self.ollama_options = {
                 "seed": self.seed,
                 "temperature": self.temp,
                 "num_ctx": self.num_ctx,
                 }
-            self.gen_func = self.gen_func_ollama
+        elif self.backend == "llcpp":
+            if init:
+                from llama_cpp import Llama
+                self.llcpp = Llama(model_path=self.model_id)
+                self.gen_func = self.gen_func_llcpp 
+            if reload:
+                del self.llcpp
+                self.llcpp = Llama(model_path=self.model_id)
+                self.gen_func = self.gen_func_llcpp 
 
 
     @staticmethod
@@ -115,6 +130,7 @@ class chat:
             if param_d["type"] == str:
                 print("\"", end="")
             print(")")
+
 
     def edit_prompt (self):
         prompt_file = tempfile.mktemp()
@@ -183,11 +199,7 @@ class chat:
             print(f"error: param \"{cmd_param}\" not found")
             return
 
-        self.ollama_options = {
-            "seed": self.seed,
-            "temperature": self.temp,
-            "num_ctx": self.num_ctx,
-            }
+        self.update_backend()
 
 
     def write (self, msg, show=False):
@@ -205,9 +217,8 @@ class chat:
         if self.prompt_len >= self.rev_prompt_len:
             self.rev_prompt_tail = self.prompt_len - self.rev_prompt_len
 
-
     def gen_func_ollama (self):
-        for json in generate(
+        for json in self.ollama_generate(
                 stream=True,
                 model=self.model_id,
                 prompt=self.prompt,
@@ -216,8 +227,8 @@ class chat:
             yield json["response"]
 
 
-    def gen_func_llamacpp (self):
-        for chunk in self.llm.create_completion(
+    def gen_func_llcpp (self):
+        for chunk in self.llcpp.create_completion(
                 stream=True,
                 prompt=self.prompt,
                 max_tokens=self.num_ctx,
