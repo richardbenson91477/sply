@@ -36,7 +36,7 @@ class sp:
         elif prompt:
             chat_args["prompt"] = prompt
         else:
-            chat_args["prompt"] = self.prompt_default()
+            chat_args["prompt"] = self.create_prompt_default()
 
         self.rev_prompt = chat_args["rev_prompt"]
         self.rev_prompt_len = len(self.rev_prompt)
@@ -92,21 +92,25 @@ class sp:
         return res
 
 
-    @staticmethod
-    def prompt_base ():
-        return \
-            "You are acting as a python interpreter. "\
-            "Assume the input code contains no mistakes or typos. "\
-            "Your task is to evaulate the single current line of input,"\
-            " then display the correct standard output. "\
-            "Do not generate markdown code blocks or JSON responses. "
+    prompt_base = \
+        "You are acting as a python interpreter. "\
+        "Assume the input code contains no mistakes or typos. "\
+        "Your task is to evaulate the single current line of input,"\
+        " then display the correct standard output. "\
+        "Do not generate markdown code blocks or JSON responses. "
+
+    prompt_think_base = \
+        "All of your thinking must happen within a pair of think tags,"\
+        " where you will verify your results to yourself before closing.\n"
+
+    prompt_no_think_base = \
+        "Do not think out loud.\n"
 
 
     @staticmethod
-    def prompt_default ():
+    def create_prompt_default ():
         return \
-            ">>> # " + sp.prompt_base() +\
-            "Do not think out loud.\n"\
+            ">>> # " + sp.prompt_base + sp.prompt_no_think_base +\
             ">>> x = 1\n"\
             ">>> x\n"\
             "1\n"\
@@ -114,11 +118,9 @@ class sp:
 
 
     @staticmethod
-    def prompt_think ():
+    def create_prompt_think ():
         return \
-            ">>> # " + sp.prompt_base() +\
-            "All of your thinking must happen within a pair of think tags,"\
-            " where you will verify your results to yourself before closing.\n"\
+            ">>> # " + sp.prompt_base + sp.prompt_think_base +\
             ">>> x = 1\n"\
             ">>> x\n"\
             "<think>x was set to 1, and x was evaluated, so I will simply output x's value.</think>"\
@@ -127,9 +129,9 @@ class sp:
 
 
     @staticmethod
-    def prompt_im ():
+    def create_prompt_im ():
         return \
-            "<|im_start|>system\n" + sp.prompt_base() +\
+            "<|im_start|>system\n" + sp.prompt_base +\
             "Do not think out loud.\n"\
             "<|im_end|>\n"\
             "<|im_start|>user\n"\
@@ -142,11 +144,9 @@ class sp:
 
 
     @staticmethod
-    def prompt_im_think ():
+    def create_prompt_im_think ():
         return \
-            "<|im_start|>system\n" + sp.prompt_base() +\
-            "All of your thinking must happen within a pair of think tags,"\
-            " where you will verify your results to yourself before closing.\n"\
+            "<|im_start|>system\n" + sp.prompt_base + sp.prompt_think_base +\
             "<|im_end|>\n"\
             "<|im_start|>user\n"\
             "x = 1\n"\

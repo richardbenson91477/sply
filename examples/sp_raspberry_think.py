@@ -35,6 +35,9 @@ def main ():
     res = sp.runcode_think("print(name.count(\"r\"))")
     print(f"**{res}**")
 
+    res = sp.runcode_think("print(name.count(\"r\"))")
+    print(f"**{res}**")
+
     return 0
 
 
