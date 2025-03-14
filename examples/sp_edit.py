@@ -7,7 +7,7 @@ import sply
 
 def main ():
     backend = ""
-    model_id = "default-code"
+    model_id = ""
     for argv in sys.argv[1:]:
         if argv.find("backend=") == 0:
             backend = argv[8:]

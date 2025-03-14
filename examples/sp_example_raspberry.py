@@ -9,22 +9,22 @@ from sp_examples import sp_example_conf
 
 def main ():
     ex = sp_example_conf(
+        show=True,
         mode="think",
         num_ctx=1_000,
-        show=True,
         )
 
     if not ex.parse_args(sys.argv):
         return -1
 
     sp = sply.sp(
+        show=ex.show,
         backend=ex.backend,
         model_id=ex.model_id,
         seed=ex.seed,
         temp=ex.temp,
         num_ctx=ex.num_ctx,
         prompt=ex.prompt,
-        show=ex.show,
         )
 
     if ex.mode == "plain":

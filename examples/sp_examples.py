@@ -24,15 +24,17 @@ class sp_example_conf:
             if arg.find("--help") == 0:
                 print(f"usage: {args[0]}"\
                     f" [--help]"\
+                    f" [show=\"True|False\" ({self.show})]"\
                     f" [mode=\"plain\"|\"think\" (\"{self.mode}\")]"\
                     f" [backend=\"ollama\"|\"llcpp\" (\"{self.backend}\")]"\
                     f" [model_id=\"model_id\" (\"{self.model_id}\")]"\
                     f" [seed=\"seed\" ({self.seed})]"\
                     f" [temp=\"temp\" ({self.temp})]"\
                     f" [num_ctx=\"num_ctx\" ({self.num_ctx})]"\
-                    f" [show=\"True|False\" ({self.show})]"\
                     "")
                 return False
+            elif arg.find("show=") == 0:
+                self.show = True if arg[5:] == "True" else False
             elif arg.find("mode=") == 0:
                 self.mode = arg[5:]
             elif arg.find("backend=") == 0:
@@ -45,8 +47,6 @@ class sp_example_conf:
                 self.temp = float(arg[5:])
             elif arg.find("num_ctx=") == 0:
                 self.num_ctx = int(arg[8:])
-            elif arg.find("show=") == 0:
-                self.show = True if arg[5:] == "True" else False
 
         if self.mode == "plain":
             self.prompt = sply.sp.create_prompt_default()
