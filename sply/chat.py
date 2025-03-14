@@ -65,12 +65,6 @@ class chat:
             self.__dict__[param_name] = locs[param_name] if locs[param_name] != "" \
                 else self.default_args[param_name]
 
-        self.options = {
-            "seed": self.seed,
-            "temperature": self.temp,
-            "num_ctx": self.num_ctx,
-            }
-
         if prompt_file != "":
             with open(prompt_file, "r") as f:
                 self.prompt = f.read()
@@ -86,6 +80,20 @@ class chat:
             self.rev_prompt_tail = self.prompt_len - self.rev_prompt_len
         else:
             self.rev_prompt_tail = 0
+
+        self.llcpp = True
+
+        if self.llcpp:
+            from llama_cpp import Llama
+            self.llm = Llama(model_path=self.model_id)
+            self.gen_func = self.gen_func_llamacpp 
+        else:
+            self.ollama_options = {
+                "seed": self.seed,
+                "temperature": self.temp,
+                "num_ctx": self.num_ctx,
+                }
+            self.gen_func = self.gen_func_ollama
 
 
     @staticmethod
@@ -175,7 +183,7 @@ class chat:
             print(f"error: param \"{cmd_param}\" not found")
             return
 
-        self.options = {
+        self.ollama_options = {
             "seed": self.seed,
             "temperature": self.temp,
             "num_ctx": self.num_ctx,
@@ -198,18 +206,31 @@ class chat:
             self.rev_prompt_tail = self.prompt_len - self.rev_prompt_len
 
 
-    def read (self, show=False):
-        gen = generate(
-            stream=True,
-            model=self.model_id,
-            prompt=self.prompt,
-            options=self.options,
-            )
+    def gen_func_ollama (self):
+        for json in generate(
+                stream=True,
+                model=self.model_id,
+                prompt=self.prompt,
+                options=self.ollama_options,
+                ):
+            yield json["response"]
 
+
+    def gen_func_llamacpp (self):
+        for chunk in self.llm.create_completion(
+                stream=True,
+                prompt=self.prompt,
+                max_tokens=self.num_ctx,
+                temperature=self.temp,
+                seed=self.seed,
+                ):
+            yield chunk['choices'][0]['text']
+
+
+    def read (self, show=False):
         res = ""
         try:
-            for json in gen:
-                gen_res = json["response"]
+            for gen_res in self.gen_func():
                 prompt_new = self.prompt + gen_res
 
                 rev_prompt_c = prompt_new.rfind(self.rev_prompt, self.rev_prompt_tail)
@@ -220,8 +241,6 @@ class chat:
                     if show:
                         print(self.prompt[self.prompt_len:], end="", flush=True)
                     self.prompt_len = self.rev_prompt_tail
-                    # force gen stop
-                    del gen
                     return res
                 else:
                     self.prompt = prompt_new
