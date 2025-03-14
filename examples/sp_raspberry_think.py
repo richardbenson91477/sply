@@ -27,7 +27,7 @@ def main ():
         seed=seed,
         temp=temp,
         num_ctx=num_ctx,
-        prompt=sply.sp.prompt_think(),
+        prompt=sply.sp.create_prompt_think(),
         )
 
     sp.runcode("name = \"raspberry\"")

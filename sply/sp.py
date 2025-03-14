@@ -131,8 +131,7 @@ class sp:
     @staticmethod
     def create_prompt_im ():
         return \
-            "<|im_start|>system\n" + sp.prompt_base +\
-            "Do not think out loud.\n"\
+            "<|im_start|>system\n" + sp.prompt_base + sp.prompt_no_think_base +\
             "<|im_end|>\n"\
             "<|im_start|>user\n"\
             "x = 1\n"\

@@ -27,7 +27,7 @@ def main ():
         seed=seed,
         temp=temp,
         num_ctx=num_ctx,
-        prompt=sply.sp.prompt_im_think(),
+        prompt=sply.sp.create_prompt_im_think(),
         )
 
     sp.runcode("i = 3 + 2")
