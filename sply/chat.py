@@ -81,7 +81,7 @@ class chat:
         else:
             self.rev_prompt_tail = 0
 
-        self.llcpp = True
+        self.llcpp = False
 
         if self.llcpp:
             from llama_cpp import Llama
