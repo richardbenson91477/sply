@@ -20,8 +20,6 @@ prompt = "; "\
 
 def main ():
     model_id = "default-code"
-    num_ctx = 1_000
-
     for argv in sys.argv[1:]:
         if argv.find("model_id=") == 0:
             model_id = argv[9:]
@@ -31,7 +29,7 @@ def main ():
         rev_prompt="\nscheme@(guile-user)> ",
         prompt=prompt,
         in_suffix_enabled=False,
-        num_ctx=num_ctx,
+        num_ctx=1_000,
         )
 
     print(c.prompt, end="", flush=True)

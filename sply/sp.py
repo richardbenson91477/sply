@@ -95,13 +95,13 @@ class sp:
     prompt_base = \
         "You are acting as a python interpreter. "\
         "Assume the input code contains no mistakes or typos. "\
-        "Your task is to evaulate the single current line of input,"\
+        "Your task is to evaluate the single current line of input,"\
         " then display the correct standard output. "\
         "Do not generate markdown code blocks or JSON responses. "
 
     prompt_think_base = \
         "All of your thinking must happen within a pair of think tags,"\
-        " where you will verify your results before closing.\n"
+        " where you must thoroughly confirm your results before closing.\n"
 
     prompt_no_think_base = \
         "Do not think out loud.\n"
