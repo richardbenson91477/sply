@@ -16,7 +16,7 @@ class sp_example_conf:
             if arg.find("--help") == 0:
                 print(f"usage: {args[0]}"\
                     f" [--help]"\
-                    f" [mode=\"plain\"|\"think\"|\"im\"|\"im_think\" ({self.mode})]"\
+                    f" [mode=\"plain\"|\"think\" ({self.mode})]"\
                     f" [model_id=\"model_id\" ({self.model_id})]"\
                     f" [seed=\"seed\" ({self.seed})]"\
                     f" [temp=\"temp\" ({self.temp})]"\
@@ -41,10 +41,6 @@ class sp_example_conf:
             self.prompt = sply.sp.create_prompt_default()
         elif self.mode == "think":
             self.prompt = sply.sp.create_prompt_think()
-        elif self.mode == "im":
-            self.prompt = sply.sp.create_prompt_im()
-        elif self.mode == "im_think":
-            self.prompt = sply.sp.create_prompt_im_think()
 
         return True
 

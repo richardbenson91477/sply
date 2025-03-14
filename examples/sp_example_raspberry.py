@@ -33,10 +33,6 @@ def main ():
         runcode = sp.runcode
     elif ex.mode == "think":
         runcode = sp.runcode_think
-    elif ex.mode == "im":
-        runcode = sp.runcode_im
-    elif ex.mode == "im_think":
-        runcode = runcode_im_think
 
     runcode("name = \"raspberry\"")
 

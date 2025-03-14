@@ -65,25 +65,6 @@ class sp:
         return res
 
 
-    def runcode_im (self, msg):
-        self.c.write(f"<|im_start|>user\n{msg}\n<|im_end|>\n<|im_start|>assistant\n", show=self.show)
-        res = self.c.read(show=self.show)
-        if res.rfind(self.rev_prompt) == len(res) - self.rev_prompt_len:
-            res = res[:-self.rev_prompt_len]
-        return res
-
-
-    def runcode_im_think (self, msg):
-        self.c.write(f"<|im_start|>user\n{msg}\n<|im_end|>\n<|im_start|>assistant\n", show=self.show)
-        res = self.c.read(show=self.show)
-        think_tag_end = res.rfind("</think>")
-        if think_tag_end != -1:
-            res = res[think_tag_end + 8:]
-        if res.rfind(self.rev_prompt) == len(res) - self.rev_prompt_len:
-            res = res[:-self.rev_prompt_len]
-        return res
-
-
     def edit_prompt (self):
         self.c.edit_prompt()
         res = self.c.read(show=self.show)
@@ -123,37 +104,8 @@ class sp:
             ">>> # " + sp.prompt_base + sp.prompt_think_base +\
             ">>> x = 1\n"\
             ">>> x\n"\
-            "<think>x was set to 1, and x was evaluated, so I will simply output x's value.</think>"\
+            "<think>x was set to 1, then x was evaluated, so I will output x's value.</think>"\
             "1\n"\
             ">>> "
-
-
-    @staticmethod
-    def create_prompt_im ():
-        return \
-            "<|im_start|>system\n" + sp.prompt_base + sp.prompt_no_think_base +\
-            "<|im_end|>\n"\
-            "<|im_start|>user\n"\
-            "x = 1\n"\
-            "x\n"\
-            "<|im_end|>\n"\
-            "<|im_start|>assistant\n"\
-            "1\n"\
-            "<|im_end|>\n"
-
-
-    @staticmethod
-    def create_prompt_im_think ():
-        return \
-            "<|im_start|>system\n" + sp.prompt_base + sp.prompt_think_base +\
-            "<|im_end|>\n"\
-            "<|im_start|>user\n"\
-            "x = 1\n"\
-            "x\n"\
-            "<|im_end|>\n"\
-            "<|im_start|>assistant\n"\
-            "<think>x was set to 1, and x was evaluated, so I will simply output x's value.</think>"\
-            "1\n"\
-            "<|im_end|>\n"
 
 
