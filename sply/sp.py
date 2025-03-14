@@ -101,7 +101,7 @@ class sp:
 
     prompt_think_base = \
         "All of your thinking must happen within a pair of think tags,"\
-        " where you must thoroughly confirm your results before closing.\n"
+        " where you must proove your results before closing.\n"
 
     prompt_no_think_base = \
         "Do not think out loud.\n"

@@ -17,9 +17,10 @@
 
 ## Best-working models
   * [qwen2.5-coder-14b-instruct-q8_0.gguf](https://huggingface.co/Qwen/Qwen2.5-Coder-14B-Instruct-GGUF/blob/main/qwen2.5-coder-14b-instruct-q8_0.gguf)
-    - Base-line for testing; if something doesn't work, it's taken to be the library's fault
-  * [Qwen2.5-Coder-14B-IQ4_XS.gguf](https://huggingface.co/bartowski/Qwen2.5-Coder-14B-GGUF/blob/main/Qwen2.5-Coder-14B-IQ4_XS.gguf)
+    - Base-line for general testing; if something doesn't work, it's taken to be the library's fault
   * [QwQ-Snowdrop.i1-IQ3_XXS.gguf](https://huggingface.co/mradermacher/QwQ-Snowdrop-i1-GGUF/blob/main/QwQ-Snowdrop.i1-IQ3_XXS.gguf)
+    - Base-line for reasoning testing
+
 
 ## Generally working models
   * [ibm-granite_granite-3.2-8b-instruct-Q8_0.gguf](https://huggingface.co/bartowski/ibm-granite_granite-3.2-8b-instruct-GGUF/blob/main/ibm-granite_granite-3.2-8b-instruct-Q8_0.gguf)
@@ -31,9 +32,6 @@
 ## Non-working models
   * [Mistral-Small-24B-Instruct-2501-Q5_K_M.gguf](https://huggingface.co/bartowski/Mistral-Small-24B-Instruct-2501-GGUF/blob/main/Mistral-Small-24B-Instruct-2501-Q5_K_M.gguf)
     - Currently generates _a lot_ of simulated python errors
-
-## On reasoning models
-  * "Reasoning" and other models which have a tendency to generate a lot of "thinking out loud" can sometimes be made to work using careful prompting.
 
 ## Dealing with incorrect output
   * Try a different model - see the [best-working models list](#best-working-models)
