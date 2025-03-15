@@ -3,10 +3,7 @@
 ## Table of Contents
 
 - [Using "sply_chat_interact.py"](#using-sply_chat_interactpy)
-- [Best-working models](#best-working-models)
-- [Generally working models](#generally-working-models)
-- [Non-working models](#non-working-models)
-- [On reasoning models](#on-reasoning-models)
+- [Tested models](#tested-models)
 - [Dealing with incorrect output](#dealing-with-incorrect-output)
 - [Misc](#misc)
 
@@ -15,26 +12,23 @@
   * Enter "/h" at the input prompt ("> ") for help
   * Hit Ctrl-C to interrupt generation and enter input mode
 
-## Best-working models
-  * [qwen2.5-coder-14b-instruct-q8_0.gguf](https://huggingface.co/Qwen/Qwen2.5-Coder-14B-Instruct-GGUF/blob/main/qwen2.5-coder-14b-instruct-q8_0.gguf)
+## Tested models
+  * DeepSeek-R1-Distill-Qwen-14B-Q4_0.gguf (sha256sum 906b3382f2680f4ce845459b4a122e904002b075238080307586bcffcde49eef)
+  * google_gemma-3-12b-it-Q4_0.gguf (sha256sum 9a7b70be8727da9fb28523b35946dd42d4fe0f622cce03daa44fccff0775516d)
+  * huihui-ai_Mistral-Small-24B-Instruct-2501-abliterated-Q4_0.gguf (sha256sum 165086808981b1f449c232aff7d2f7c610ef15a665f085a52fe25fcf0c787963)
+    - Currently generates simulated python errors
+  * ibm-granite_granite-3.2-8b-instruct-Q8_0.gguf (sha256sum e93b442ba2ce753cf1a3904c6ebd1ccfc3f961f5eb8ccc34b9a7e2e4cc1d14a4)
+  * Marco-o1-Q8_0.gguf (sha256sum f7c8c4b25e4cec108177dd755503aec71542d0a8a707fdc29bc95a4eb4ce0951)
+  * phi-4-Q4_0.gguf (sha256sum 7c3e1b5bfb03bb4b13cf7ff4889676c5ad4ea92049352d8e1ded3f443f9b68c6)
+  * qwen2.5-coder-14b-instruct-q4_0.gguf (sha256sum 561c8955089ad330dff56a40a001eb8bb4e12746354e76d0262bd65ab4640864)
     - Base-line for general testing; if something doesn't work, it's taken to be the library's fault
-  * [QwQ-Snowdrop.i1-IQ3_XXS.gguf](https://huggingface.co/mradermacher/QwQ-Snowdrop-i1-GGUF/blob/main/QwQ-Snowdrop.i1-IQ3_XXS.gguf)
+  * QwQ-Snowdrop.i1-IQ3_XXS.gguf (sha256sum 6f08d96e128caa67d48ccd6438aa6fd130fb866ce1ba5ed77269b55a42676bf8)
     - Base-line for reasoning testing
-
-
-## Generally working models
-  * [ibm-granite_granite-3.2-8b-instruct-Q8_0.gguf](https://huggingface.co/bartowski/ibm-granite_granite-3.2-8b-instruct-GGUF/blob/main/ibm-granite_granite-3.2-8b-instruct-Q8_0.gguf)
-  * [Marco-o1-Q8_0.gguf](https://huggingface.co/bartowski/Marco-o1-GGUF/blob/main/Marco-o1-Q8_0.gguf)
-  * [phi-4-abliterated.Q8_0.gguf](https://huggingface.co/mradermacher/phi-4-abliterated-GGUF/blob/main/phi-4-abliterated.Q8_0.gguf)
-  * [huihui-ai_Mistral-Small-24B-Instruct-2501-abliterated-IQ4_XS.gguf](https://huggingface.co/bartowski/huihui-ai_Mistral-Small-24B-Instruct-2501-abliterated-GGUF/blob/main/huihui-ai_Mistral-Small-24B-Instruct-2501-abliterated-IQ4_XS.gguf)
-  * [gemma-3-12b-it-Q8_0.gguf](https://huggingface.co/ggml-org/gemma-3-12b-it-GGUF/blob/main/gemma-3-12b-it-Q8_0.gguf)
-
-## Non-working models
-  * [Mistral-Small-24B-Instruct-2501-Q5_K_M.gguf](https://huggingface.co/bartowski/Mistral-Small-24B-Instruct-2501-GGUF/blob/main/Mistral-Small-24B-Instruct-2501-Q5_K_M.gguf)
-    - Currently generates _a lot_ of simulated python errors
+  * RekaAI_reka-flash-3-Q4_0.gguf (sha256sum 8fa4f55937c4ea0c968e5c9cc3b4770f4f6e080651eb714c28eddc9d2bdec6ca)
+  * SicariusSicariiStuff_Phi-Line_14B-Q4_0.gguf (sha256sum eea06466ab2c7ce9d01498e8741da792d610b632299bb3fcea139669dad02422)
 
 ## Dealing with incorrect output
-  * Try a different model - see the [best-working models list](#best-working-models)
+  * Try a different model - see the [tested models list](#tested-models)
   * Modify the prompt to show examples of expected behavior
   * Try a lower temperature value
   * Try an alternate seed number
@@ -42,7 +36,7 @@
   * When all else fails, Ctrl-C + "edit_prompt()" are your friends
 
 ## Misc
-  * The above model lists are very subject to change
+  * The tested model list is very subject to change
   * The default prompt editor is "vim -b" - customize with the "editor=" options and parameters
   * "prompt_file=" args always have precedence over "prompt=" args
   * "edit_prompt" currently leaves prompt tempfiles intact (for manual review)
