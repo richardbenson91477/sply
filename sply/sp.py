@@ -83,8 +83,8 @@ class sp:
         "Do not generate markdown code blocks or JSON responses. "
 
     prompt_think_base = \
-        "All of your thinking must happen within a pair of think tags,"\
-        " where you must proove and then verify your results before closing.\n"
+        "All of your thinking must happen within a think tag block,"\
+        " where you must analytically prove your results before closing.\n"
 
     prompt_no_think_base = \
         "Do not think out loud.\n"
