@@ -28,7 +28,7 @@ class sp_example:
                 print(f"usage: {sys.argv[0]}"\
                     f" [--help]"\
                     f" [mode=\"plain\"|\"think\" (\"{mode}\")]"\
-                    f" [show=\"True|False\" ({sp_args["show"]})]"\
+                    f" [show=True|False ({sp_args["show"]})]"\
                     f" [backend=\"ollama\"|\"llcpp\" (\"{sp_args["backend"]}\")]"\
                     f" [model_id=\"model_id\" (\"{sp_args["model_id"]}\")]"\
                     f" [seed=\"seed\" ({sp_args["seed"]})]"\
