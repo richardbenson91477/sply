@@ -43,22 +43,22 @@ class sp:
         self.rev_prompt = chat_args["rev_prompt"]
         self.rev_prompt_len = len(self.rev_prompt)
 
-        self.c = chat(**chat_args)
+        self.chat = chat(**chat_args)
 
-        self.c.read(show=self.show)
+        self.chat.read(show=self.show)
 
 
     def runcode (self, msg):
-        self.c.write(f"{msg}\n", show=self.show)
-        res = self.c.read(show=self.show)
+        self.chat.write(f"{msg}\n", show=self.show)
+        res = self.chat.read(show=self.show)
         if res.rfind(self.rev_prompt) == len(res) - self.rev_prompt_len:
             res = res[:-self.rev_prompt_len]
         return res
 
 
     def runcode_think (self, msg):
-        self.c.write(f"{msg}\n<think>", show=self.show)
-        res = self.c.read(show=self.show)
+        self.chat.write(f"{msg}\n<think>", show=self.show)
+        res = self.chat.read(show=self.show)
         think_tag_end = res.rfind("</think>")
         if think_tag_end != -1:
             res = res[think_tag_end + 8:]
@@ -68,8 +68,8 @@ class sp:
 
 
     def edit_prompt (self):
-        self.c.edit_prompt()
-        res = self.c.read(show=self.show)
+        self.chat.edit_prompt()
+        res = self.chat.read(show=self.show)
         if res.rfind(self.rev_prompt) == len(res) - self.rev_prompt_len:
             res = res[:-self.rev_prompt_len]
         return res
