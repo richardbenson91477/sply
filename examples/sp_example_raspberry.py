@@ -1,43 +1,24 @@
 #!/usr/bin/env python3
 
-import sys
-import random
-import sply
-
-from sp_examples import sp_example_conf
+from sp_examples import sp_example
 
 
 def main ():
-    ex = sp_example_conf(
-        show=True,
+    ex = sp_example(
         mode="think",
+        show=True,
         num_ctx=1_000,
         )
 
-    if not ex.parse_args(sys.argv):
-        return -1
+    if ex.res:
+        return ex.res
 
-    sp = sply.sp(
-        show=ex.show,
-        backend=ex.backend,
-        model_id=ex.model_id,
-        seed=ex.seed,
-        temp=ex.temp,
-        num_ctx=ex.num_ctx,
-        prompt=ex.prompt,
-        )
+    ex.runcode("name = \"raspberry\"")
 
-    if ex.mode == "plain":
-        runcode = sp.runcode
-    elif ex.mode == "think":
-        runcode = sp.runcode_think
-
-    runcode("name = \"raspberry\"")
-
-    res = runcode("print(name.count(\"r\"))")
+    res = ex.runcode("print(name.count(\"r\"))")
     print(f"**{res}**")
 
-    res = runcode("print(name.count(\"r\"))")
+    res = ex.runcode("print(name.count(\"r\"))")
     print(f"**{res}**")
 
     return 0
