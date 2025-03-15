@@ -15,6 +15,7 @@ class sp_example:
 
         self.res = 0
 
+        self.mode = mode
         sp_args = {}
         sp_args["show"] = show
         sp_args["backend"] = backend
@@ -27,7 +28,7 @@ class sp_example:
             if sys_arg.find("--help") == 0:
                 print(f"usage: {sys.argv[0]}"\
                     f" [--help]"\
-                    f" [mode=\"plain\"|\"think\" (\"{mode}\")]"\
+                    f" [mode=\"plain\"|\"think\" (\"{self.mode}\")]"\
                     f" [show=True|False ({sp_args["show"]})]"\
                     f" [backend=\"ollama\"|\"llcpp\" (\"{sp_args["backend"]}\")]"\
                     f" [model_id=\"model_id\" (\"{sp_args["model_id"]}\")]"\
@@ -38,7 +39,7 @@ class sp_example:
                 self.res = -1
                 return
             elif sys_arg.find("mode=") == 0:
-                sp_args["mode"] = sys_arg[5:]
+                self.mode = sys_arg[5:]
             elif sys_arg.find("show=") == 0:
                 self.show = True if sys_arg[5:] == "True" else False
             elif sys_arg.find("backend=") == 0:
@@ -52,17 +53,15 @@ class sp_example:
             elif sys_arg.find("num_ctx=") == 0:
                 sp_args["num_ctx"] = int(sys_arg[8:])
 
-        if mode == "plain":
+        if self.mode == "plain":
             sp_args["prompt"] = sply.sp.create_prompt_default()
-        elif mode == "think":
+        elif self.mode == "think":
             sp_args["prompt"] = sply.sp.create_prompt_think()
 
         self.sp = sply.sp(**sp_args)
 
-        if mode == "plain":
+        if self.mode == "plain":
             self.runcode = self.sp.runcode
-        elif mode == "think":
+        elif self.mode == "think":
             self.runcode = self.sp.runcode_think
-
-        self.mode = mode
 
