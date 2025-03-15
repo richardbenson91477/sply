@@ -23,8 +23,8 @@ class sp_example:
         sp_args["temp"] = temp
         sp_args["num_ctx"] = num_ctx
 
-        for arg in sys.argv[1:]:
-            if arg.find("--help") == 0:
+        for sys_arg in sys.argv[1:]:
+            if sys_arg.find("--help") == 0:
                 print(f"usage: {sys.argv[0]}"\
                     f" [--help]"\
                     f" [mode=\"plain\"|\"think\" (\"{mode}\")]"\
@@ -37,20 +37,20 @@ class sp_example:
                     "")
                 self.res = -1
                 return
-            elif arg.find("mode=") == 0:
-                sp_args["mode"] = arg[5:]
-            elif arg.find("show=") == 0:
-                self.show = True if arg[5:] == "True" else False
-            elif arg.find("backend=") == 0:
-                sp_args["backend"] = arg[8:]
-            elif arg.find("model_id=") == 0:
-                sp_args["model_id"] = arg[9:]
-            elif arg.find("seed=") == 0:
-                sp_args["seed"] = int(arg[5:])
-            elif arg.find("temp=") == 0:
-                sp_args["temp"] = float(arg[5:])
-            elif arg.find("num_ctx=") == 0:
-                sp_args["num_ctx"] = int(arg[8:])
+            elif sys_arg.find("mode=") == 0:
+                sp_args["mode"] = sys_arg[5:]
+            elif sys_arg.find("show=") == 0:
+                self.show = True if sys_arg[5:] == "True" else False
+            elif sys_arg.find("backend=") == 0:
+                sp_args["backend"] = sys_arg[8:]
+            elif sys_arg.find("model_id=") == 0:
+                sp_args["model_id"] = sys_arg[9:]
+            elif sys_arg.find("seed=") == 0:
+                sp_args["seed"] = int(sys_arg[5:])
+            elif sys_arg.find("temp=") == 0:
+                sp_args["temp"] = float(sys_arg[5:])
+            elif sys_arg.find("num_ctx=") == 0:
+                sp_args["num_ctx"] = int(sys_arg[8:])
 
         if mode == "plain":
             sp_args["prompt"] = sply.sp.create_prompt_default()

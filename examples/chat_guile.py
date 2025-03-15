@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 import sys
-import random
 import sply
 
 prompt = "; "\
@@ -21,11 +20,11 @@ prompt = "; "\
 def main ():
     backend = ""
     model_id = "default-code"
-    for argv in sys.argv[1:]:
-        if argv.find("backend=") == 0:
-            backend = argv[8:]
-        if argv.find("model_id=") == 0:
-            model_id = argv[9:]
+    for sys_arg in sys.argv[1:]:
+        if sys_arg.find("backend=") == 0:
+            backend = sys_arg[8:]
+        if sys_arg.find("model_id=") == 0:
+            model_id = sys_arg[9:]
 
     c = sply.chat(
         backend=backend,
