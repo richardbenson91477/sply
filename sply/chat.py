@@ -36,7 +36,7 @@ class chat:
             "default": 42, "desc": "psuedo-random number generator seed for the LLM backend"},
         {"name": "temp", "type": float, "adjustable": True, "reload": False,
             "default": 0.8, "desc": "temperature setting for the LLM backend"},
-        {"name": "num_ctx", "type": int, "adjustable": True, "reload": False,
+        {"name": "num_ctx", "type": int, "adjustable": True, "reload": True,
             "default": 8_000, "desc": "context size for the LLM backend"},
         )
 
@@ -109,7 +109,10 @@ class chat:
                 if self.llcpp:
                     del self.llcpp
                 from llama_cpp import Llama
-                self.llcpp = Llama(model_path=self.model_id)
+                self.llcpp = Llama(
+                    model_path=self.model_id,
+                    n_ctx=self.num_ctx,
+                    )
                 self.gen_func = self.gen_func_llcpp 
 
 
