@@ -1,4 +1,4 @@
-all: install
+all:
 
 dist:
 	python -m build
