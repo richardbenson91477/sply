@@ -112,6 +112,7 @@ class chat:
                 self.llcpp = Llama(
                     model_path=self.model_id,
                     n_ctx=self.num_ctx,
+                    verbose=False,
                     )
                 self.gen_func = self.gen_func_llcpp 
 
