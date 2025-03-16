@@ -23,6 +23,7 @@
     - Currently rambles too much to get predictable output
   * DRT-o1-14B-Q4_0.gguf
     - sha256sum b3c53bf7c4e958950598cf5cff722db97605c585b402a6a6860b56fadd51c88d
+    - Currently doesn't \<think\> enough
   * google_gemma-3-12b-it-Q4_0.gguf
     - sha256sum 9a7b70be8727da9fb28523b35946dd42d4fe0f622cce03daa44fccff0775516d
   * huihui-ai_Mistral-Small-24B-Instruct-2501-abliterated-Q4_0.gguf
