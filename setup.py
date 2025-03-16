@@ -1,10 +1,6 @@
 # -*- coding: utf-8 -*-
 from setuptools import setup
 
-packages = ['sply', 'sply/overmind']
-
-package_data = {'': ['*']}
-
 setup_kwargs = {
     'name': 'sply',
     'version': '1.0.14',
@@ -15,8 +11,8 @@ setup_kwargs = {
     'maintainer': 'Richard Benson',
     'maintainer_email': 'richardbenson91477@protonmail.com',
     'url': 'https://github.com/richardbenson91477/sply',
-    'packages': packages,
-    'package_data': package_data,
+    'packages': ['sply', 'sply/overmind'],
+    'package_data': {'': ['*']},
     'python_requires': '>=3.8',
     'scripts': ['bin/sply_chat_interact.py']
 }

@@ -6,6 +6,9 @@ dist:
 install:
 	pip install --force-reinstall --no-build-isolation --no-deps .
 
+uninstall:
+	PYTHONPATH= pip uninstall sply
+
 test:
 	PYTHONPATH="." bin/sply_chat_interact.py $(test_args)
 
