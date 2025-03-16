@@ -53,6 +53,7 @@
     - sha256sum 8fa4f55937c4ea0c968e5c9cc3b4770f4f6e080651eb714c28eddc9d2bdec6ca
   * SicariusSicariiStuff_Phi-Line_14B-Q4_0.gguf
     - sha256sum eea06466ab2c7ce9d01498e8741da792d610b632299bb3fcea139669dad02422
+    - Currently rambles too much to get predictable output
 
 ## Dealing with incorrect output
   * Try a different model - see the [tested models list](#tested-models)
