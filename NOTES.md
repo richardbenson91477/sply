@@ -13,6 +13,9 @@
   * Hit Ctrl-C to interrupt generation and enter input mode
 
 ## Tested models
+  * agentica-org_DeepScaleR-1.5B-Preview-Q4_0.gguf (sha256sum 32ebacb157e5a2e2c8be00829160c2c6ccf69e2753aabcfc6fc942839636c950)
+    - Currently doesn't <think> enough
+  * Blabbertron-1.2.i1-Q4_0.gguf (sha256sum 18dc24a96e1b5cab6b614e6a4ec497ba1013ad20c33bb616c39d952af8e8ff6f)
   * DeepSeek-R1-Distill-Qwen-14B-Q4_0.gguf (sha256sum 906b3382f2680f4ce845459b4a122e904002b075238080307586bcffcde49eef)
     - Currently rambles too much to get predictable output
   * DRT-o1-14B-Q4_0.gguf (sha256sum b3c53bf7c4e958950598cf5cff722db97605c585b402a6a6860b56fadd51c88d)
@@ -23,6 +26,8 @@
     - Currently generates simulated python errors
   * Marco-o1-Q4_0.gguf (sha256sum 71fe2bef6ffea98a2e315b865337474c3c99c00564df65b14dd7741bdb1e9daa)
   * NousResearch_DeepHermes-3-Llama-3-3B-Preview-Q4_0.gguf (sha256sum 4b2473f0441778aef773fe421c0aa58fef44c9e14ae4423904df0540572a9183)
+  * OpenPipe_Deductive-Reasoning-Qwen-14B-Q4_0.gguf (sha256sum e9a173c4eaea59649940dfdd4b69cfc2c52ab47d308f747f165d693198646897)
+    - Currently doesn't <think> enough
   * phi-4-Q4_0.gguf (sha256sum 7c3e1b5bfb03bb4b13cf7ff4889676c5ad4ea92049352d8e1ded3f443f9b68c6)
     - Currently tends to generate unwanted markdown code blocks, multiple string results, etc.
   * qwen2.5-coder-14b-instruct-q4_0.gguf (sha256sum 561c8955089ad330dff56a40a001eb8bb4e12746354e76d0262bd65ab4640864)
