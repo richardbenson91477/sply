@@ -9,7 +9,7 @@ class chat:
         {"name": "backend", "type": str, "adjustable": True, "reload": True,
             "default": "ollama", "desc": "LLM backend (\"ollama\" | \"llcpp\")"},
         {"name": "model_id", "type": str, "adjustable": True, "reload": True,
-            "default": "default", "desc": "model for the LLM backend"},
+            "default": "default-code", "desc": "model for the LLM backend"},
         {"name": "editor", "type": str, "adjustable": True, "reload": False,
             "default": "vim -b", "desc": "editor path/args for prompt editing"},
         {"name": "user_name", "type": str, "adjustable": False, "reload": False,
