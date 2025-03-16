@@ -14,20 +14,21 @@
 
 ## Tested models
   * DeepSeek-R1-Distill-Qwen-14B-Q4_0.gguf (sha256sum 906b3382f2680f4ce845459b4a122e904002b075238080307586bcffcde49eef)
+    - Currently rambles too much to get predictable output
   * DRT-o1-14B-Q4_0.gguf (sha256sum b3c53bf7c4e958950598cf5cff722db97605c585b402a6a6860b56fadd51c88d)
   * google_gemma-3-12b-it-Q4_0.gguf (sha256sum 9a7b70be8727da9fb28523b35946dd42d4fe0f622cce03daa44fccff0775516d)
   * huihui-ai_Mistral-Small-24B-Instruct-2501-abliterated-Q4_0.gguf (sha256sum 165086808981b1f449c232aff7d2f7c610ef15a665f085a52fe25fcf0c787963)
-    - May generate simulated python errors
+    - Currently generates simulated python errors
   * ibm-granite_granite-3.2-8b-instruct-Q4_0.gguf (sha256sum 9115cddcad150f908b402072dafe860ce41b35e83613bfbdc7c0dce4afb04bc8)
-    - Currently generates many simulated python errors
+    - Currently generates simulated python errors
   * Marco-o1-Q4_0.gguf (sha256sum 71fe2bef6ffea98a2e315b865337474c3c99c00564df65b14dd7741bdb1e9daa)
   * NousResearch_DeepHermes-3-Llama-3-3B-Preview-Q4_0.gguf (sha256sum 4b2473f0441778aef773fe421c0aa58fef44c9e14ae4423904df0540572a9183)
   * phi-4-Q4_0.gguf (sha256sum 7c3e1b5bfb03bb4b13cf7ff4889676c5ad4ea92049352d8e1ded3f443f9b68c6)
-    - Has an unfortunate tendency to generate markdown code blocks, multiple string results, etc.
+    - Currently tends to generate unwanted markdown code blocks, multiple string results, etc.
   * qwen2.5-coder-14b-instruct-q4_0.gguf (sha256sum 561c8955089ad330dff56a40a001eb8bb4e12746354e76d0262bd65ab4640864)
     - Base-line for general testing; if something doesn't work, it's taken to be the library's fault
   * QwQ-Snowdrop.i1-IQ3_XXS.gguf (sha256sum 6f08d96e128caa67d48ccd6438aa6fd130fb866ce1ba5ed77269b55a42676bf8)
-    - Base-line for reasoning testing
+    - Currently rambles endlessly without QwQ specific settings - see [this article](https://docs.unsloth.ai/basics/tutorial-how-to-run-qwq-32b-effectively)
   * RekaAI_reka-flash-3-Q4_0.gguf (sha256sum 8fa4f55937c4ea0c968e5c9cc3b4770f4f6e080651eb714c28eddc9d2bdec6ca)
   * SicariusSicariiStuff_Phi-Line_14B-Q4_0.gguf (sha256sum eea06466ab2c7ce9d01498e8741da792d610b632299bb3fcea139669dad02422)
 
