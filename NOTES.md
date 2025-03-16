@@ -35,6 +35,7 @@
     - sha256sum 71fe2bef6ffea98a2e315b865337474c3c99c00564df65b14dd7741bdb1e9daa
   * NousResearch_DeepHermes-3-Llama-3-3B-Preview-Q4_0.gguf
     - sha256sum 4b2473f0441778aef773fe421c0aa58fef44c9e14ae4423904df0540572a9183
+    - Currently rambles too much to get predictable output
   * OpenPipe_Deductive-Reasoning-Qwen-14B-Q4_0.gguf
     - sha256sum e9a173c4eaea59649940dfdd4b69cfc2c52ab47d308f747f165d693198646897
     - Currently doesn't \<think\> enough
