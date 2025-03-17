@@ -1,0 +1,44 @@
+#!/bin/sh
+
+model_dir="/media/models/llama_models/"
+ 
+cd "$(dirname $(realpath $0))"
+
+export PYTHONPATH="."
+
+echo -n "SPLY "
+cat "setup.py" |
+    grep "version" |
+    tr -d " ',"
+
+for model in $(ollama list |
+      tail -n +2 |
+      cut -d' ' -f1 |
+      grep -v "^default"
+      | cut -d: -f1); do
+
+    model_path=$(readlink "$model_dir/model_$model")
+    model_sha256sum=$(cat "$model_dir/$model_path.sha256sum")
+    echo "**** testing $model_path $model_sha256sum ****"
+
+    echo "*** chat_guile ***"
+    examples/chat_guile.py model_id="$model"
+
+    echo "*** sp_transform ***"
+    examples/sp_transform.py model_id="$model"
+
+    echo "*** sp_example_pow mode=plain ***"
+    examples/sp_example_pow.py model_id="$model" mode="plain"
+
+    echo "*** sp_example_pow mode=think ***"
+    examples/sp_example_pow.py model_id="$model" mode="think"
+
+    echo "*** sp_example_raspberry mode=plain ***"
+    examples/sp_example_raspberry.py model_id="$model" mode="plain"
+
+    echo "*** sp_example_raspberry mode=think ***"
+    examples/sp_example_raspberry.py model_id="$model" mode="think"
+
+    echo "*** overmind_node_group ***"
+    overmind_model_id="$model" examples/overmind_node_group.py
+
