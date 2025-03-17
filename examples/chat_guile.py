@@ -8,7 +8,7 @@ prompt = "; "\
          "Assume the input code contains no mistakes or typos. "\
          "Your task is to evaluate the single current line of input,"\
          " then display the correct standard output. "\
-         "Do not generate markdown code blocks or JSON responses. "
+         "Do not generate markdown code blocks or JSON responses. "\
          "Do not think out loud.\n"
          "\n"\
          "scheme@(guile-user)> (+ 1 1)\n"\
