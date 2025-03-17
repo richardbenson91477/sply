@@ -14,7 +14,8 @@ prompt = "; "\
          "scheme@(guile-user)> (+ 1 1)\n"\
          "$1 = 2\n"\
          "scheme@(guile-user)> (+ 2 1)\n"\
-         "$1 = 3\n"
+         "$1 = 3\n"\
+         "scheme@(guile-user)> "\
 
 
 def main ():
