@@ -1,10 +1,23 @@
 #!/bin/sh
 
+list_path="ollama_test_model.list"
+
+ollama list > /dev/null 2>&1 || {
+    res="$?"
+    echo "$0: error running \"ollama list\": $res"
+    exit "$res"
+    }
+
 ollama list |
       tail -n +2 |
       cut -d' ' -f1 |
       grep -Ev "^default|^gemma3-vision" |
       cut -d: -f1 \
-  > ollama_test_model.list
+  > "$list_path" || {
+    res="$?"
+    echo "$0: error generating \"$list_path\": $res"
+    exit "$res"
+    }
 
+echo "generated \"$list_path\""
 
