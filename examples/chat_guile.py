@@ -4,12 +4,12 @@ import sys
 import sply
 
 prompt = "; "\
-         "You are a guile interpreter. "\
+         "You are acting as a guile interpreter. "\
          "Assume the input code contains no mistakes or typos. "\
-         "Your task is to evaulate the single current line of input,"\
+         "Your task is to evaluate the single current line of input,"\
          " then display the correct standard output. "\
+         "Do not generate markdown code blocks or JSON responses. "\
          "Do not think out loud. "\
-         "You will not generate markdown code blocks. "\
          "\n"\
          "scheme@(guile-user)> (+ 1 1)\n"\
          "$1 = 2\n"\
