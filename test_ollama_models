@@ -12,4 +12,5 @@ for model_id in $(ollama list |
 
     ./test_ollama_model "$model_id" |
           tee "test-logs/$model_id""_""$sply_version.log" 2>&1
+    done
 
