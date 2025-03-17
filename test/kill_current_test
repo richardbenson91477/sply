@@ -1,4 +1,22 @@
 #!/bin/sh
 
-exec kill $(pgrep -f "python3 ../examples/")
+test_log_dir="logs"
+test_current_path="$test_log_dir/test_current"
+
+[ ! -e "$test_current_path" ] && {
+    echo "$0: error: missing \"$test_current_path\""
+    exit -1
+    }
+
+proc_re="python3 "$(cat "$test_current_path" |
+    cut -d' ' -f 1
+    )
+
+proc_pid=$(pgrep -f "$proc_re")
+[ -n "$pid" ] || {
+    echo "$0: error: empty pgrep -f \"$proc_re\""
+    exit -2
+    }
+
+exec kill "$proc_pid"
 
