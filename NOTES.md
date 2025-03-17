@@ -13,7 +13,7 @@
   * Hit Ctrl-C to interrupt generation and enter input mode
 
 ## Tested models
-  * qwen2.5-coder-14b-\*-q\*.gguf
+  * qwen2.5-coder-14b
     - base-line for testing
   * TODO: semi-automated test logs for various models (coming soon)
 
@@ -22,7 +22,7 @@
   * Modify the prompt to show examples of expected behavior
   * Try a lower temperature value
   * Try an alternate seed number
-  * Reuse a working model/prompt/seed combo
+  * Reuse a working model/prompt/temp/seed combo
   * When all else fails, Ctrl-C + "edit_prompt()" are your friends
 
 ## Misc
