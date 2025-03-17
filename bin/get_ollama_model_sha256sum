@@ -8,7 +8,6 @@ cd "$(dirname $(realpath $0))"
     }
 
 model_id="$1"
-
 model_dir="/media/models/llama_models/"
 
 # we assume that $model_dir/model_(ollama model_id) is a symlink to a file $model_dir/(some_path_name).gguf

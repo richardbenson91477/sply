@@ -2,7 +2,9 @@
 
 cd "$(dirname $(realpath $0))"
 
-for model_id in $(cat "ollama_test_model.list"); do
+ollama_test_model_list_path="ollama_test_model.list"
+
+for model_id in $(cat "$ollama_test_model_list_path); do
     ./test_ollama_model "$model_id"
     done
 
