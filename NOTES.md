@@ -13,7 +13,7 @@
   * Hit Ctrl-C to interrupt generation and enter input mode
 
 ## Tested models
-  * qwen2.5-coder-14b-*-q*.gguf
+  * qwen2.5-coder-14b-\*-q\*.gguf
     - base-line for testing
   * TODO: semi-automated test logs for various models (coming soon)
 
