@@ -8,9 +8,10 @@ cd "$(dirname $(realpath $0))"
     }
 
 model_id="$1"
-model_sha256sum=$(./get_ollama_model_sha256sum "$model_id")
-sply_version=$(./sply_version)
-test_log_path="test-logs/$model_id""_""$sply_version.log" 
+model_sha256sum=$(../bin/get_ollama_model_sha256sum "$model_id")
+sply_version=$(../bin/sply_version)
+test_log_path="logs/$model_id""_""$sply_version.log" 
+overmind_model_id="$model_id" 
 
 export PYTHONPATH=".."
 
@@ -23,32 +24,12 @@ echo "*** sha256sum: \"$model_sha256sum\" ***" |
 echo "*** $sply_version *** " |
       tee -a "$test_log_path" 2>&1
 
-echo "*** $test_cmd ***" | 
-
-../examples/chat_guile.py model_id=\"$model_id\"
-          tee "test-logs/$model_id""_""$sply_version.log" 2>&1
-
-echo "*** examples/sp_transform.py ***"
-../examples/sp_transform.py model_id="$model_id"
-          tee "test-logs/$model_id""_""$sply_version.log" 2>&1
-
-echo "*** examples/sp_example_pow.py mode=\"plain\" ***"
-../examples/sp_example_pow.py model_id="$model_id" mode="plain"
-          tee "test-logs/$model_id""_""$sply_version.log" 2>&1
-
-echo "*** examples/sp_example_pow.py mode=\"think\" ***"
-../examples/sp_example_pow.py model_id="$model_id" mode="think"
-          tee "test-logs/$model_id""_""$sply_version.log" 2>&1
-
-echo "*** examples/sp_example_raspberry.py mode=\"plain\" ***"
-../examples/sp_example_raspberry.py model_id="$model_id" mode="plain"
-          tee "test-logs/$model_id""_""$sply_version.log" 2>&1
-
-echo "*** examples/sp_example_raspberry.py mode=\"think\" ***"
-../examples/sp_example_raspberry.py model_id="$model_id" mode="think"
-          tee "test-logs/$model_id""_""$sply_version.log" 2>&1
-
-echo "*** examples/overmind_node_group.py ***"
-overmind_model_id="$model_id" examples/overmind_node_group.py
-          tee "test-logs/$model_id""_""$sply_version.log" 2>&1
+IFS='
+'
+for test_cmd in $(cat "test_cmds.list"); do
+    echo "*** $test_cmd ***" | 
+          tee -a "$test_log_path" 2>&1
+    eval $test_cmd |
+          tee -a "$test_log_path" 2>&1
+    done
 

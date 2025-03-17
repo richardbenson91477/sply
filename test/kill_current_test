@@ -1,4 +1,4 @@
 #!/bin/sh
 
-exec kill $(pgrep -f "python3 ../examples")
+exec kill $(pgrep -f "python3 ../examples/")
 
