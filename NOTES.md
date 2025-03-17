@@ -15,7 +15,7 @@
 ## Tested models
   * qwen2.5-coder-14b-*-q*.gguf
     - base-line for testing
-  * TODO: automated test logs (coming soon)
+  * TODO: semi-automated test logs for various models (coming soon)
 
 ## Dealing with incorrect output
   * Try a different model - see the [tested models list](#tested-models)
