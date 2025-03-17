@@ -1,0 +1,8 @@
+#!/bin/sh
+
+echo "SPLY-"$(cat "setup.py" |
+      grep "version" |
+      cut -d: -f2 |
+      tr -d " ',"
+      )
+
