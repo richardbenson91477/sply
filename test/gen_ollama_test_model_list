@@ -1,0 +1,10 @@
+#!/bin/sh
+
+ollama list |
+      tail -n +2 |
+      cut -d' ' -f1 |
+      grep -Ev "^default|^gemma3-vision" |
+      cut -d: -f1 \
+  > ollama_test_model.list
+
+

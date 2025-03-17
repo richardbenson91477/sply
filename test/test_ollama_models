@@ -1,0 +1,8 @@
+#!/bin/sh
+
+cd "$(dirname $(realpath $0))"
+
+for model_id in $(cat "ollama_test_model.list"); do
+    ./test_ollama_model "$model_id"
+    done
+

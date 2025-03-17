@@ -24,22 +24,29 @@ echo "*** $sply_version *** "
 
 echo "*** examples/chat_guile.py ***"
 examples/chat_guile.py model_id="$model_id"
+          tee "test-logs/$model_id""_""$sply_version.log" 2>&1
 
 echo "*** examples/sp_transform.py ***"
 examples/sp_transform.py model_id="$model_id"
+          tee "test-logs/$model_id""_""$sply_version.log" 2>&1
 
 echo "*** examples/sp_example_pow.py mode=\"plain\" ***"
 examples/sp_example_pow.py model_id="$model_id" mode="plain"
+          tee "test-logs/$model_id""_""$sply_version.log" 2>&1
 
 echo "*** examples/sp_example_pow.py mode=\"think\" ***"
 examples/sp_example_pow.py model_id="$model_id" mode="think"
+          tee "test-logs/$model_id""_""$sply_version.log" 2>&1
 
 echo "*** examples/sp_example_raspberry.py mode=\"plain\" ***"
 examples/sp_example_raspberry.py model_id="$model_id" mode="plain"
+          tee "test-logs/$model_id""_""$sply_version.log" 2>&1
 
 echo "*** examples/sp_example_raspberry.py mode=\"think\" ***"
 examples/sp_example_raspberry.py model_id="$model_id" mode="think"
+          tee "test-logs/$model_id""_""$sply_version.log" 2>&1
 
 echo "*** examples/overmind_node_group.py ***"
 overmind_model_id="$model_id" examples/overmind_node_group.py
+          tee "test-logs/$model_id""_""$sply_version.log" 2>&1
 
