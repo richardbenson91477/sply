@@ -11,6 +11,7 @@ model_id="$1"
 model_sha256sum=$(../bin/get_ollama_model_sha256sum "$model_id")
 sply_version=$(../bin/sply_version)
 test_log_path="logs/$model_id""_""$sply_version.log" 
+ollama_test_cmds_path="ollama_test_cmds.list"
 overmind_model_id="$model_id" 
 
 export PYTHONPATH=".."
@@ -26,7 +27,7 @@ echo "*** $sply_version *** " |
 
 IFS='
 '
-for test_cmd in $(cat "test_cmds.list"); do
+for test_cmd in $(cat "$ollama_test_cmds_list_path"); do
     echo "*** $test_cmd ***" | 
           tee -a "$test_log_path" 2>&1
     eval $test_cmd |

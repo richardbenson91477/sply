@@ -1,6 +1,9 @@
 #!/bin/sh
 
+cd "$(dirname $(realpath $0))"
+
 list_path="ollama_test_model.list"
+grev="^default|^gemma3-vision"
 
 ollama list > /dev/null 2>&1 || {
     res="$?"
@@ -11,7 +14,7 @@ ollama list > /dev/null 2>&1 || {
 ollama list |
       tail -n +2 |
       cut -d' ' -f1 |
-      grep -Ev "^default|^gemma3-vision" |
+      grep -Ev "$grev" |
       cut -d: -f1 \
   > "$list_path" || {
     res="$?"
