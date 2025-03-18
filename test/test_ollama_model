@@ -8,7 +8,7 @@ cd "$(dirname $(realpath $0))"
     }
 
 model_id="$1"
-model_sha256sum=$(../bin/get_ollama_model_sha256sum "$model_id")
+model_sha256sum=$(./get_ollama_model_sha256sum "$model_id")
 sply_version=$(../bin/sply_version)
 test_log_dir="logs"
 test_log_path="$test_log_dir/$model_id""_""$sply_version.log" 
