@@ -41,7 +41,7 @@ print(i ** 3)
 <think>The print statement executed successfully and displayed the number 125 as standard output.</think>****
 
 *** ../examples/sp_example_raspberry.py model_id="$model_id" mode="plain" ***
-*** review: wrong result, correct formatting on the first print, incorrect formatting on the second ***
+*** review: wrong result, correct format on the first print, incorrect format on the second ***
 name = "raspberry"
 >>> print(name.count("r"))
 1**1**
@@ -49,7 +49,7 @@ print(name.count("r"))
 >>>**>>>**
 
 *** ../examples/sp_example_raspberry.py model_id="$model_id" mode="think" ***
-*** review: wrong result, correct formatting ***
+*** review: wrong result, correct format ***
 name = "raspberry"
 <think>name was assigned the string "raspberry", and now we evaluate name.</think>raspberryprint(name.count("r"))
 <think>The count method returns the number of occurrences of a substring in a string. Here, it will return the number of times 'r' appears in "raspberry". Since there are two 'r's, the output will be 2.</think>2**2**
@@ -57,7 +57,7 @@ print(name.count("r"))
 <think>The print function outputs the result of the count method, which is 2. So, I will display 2 as the standard output.</think>2**2**
 
 *** ../examples/overmind_node_group.py ***
-*** review: very near perfect ***
+*** review: perfect ***
 [ The following is an ongoing log of a python interpreter session. There is no reason that markdown quoted blocks should appear here.]
 >>> from transformers import pipeline
 >>> pipe = pipeline("text-generation", model="meta-llama/Meta-Llama-3-8B-Instruct")

@@ -54,7 +54,7 @@ print(i ** 3)
 Therefore, the result should be 125. Since this is inside a print statement, it will output as an integer without quotes.</think>125**125**
 
 *** ../examples/sp_example_raspberry.py model_id="$model_id" mode="plain" ***
-*** review: result wrong, formatting correct ***
+*** review: wrong result, correct format ***
 name = "raspberry"
 >>> print(name.count("r"))
 2
@@ -64,7 +64,7 @@ print(name.count("r"))
 >>> **2**
 
 *** ../examples/sp_example_raspberry.py model_id="$model_id" mode="think" ***
-*** review: result wrong, formatting correct ***
+*** review: wrong result, correct format ***
 name = "raspberry"
 <think>name is assigned the string "raspberry". No output needed yet.</think>
 >>> print(name.count("r"))

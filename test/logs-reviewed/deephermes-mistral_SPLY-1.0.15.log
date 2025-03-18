@@ -24,7 +24,7 @@ y = 1 + 1
 2y is 2
 
 *** ../examples/sp_example_pow.py model_id="$model_id" mode="plain" ***
-*** review: correct result, formatting correct on first print but wrong on second ***
+*** review: correct result, correct format on first print but wrong on second ***
 i = 3 + 2
 5print(i ** 3)
 125**125**
@@ -32,7 +32,7 @@ print(i ** 3)
 125print(i ** 3)**125print(i ** 3)**
 
 *** ../examples/sp_example_pow.py model_id="$model_id" mode="think" ***
-*** review: correct result, formatting correct on first print but wrong on second (again!) ***
+*** review: correct result, correct format on first print but wrong on second ***
 i = 3 + 2
 <think>i is assigned the result of 3 + 2, which equals 5. So when we evaluate i, it should return 5.print(i ** 3)
 <think>i was set to 5, and now we are evaluating i ** 3, which is 5^3 = 125. So the output will be 125.**i was set to 5, and now we are evaluating i ** 3, which is 5^3 = 125. So the output will be 125.**
@@ -40,7 +40,7 @@ print(i ** 3)
 <think>125**125**
 
 *** ../examples/sp_example_raspberry.py model_id="$model_id" mode="plain" ***
-*** review: wrong result, correct formatting ***
+*** review: wrong result, correct format ***
 name = "raspberry"
 'raspberry'
 >>> print(name.count("r"))
@@ -49,7 +49,7 @@ print(name.count("r"))
 2**2**
 
 *** ../examples/sp_example_raspberry.py model_id="$model_id" mode="think" ***
-*** review: wrong result, formatting correct on second print but wrong on first (huh?) ***
+*** review: wrong result, correct format on second print but wrong on first ***
 name = "raspberry"
 <think>name was assigned the string "raspberry", but there is no evaluation of name in this line, so nothing needs to be outputted.print(name.count("r"))
 <think>The code calls the count() method on the string stored in the variable name. The argument passed to count() is "r", which means it will count the number of occurrences of the character 'r' in the string.

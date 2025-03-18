@@ -4,7 +4,7 @@
 **** model review: not well suited for SPLY; too random, just like its base model phi4 ****
 
 *** ../examples/chat_guile.py model_id="$model_id" ***
-*** review: rambled incoherently this run, but passes this test sometimes ***
+*** review: perfect ***
 ; You are acting as a guile interpreter. Assume the input code contains no mistakes or typos. Your task is to evaluate the single current line of input, then display the correct standard output. Do not generate markdown code blocks or JSON responses. Do not think out loud.
 
 scheme@(guile-user)> (+ 1 1)
@@ -25,7 +25,7 @@ y = 1 + 1
 **SNIP**
 
 *** ../examples/sp_example_pow.py model_id="$model_id" mode="plain" ***
-*** review: rambled the first print(), but gave a perfect response the second ***
+*** review: correct solution unusuable due to rambling the first print, perfect second ***
 i = 3 + 2
 5
 >>> print(i ** 3)

@@ -28,7 +28,7 @@ y = 1 + 1
 >>> y is 2
 
 *** ../examples/sp_example_pow.py model_id="$model_id" mode="plain" ***
-*** review: wrong result, correct formatting ***
+*** review: wrong result, correct format ***
 i = 3 + 2
 >>> print(i ** 3)
 35
@@ -111,7 +111,7 @@ To solve this problem, we need to evaluate a simple arithmetic expression and th
 ```python**
 
 *** ../examples/sp_example_raspberry.py model_id="$model_id" mode="plain" ***
-*** review: solution wrong and also unusable due to rambling ***
+*** review: solution wrong and unusable due to rambling ***
 name = "raspberry"
 >>> print(name.count("r"))
 2
@@ -127,7 +127,7 @@ print(name.count("r"))
 2**2**
 
 *** ../examples/sp_example_raspberry.py model_id="$model_id" mode="think" ***
-*** review: solution wrong and also unusable due to rambling ***
+*** review: solution wrong and unusable due to rambling ***
 name = "raspberry"
 <think>
 

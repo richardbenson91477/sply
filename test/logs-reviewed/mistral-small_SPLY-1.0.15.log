@@ -23,7 +23,7 @@ y = 1 + 1
 2y is 2
 
 *** ../examples/sp_example_pow.py model_id="$model_id" mode="plain" ***
-*** review: wrong result, correct formatting on first print, failed second print due to simulated python error ***
+*** review: wrong result, correct format on first print, failed second print due to simulated python error ***
 i = 3 + 2
 >>> print(i ** 3)
 27**27**
@@ -42,7 +42,7 @@ print(i ** 3)
 125****
 
 *** ../examples/sp_example_raspberry.py model_id="$model_id" mode="plain" ***
-*** review: wrong result, correct formatting ***
+*** review: wrong result, correct format ***
 name = "raspberry"
 >>> print(name.count("r"))
 2**2**
@@ -50,7 +50,7 @@ print(name.count("r"))
 2**2**
 
 *** ../examples/sp_example_raspberry.py model_id="$model_id" mode="think" ***
-*** review: wrong result, correct formatting ***
+*** review: wrong result, correct format ***
 name = "raspberry"
 <think>name is assigned the string "raspberry".</think>
 >>> print(name.count("r"))

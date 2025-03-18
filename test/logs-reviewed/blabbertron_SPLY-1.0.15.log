@@ -1,7 +1,7 @@
 ***** testing "blabbertron" *****
 **** sha256sum: "18dc24a96e1b5cab6b614e6a4ec497ba1013ad20c33bb616c39d952af8e8ff6f  Blabbertron-1.2.i1-Q4_0.gguf" ****
 **** SPLY-1.0.15 **** 
-**** model review: good model, well suited for SPLY ****
+**** model review: good model, well suited ****
 
 *** ../examples/chat_guile.py model_id="$model_id" ***
 *** review: perfect ***
@@ -34,7 +34,7 @@ print(i ** 3)
 >>> **125**
 
 *** ../examples/sp_example_pow.py model_id="$model_id" mode="think" ***
-*** review: nearly perfect: newline before result. perhaps fixable with prompt changes
+*** review: nearly perfect - newline before result
 i = 3 + 2
 <think>First, evaluate the expression on the right side of the assignment operator. The expression is 3 + 2, which equals 5. Then assign this value to the variable i.</think>
 5
@@ -60,7 +60,7 @@ print(name.count("r"))
 >>> **3**
 
 *** ../examples/sp_example_raspberry.py model_id="$model_id" mode="think" ***
-*** review: result wrong, formatting good
+*** review: wrong result, correct format
 name = "raspberry"
 <think>name is a string variable assigned the value "raspberry".</think>
 >>> print(name.count("r"))
@@ -71,7 +71,7 @@ print(name.count("r"))
 >>> **2**
 
 *** ../examples/overmind_node_group.py ***
-*** review: perfect but a little dry
+*** review: perfect
 [ The following is an ongoing log of a python interpreter session. There is no reason that markdown quoted blocks should appear here.]
 >>> from transformers import pipeline
 >>> pipe = pipeline("text-generation", model="meta-llama/Meta-Llama-3-8B-Instruct")

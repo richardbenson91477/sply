@@ -22,7 +22,7 @@ For example:
 **SNIP**
 
 *** ../examples/sp_example_pow.py model_id="$model_id" mode="plain" ***
-*** review: result wrong but formatting correct ***
+*** review: wrong result, correct format ***
 i = 3 + 2
 >>> print(i ** 3)
 27
@@ -32,7 +32,7 @@ print(i ** 3)
 >>> **27**
 
 *** ../examples/sp_example_pow.py model_id="$model_id" mode="think" ***
-*** review: result correct but unuable due to formatting ***
+*** review: result correct but unuable due to format ***
 i = 3 + 2
 <think>Calculating 3 plus 2 gives 5. So i should be 5 now.</think>5
 >>> print(i ** 3)
@@ -79,7 +79,7 @@ I should also check if there are any possible errors here. The variable 'i' exis
  <sep> human:**
 
 *** ../examples/sp_example_raspberry.py model_id="$model_id" mode="plain" ***
-*** review: result wrong, formatting correct ***
+*** review: wrong result, correct format ***
 name = "raspberry"
 >>> print(name.count("r"))
 2
@@ -89,7 +89,7 @@ print(name.count("r"))
 >>> **2**
 
 *** ../examples/sp_example_raspberry.py model_id="$model_id" mode="think" ***
-*** review: result correct but unusable due to formatting ***
+*** review: solution correct but unusable due to formatting ***
 name = "raspberry"
 <think>Assigning the string "raspberry" to variable name. No output here unless printed.</think>
 >>> print(name.count("r"))

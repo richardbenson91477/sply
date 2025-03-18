@@ -15,7 +15,7 @@ scheme@(guile-user)> (* 3 2)
 6
 
 *** ../examples/sp_transform.py model_id="$model_id" ***
-*** review: what? ***
+*** review: just no ***
 y is 1
 y = 1 + 1
 2y
@@ -27,7 +27,7 @@ print(y)
 ```
 
 *** ../examples/sp_example_pow.py model_id="$model_id" mode="plain" ***
-*** review: wrong result, correct formating on the first print, incorrect formatting on the second print ***
+*** review: wrong result, correct format on the first print, incorrect format on the second print ***
 i = 3 + 2
 4print(i ** 3)
 64**64**
@@ -39,7 +39,7 @@ print(i ** 3)
 **
 
 *** ../examples/sp_example_pow.py model_id="$model_id" mode="think" ***
-*** review: correct result, unusuable due to formatting ***
+*** review: correct result, unusuable due to format ***
 i = 3 + 2
 <think>```python
 i = 3 + 2
@@ -101,7 +101,7 @@ The expression `i ** 3` calculates 5 raised to the power of 3. This results in 1
 ```**
 
 *** ../examples/sp_example_raspberry.py model_id="$model_id" mode="plain" ***
-*** review: correct result first print, incorrect second (?). formatting correct  ***
+*** review: correct result first print, incorrect second (!). correct format ***
 name = "raspberry"
 "raspberry"print(name.count("r"))
 3**3**

@@ -24,7 +24,7 @@ y = 1 + 1
 >>> y is 2
 
 *** ../examples/sp_example_pow.py model_id="$model_id" mode="plain" ***
-*** review: wrong result, correct formatting ***
+*** review: wrong result, correct format ***
 i = 3 + 2
 >>> print(i ** 3)
 27
@@ -45,7 +45,7 @@ print(i ** 3)
 >>> **125**
 
 *** ../examples/sp_example_raspberry.py model_id="$model_id" mode="plain" ***
-*** review: wrong result, correct formatting ***
+*** review: wrong result, correct format ***
 name = "raspberry"
 >>> print(name.count("r"))
 2
@@ -55,7 +55,7 @@ print(name.count("r"))
 >>> **2**
 
 *** ../examples/sp_example_raspberry.py model_id="$model_id" mode="think" ***
-*** review: wrong result, correct formatting ***
+*** review: wrong result, correct format ***
 name = "raspberry"
 <think>The variable name is assigned the string "raspberry". The prompt asks for the value of the variable name, so I will output the string "raspberry".</think>raspberry
 >>> print(name.count("r"))
@@ -66,7 +66,7 @@ print(name.count("r"))
 >>> **2**
 
 *** ../examples/overmind_node_group.py ***
-*** review: nearly perfect: treats group as a detached entity ***
+*** review: nearly perfect: 3rd person group ***
 [ The following is an ongoing log of a python interpreter session. There is no reason that markdown quoted blocks should appear here.]
 >>> from transformers import pipeline
 >>> pipe = pipeline("text-generation", model="meta-llama/Meta-Llama-3-8B-Instruct")

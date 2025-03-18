@@ -48,7 +48,7 @@ print(i ** 3)
 >>> **125**
 
 *** ../examples/sp_example_raspberry.py model_id="$model_id" mode="plain" ***
-*** review: solution wrong, formatting correct ***
+*** review: wrong result, correct format
 name = "raspberry"
 >>> print(name.count("r"))
 2
@@ -58,7 +58,7 @@ print(name.count("r"))
 >>> **2**
 
 *** ../examples/sp_example_raspberry.py model_id="$model_id" mode="think" ***
-*** review: solution wrong, formatting correct ***
+*** review: wrong result, correct format
 name = "raspberry"
 <think>name was set to "raspberry", then name was evaluated, so I will output the string "raspberry".</think>raspberry
 >>> print(name.count("r"))
@@ -69,7 +69,7 @@ print(name.count("r"))
 >>> **2**
 
 *** ../examples/overmind_node_group.py ***
-*** review: nearly perfect: treats the group as a single being ***
+*** review: nearly perfect - treats the group as a single being ***
 [ The following is an ongoing log of a python interpreter session. There is no reason that markdown quoted blocks should appear here.]
 >>> from transformers import pipeline
 >>> pipe = pipeline("text-generation", model="meta-llama/Meta-Llama-3-8B-Instruct")
