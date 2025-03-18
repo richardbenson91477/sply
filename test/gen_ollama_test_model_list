@@ -12,6 +12,7 @@ ollama list > /dev/null 2>&1 || {
     }
 
 ollama list |
+      sort -n -k3 |
       tail -n +2 |
       cut -d' ' -f1 |
       grep -Ev "$grev" |
