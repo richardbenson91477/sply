@@ -13,7 +13,8 @@ sply_version=$(../bin/sply_version)
 test_log_dir="logs"
 test_log_path="$test_log_dir/$model_id""_""$sply_version.log" 
 ollama_test_cmds_list_path="ollama_test_cmds.list"
-overmind_model_id="$model_id" 
+export overmind_model_id="$model_id" 
+export overmind_show="True" 
 
 export PYTHONPATH=".."
 
