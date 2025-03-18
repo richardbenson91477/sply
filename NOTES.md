@@ -23,6 +23,11 @@
     - sha256sum: 561c8955089ad330dff56a40a001eb8bb4e12746354e76d0262bd65ab4640864
     - SPLY-1.0.15
     - model review: great model, suitable because as this is my chosen basis
+
+  * mistralai_Mistral-Small-3.1-24B-Instruct-2503-Q4_0.gguf
+    - sha256sum: f9e71cfc59d011d1ff20b8444dcfa9c9fbbdfe9bfb40ebe6ae226be1f7c48d8f
+    - SPLY-1.0.16
+    - model review: good model, well suited
   
   * Blabbertron-1.2.i1-Q4_0.gguf
     - sha256sum: 18dc24a96e1b5cab6b614e6a4ec497ba1013ad20c33bb616c39d952af8e8ff6f
@@ -68,12 +73,12 @@
   * huihui-ai_Mistral-Small-24B-Instruct-2501-abliterated-Q4_0.gguf
     - sha256sum: 165086808981b1f449c232aff7d2f7c610ef15a665f085a52fe25fcf0c787963
     - SPLY-1.0.15
-    - model review: not well suited due to formatting and simulated python errors
+    - model review: not well suited due to formatting and simulated python errors (unlike the newer 2503 version above)
   
   * NousResearch_DeepHermes-3-Mistral-24B-Preview-Q4_0.gguf
     - sha256sum: 071a8b73091b22edb96f4fe3e4a3cc4c3f9db2ae7ac2e766244917837fedf115
     - SPLY-1.0.15
-    - model review: not well suited due to formatting and simulated python errors, like its base model
+    - model review: not well suited due to formatting and simulated python errors, like its base model (mistral-small-2501)
   
   * DeepSeek-R1-Distill-Qwen-14B-Q4_0.gguf
     - sha256sum: 906b3382f2680f4ce845459b4a122e904002b075238080307586bcffcde49eef
