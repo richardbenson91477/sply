@@ -1,4 +1,4 @@
-***** testing "mistral-small" *****
+***** testing "mistral-small-2501" *****
 **** sha256sum: "165086808981b1f449c232aff7d2f7c610ef15a665f085a52fe25fcf0c787963  huihui-ai_Mistral-Small-24B-Instruct-2501-abliterated-Q4_0.gguf" ****
 **** SPLY-1.0.15 ****
 **** model review: currently not well suited due to formatting and simulated python errors ****
