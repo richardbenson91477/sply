@@ -30,6 +30,9 @@ echo "**** $sply_version ****" |
 echo "**** model review: TODO ****" |
       tee -a "$test_log_path" 2>&1
 
+echo |
+      tee -a "$test_log_path" 2>&1
+
 IFS='
 '
 for test_cmd in $(cat "$ollama_test_cmds_list_path"); do
@@ -40,6 +43,9 @@ for test_cmd in $(cat "$ollama_test_cmds_list_path"); do
           tee -a "$test_log_path" 2>&1
 
     eval $test_cmd |
+          tee -a "$test_log_path" 2>&1
+
+    echo |
           tee -a "$test_log_path" 2>&1
 
     done
