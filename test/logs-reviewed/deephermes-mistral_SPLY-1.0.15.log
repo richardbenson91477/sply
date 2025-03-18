@@ -1,7 +1,7 @@
 ***** testing "deephermes-mistral" *****
 **** sha256sum: "071a8b73091b22edb96f4fe3e4a3cc4c3f9db2ae7ac2e766244917837fedf115  NousResearch_DeepHermes-3-Mistral-24B-Preview-Q4_0.gguf" ****
 **** SPLY-1.0.15 ****
-**** model review: not currently well suited due to formatting and simulated python errors, like its base model ****
+**** model review: not currently well suited due to formatting and simulated python errors, like its base model (the 2501 version of mistral-small) ****
 
 *** ../examples/chat_guile.py model_id="$model_id" ***
 *** review: perfect ***
