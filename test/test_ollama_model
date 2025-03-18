@@ -18,19 +18,25 @@ export overmind_show="True"
 
 export PYTHONPATH=".."
 
-echo "**** testing \"$model_id\" ****" | 
+echo "***** testing \"$model_id\" *****" | 
       tee "$test_log_path" 2>&1
 
-echo "*** sha256sum: \"$model_sha256sum\" ***" |
+echo "**** sha256sum: \"$model_sha256sum\" ****" |
       tee -a "$test_log_path" 2>&1
 
-echo "*** $sply_version *** " |
+echo "**** $sply_version ****" |
+      tee -a "$test_log_path" 2>&1
+
+echo "**** model review: TODO ****" |
       tee -a "$test_log_path" 2>&1
 
 IFS='
 '
 for test_cmd in $(cat "$ollama_test_cmds_list_path"); do
     echo "*** $test_cmd ***" | 
+          tee -a "$test_log_path" 2>&1
+
+    echo "*** review: TODO ***" |
           tee -a "$test_log_path" 2>&1
 
     eval $test_cmd |
