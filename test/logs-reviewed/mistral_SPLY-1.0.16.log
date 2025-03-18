@@ -1,7 +1,7 @@
 ***** testing "mistral" *****
 **** sha256sum: "f9e71cfc59d011d1ff20b8444dcfa9c9fbbdfe9bfb40ebe6ae226be1f7c48d8f  mistralai_Mistral-Small-3.1-24B-Instruct-2503-Q4_0.gguf" ****
 **** SPLY-1.0.16 ****
-**** model review: good model, well suited (2503 much better than 2501!) ****
+**** model review: good model, well suited ****
 
 *** ../examples/chat_guile.py model_id="$model_id" ***
 *** review: perfect ***
