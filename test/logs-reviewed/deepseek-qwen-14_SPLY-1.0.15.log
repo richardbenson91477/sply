@@ -1,7 +1,7 @@
 ***** testing "deepseek-qwen-14" *****
 **** sha256sum: "906b3382f2680f4ce845459b4a122e904002b075238080307586bcffcde49eef  DeepSeek-R1-Distill-Qwen-14B-Q4_0.gguf" ****
 **** SPLY-1.0.15 ****
-**** model review: unsuitable due to rambling and formatting unpredicability ****
+**** model review: unsuitable due to rambling and formatting unpredictability ****
 
 *** ../examples/chat_guile.py model_id="$model_id" ***
 *** review: solution correct but unusable due to rambling ***

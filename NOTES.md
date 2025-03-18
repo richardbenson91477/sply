@@ -78,7 +78,7 @@
   * DeepSeek-R1-Distill-Qwen-14B-Q4_0.gguf
     - sha256sum: 906b3382f2680f4ce845459b4a122e904002b075238080307586bcffcde49eef
     - SPLY-1.0.15
-    - model review: unsuitable due to rambling and formatting unpredicability
+    - model review: unsuitable due to rambling and formatting unpredictability
   
 ## Dealing with incorrect output
   * Try a different model - see the [tested suitable models list](#tested-suitable-models)
