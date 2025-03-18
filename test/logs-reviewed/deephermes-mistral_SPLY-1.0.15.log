@@ -24,7 +24,7 @@ y = 1 + 1
 2y is 2
 
 *** ../examples/sp_example_pow.py model_id="$model_id" mode="plain" ***
-*** review: corret result, formatting correct on first print but wrong on second ***
+*** review: correct result, formatting correct on first print but wrong on second ***
 i = 3 + 2
 5print(i ** 3)
 125**125**
@@ -32,7 +32,7 @@ print(i ** 3)
 125print(i ** 3)**125print(i ** 3)**
 
 *** ../examples/sp_example_pow.py model_id="$model_id" mode="think" ***
-*** review: corret result, formatting correct on first print but wrong on second (again!) ***
+*** review: correct result, formatting correct on first print but wrong on second (again!) ***
 i = 3 + 2
 <think>i is assigned the result of 3 + 2, which equals 5. So when we evaluate i, it should return 5.print(i ** 3)
 <think>i was set to 5, and now we are evaluating i ** 3, which is 5^3 = 125. So the output will be 125.**i was set to 5, and now we are evaluating i ** 3, which is 5^3 = 125. So the output will be 125.**
