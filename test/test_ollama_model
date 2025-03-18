@@ -13,7 +13,6 @@ sply_version=$(../bin/sply_version)
 test_log_dir="logs"
 test_log_path="$test_log_dir/$model_id""_""$sply_version.log" 
 ollama_test_cmds_list_path="ollama_test_cmds.list"
-test_current_path="$test_log_dir/test_current"
 overmind_model_id="$model_id" 
 
 export PYTHONPATH=".."
@@ -30,14 +29,11 @@ echo "*** $sply_version *** " |
 IFS='
 '
 for test_cmd in $(cat "$ollama_test_cmds_list_path"); do
-    echo "$test_cmd" > "$test_current_path"
-
     echo "*** $test_cmd ***" | 
           tee -a "$test_log_path" 2>&1
 
     eval $test_cmd |
           tee -a "$test_log_path" 2>&1
 
-    rm -f "$test_current_path"
     done
 
