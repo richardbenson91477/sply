@@ -66,7 +66,7 @@ print(name.count("r"))
 >>> **2**
 
 *** ../examples/overmind_node_group.py ***
-*** review: near perfect - group speaks in 3rd person ***
+*** review: near perfect - group speaking in 3rd person ***
 [ The following is an ongoing log of a python interpreter session. There is no reason that markdown quoted blocks should appear here.]
 >>> from transformers import pipeline
 >>> pipe = pipeline("text-generation", model="meta-llama/Meta-Llama-3-8B-Instruct")

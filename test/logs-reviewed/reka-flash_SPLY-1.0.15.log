@@ -4,7 +4,7 @@
 **** model review: smart model but not well suited due to rambling ****
 
 *** ../examples/chat_guile.py model_id="$model_id" ***
-*** review: result correct but unusable due to rambling ***
+*** review: correct solution but unusable due to rambling ***
 ; You are acting as a guile interpreter. Assume the input code contains no mistakes or typos. Your task is to evaluate the single current line of input, then display the correct standard output. Do not generate markdown code blocks or JSON responses. Do not think out loud.
 
 scheme@(guile-user)> (+ 1 1)
@@ -32,7 +32,7 @@ print(i ** 3)
 >>> **27**
 
 *** ../examples/sp_example_pow.py model_id="$model_id" mode="think" ***
-*** review: result correct but unuable due to format ***
+*** review: solution correct but unuable due to format ***
 i = 3 + 2
 <think>Calculating 3 plus 2 gives 5. So i should be 5 now.</think>5
 >>> print(i ** 3)

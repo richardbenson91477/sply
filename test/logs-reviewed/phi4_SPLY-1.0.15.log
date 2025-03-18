@@ -39,7 +39,7 @@ print(i ** 3)
 **
 
 *** ../examples/sp_example_pow.py model_id="$model_id" mode="think" ***
-*** review: correct result, unusuable due to format ***
+*** review: correct solution, unusuable due to format ***
 i = 3 + 2
 <think>```python
 i = 3 + 2

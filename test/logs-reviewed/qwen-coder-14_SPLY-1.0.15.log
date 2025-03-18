@@ -65,7 +65,7 @@ print(name.count("r"))
 >>> **2**
 
 *** ../examples/overmind_node_group.py ***
-*** review: fails at the end due to spurious markdown quoted code blocks ***
+*** review: fails due to spurious markdown quoted code blocks ***
 [ The following is an ongoing log of a python interpreter session. There is no reason that markdown quoted blocks should appear here.]
 >>> from transformers import pipeline
 >>> pipe = pipeline("text-generation", model="meta-llama/Meta-Llama-3-8B-Instruct")

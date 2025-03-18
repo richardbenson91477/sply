@@ -32,7 +32,7 @@ SyntaxError: invalid syntax
 >>> **SyntaxError: invalid syntax**
 
 *** ../examples/sp_example_pow.py model_id="$model_id" mode="think" ***
-*** review: correct result, unusable due to wrong formatting ***
+*** review: correct solution, unusable due to wrong formatting ***
 i = 3 + 2
 <think>i is being assigned the result of the expression 3+2. The result of this expression is 5. So, I will assign 5 to i and evaluate it.</think>5print(i ** 3)
 <think>i was previously set to 5. Now we are evaluating the expression i**3. This means 5 raised to the power of 3. Calculating that gives us 125. So, I will output 125.</think>

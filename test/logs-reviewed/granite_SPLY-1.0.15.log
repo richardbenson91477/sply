@@ -32,7 +32,7 @@ print(i ** 3)
 >>>**>>>**
 
 *** ../examples/sp_example_pow.py model_id="$model_id" mode="think" ***
-*** review: correct result, correct format on first print, incorrect on second  ***
+*** review: perfect first print but wrong result, correct format on second ***
 i = 3 + 2
 <think>i is the result of adding 3 and 2, which equals 5. Therefore, I will output 5.</think>5
 >>> print(i ** 3)
