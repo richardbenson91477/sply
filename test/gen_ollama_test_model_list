@@ -17,7 +17,7 @@ ollama list |
       cut -d' ' -f1 |
       grep -Ev "$grev" |
       cut -d: -f1 \
-  > "$list_path" || {
+        > "$list_path" || {
     res="$?"
     echo "$0: error generating \"$list_path\": $res"
     exit "$res"
