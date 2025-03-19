@@ -22,7 +22,7 @@
   * qwen2.5-coder-14b-instruct-q4_0.gguf
     - sha256sum: 561c8955089ad330dff56a40a001eb8bb4e12746354e76d0262bd65ab4640864
     - SPLY-1.0.15
-    - model review: great model, suitable because as this is my chosen basis
+    - model review: great model, very well suited, my reference model for general testing
 
   * mistralai_Mistral-Small-3.1-24B-Instruct-2503-Q4_0.gguf
     - sha256sum: f9e71cfc59d011d1ff20b8444dcfa9c9fbbdfe9bfb40ebe6ae226be1f7c48d8f
@@ -94,6 +94,7 @@
   * When all else fails, Ctrl-C + "edit_prompt()" are your friends
 
 ## Misc
+  * The model lists are in flux; refer to older versions of this document as needed
   * The default prompt editor is "vim -b" - customize with the "editor=" options and parameters
   * "prompt_file=" args always have precedence over "prompt=" args
   * "edit_prompt" currently leaves prompt tempfiles intact (for manual review)
