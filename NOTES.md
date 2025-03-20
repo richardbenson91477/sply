@@ -54,6 +54,11 @@
     - SPLY-1.0.15
     - model review: decent model, mostly suitable
 
+  * phi-4-abliterated.Q6_K.gguf
+    - sha256sum: 5cd97edadf2eb9d884ed3be3c7943b314b7ee35ba352de036c466c8b51e86377
+    - SPLY-1.0.17
+    - model review: good model, mostly suitable
+
 ## Unsuitable models
   * RekaAI_reka-flash-3-Q4_0.gguf
     - sha256sum: 8fa4f55937c4ea0c968e5c9cc3b4770f4f6e080651eb714c28eddc9d2bdec6ca
@@ -63,7 +68,7 @@
   * phi-4-Q4_0.gguf
     - sha256sum: 7c3e1b5bfb03bb4b13cf7ff4889676c5ad4ea92049352d8e1ded3f443f9b68c6
     - SPLY-1.0.15
-    - model review: not well suited due to high strangeness. feels like the temp is always high even when it's 0.0 
+    - model review: not well suited due to high strangeness. consider phi-4-abliterated instead
   
   * SicariusSicariiStuff_Phi-Line_14B-Q4_0.gguf
     - sha256sum: eea06466ab2c7ce9d01498e8741da792d610b632299bb3fcea139669dad02422
