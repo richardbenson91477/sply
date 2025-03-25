@@ -3,19 +3,29 @@
 cd "$(dirname $(realpath $0))"
 
 [ -z "$1" ] && {
-    echo "Usage: $0 model_id"
+    echo "Usage: $0 model_id [backend]"
     exit -1
     }
 
 model_id="$1"
-model_sha256sum=$(./get_ollama_model_sha256sum "$model_id")
-sply_version=$(../bin/sply_version)
-test_log_dir="logs"
-test_log_path="$test_log_dir/$model_id""_""$sply_version.log" 
-ollama_test_cmds_list_path="ollama_test_cmds.list"
-export overmind_model_id="$model_id" 
-export overmind_show="True" 
+model_full_id="$model_id"
+backend="ollama"
 
+[ -z "$2" ] && {
+    backend="$2"
+    [ "$backend" = "llcpp" ] && {
+        model_full_id="/media/models/llama_models/model_$model_id"
+        }
+    }
+
+model_sha256sum=$(./get_model_sha256sum "$model_id")
+sply_version=$(../bin/sply_version)
+test_log_path="logs/$model_id""_""$sply_version.log" 
+test_cmds_list_path="test_cmds.list"
+
+export overmind_backend="$backend"
+export overmind_model_id="$model_full_id" 
+export overmind_show="True" 
 export PYTHONPATH=".."
 
 echo "***** testing \"$model_id\" *****" | 
@@ -35,7 +45,7 @@ echo |
 
 IFS='
 '
-for test_cmd in $(cat "$ollama_test_cmds_list_path"); do
+for test_cmd in $(cat "$test_cmds_list_path"); do
     echo "*** $test_cmd ***" | 
           tee -a "$test_log_path" 2>&1
 
