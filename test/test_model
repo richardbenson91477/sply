@@ -11,7 +11,7 @@ model_id="$1"
 model_full_id="$model_id"
 backend="ollama"
 
-[ -z "$2" ] && {
+[ "$2" ] && {
     backend="$2"
     [ "$backend" = "llcpp" ] && {
         model_full_id="/media/models/llama_models/model_$model_id"
