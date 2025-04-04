@@ -20,7 +20,7 @@ prompt = "; "\
 
 def main ():
     backend = ""
-    model_id = "default-code"
+    model_id = "default"
     for sys_arg in sys.argv[1:]:
         if sys_arg.find("backend=") == 0:
             backend = sys_arg[8:]

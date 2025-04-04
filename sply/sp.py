@@ -22,7 +22,7 @@ class sp:
         chat_args = {}
         chat_args["backend"] = backend
         chat_args["model_id"] = model_id if model_id != "" \
-            else "default-code"
+            else "default"
         chat_args["editor"] = editor
         chat_args["in_suffix_enabled"] = False
         chat_args["rev_prompt"] = "\n>>> "
