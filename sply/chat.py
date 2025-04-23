@@ -7,7 +7,7 @@ import tempfile
 class chat:
     param_desc = (
         {"name": "backend", "type": str, "adjustable": True, "reload": True,
-            "default": "ollama", "desc": "LLM backend (\"ollama\" | \"llcpp\")"},
+            "default": "ollama", "desc": "LLM backend (\"ollama\" | \"llcpp\" | \"openai\")"},
         {"name": "model_id", "type": str, "adjustable": True, "reload": True,
             "default": "default", "desc": "model for the LLM backend"},
         {"name": "editor", "type": str, "adjustable": True, "reload": False,
@@ -115,6 +115,18 @@ class chat:
                     verbose=False,
                     )
                 self.gen_func = self.gen_func_llcpp 
+        elif self.backend == "openai":
+            if reload:
+                if self.llcpp:
+                    del self.llcpp
+                import openai
+                self.llcpp = openai.OpenAI(
+                    #base_url=self.model_id,
+                    base_url="http://localhost:8080/v1",
+                    api_key = "sk-no-key-required",
+                    #n_ctx=self.num_ctx,
+                )
+                self.gen_func = self.gen_func_openai 
 
 
     @staticmethod
@@ -228,6 +240,7 @@ class chat:
         if self.prompt_len >= self.rev_prompt_len:
             self.rev_prompt_tail = self.prompt_len - self.rev_prompt_len
 
+
     def gen_func_ollama (self):
         for json in self.ollama_generate(
                 stream=True,
@@ -247,6 +260,18 @@ class chat:
                 seed=self.seed,
                 ):
             yield chunk['choices'][0]['text']
+
+
+    def gen_func_openai (self):
+        for chunk in self.llcpp.completions.create(
+                model=self.model_id,
+                prompt=self.prompt,
+                max_tokens=self.num_ctx,
+                stream=True,
+                temperature=self.temp,
+                seed=self.seed,
+                ):
+            yield chunk.choices[0].text
 
 
     def read (self, show=False):
