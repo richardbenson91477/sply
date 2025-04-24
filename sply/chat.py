@@ -83,7 +83,7 @@ class chat:
         else:
             self.rev_prompt_tail = 0
 
-        self.llcpp = None
+        self.server = None
         self.update_backend(reload=True)
 
 
@@ -93,10 +93,10 @@ class chat:
 
         if self.backend == "ollama":
             if reload:
-                if self.llcpp:
-                    del self.llcpp
+                if self.server:
+                    del self.server
                 from ollama import generate
-                self.ollama_generate = generate
+                self.server = generate
                 self.gen_func = self.gen_func_ollama
 
             self.ollama_options = {
@@ -106,10 +106,10 @@ class chat:
                 }
         elif self.backend == "llcpp":
             if reload:
-                if self.llcpp:
-                    del self.llcpp
+                if self.server:
+                    del self.server
                 from llama_cpp import Llama
-                self.llcpp = Llama(
+                self.server = Llama(
                     model_path=self.model_id,
                     n_ctx=self.num_ctx,
                     verbose=False,
@@ -117,14 +117,12 @@ class chat:
                 self.gen_func = self.gen_func_llcpp 
         elif self.backend == "openai":
             if reload:
-                if self.llcpp:
-                    del self.llcpp
+                if self.server:
+                    del self.server
                 import openai
-                self.llcpp = openai.OpenAI(
-                    #base_url=self.model_id,
+                self.server = openai.OpenAI(
                     base_url="http://localhost:8080/v1",
                     api_key = "sk-no-key-required",
-                    #n_ctx=self.num_ctx,
                 )
                 self.gen_func = self.gen_func_openai 
 
@@ -242,17 +240,17 @@ class chat:
 
 
     def gen_func_ollama (self):
-        for json in self.ollama_generate(
+        for chunk in self.server.ollama_generate(
                 stream=True,
                 model=self.model_id,
                 prompt=self.prompt,
                 options=self.ollama_options,
                 ):
-            yield json["response"]
+            yield chunk["response"]
 
 
     def gen_func_llcpp (self):
-        for chunk in self.llcpp.create_completion(
+        for chunk in self.server.create_completion(
                 stream=True,
                 prompt=self.prompt,
                 max_tokens=self.num_ctx,
@@ -263,7 +261,7 @@ class chat:
 
 
     def gen_func_openai (self):
-        for chunk in self.llcpp.completions.create(
+        for chunk in self.server.completions.create(
                 model=self.model_id,
                 prompt=self.prompt,
                 max_tokens=self.num_ctx,
@@ -299,7 +297,6 @@ class chat:
                         print(gen_res, end="", flush=True)
                     self.prompt_len += len(gen_res)
 
-                # end for json in gen:
         except KeyboardInterrupt:
             print("** generation interrupted **")
 
