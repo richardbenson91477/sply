@@ -27,6 +27,7 @@ pip install sply
 
 ## Optional
   * The [llama-cpp-python library](https://pypi.org/project/llama-cpp-python/) (https://pypi.org/project/llama-cpp-python/)
+  * The [openai library](https://pypi.org/project/openai/) (https://pypi.org/project/openai/) **WIP**
 
 ## Example usage
 ```python
