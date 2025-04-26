@@ -240,36 +240,47 @@ class chat:
 
 
     def gen_func_ollama (self):
-        for chunk in self.server.ollama_generate(
-                stream=True,
-                model=self.model_id,
-                prompt=self.prompt,
-                options=self.ollama_options,
-                ):
-            yield chunk["response"]
+        try:
+            for chunk in self.server.ollama_generate(
+                    stream=True,
+                    model=self.model_id,
+                    prompt=self.prompt,
+                    options=self.ollama_options,
+                    ):
+                yield chunk["response"]
+        except GeneratorExit:
+            pass
 
 
     def gen_func_llcpp (self):
-        for chunk in self.server.create_completion(
-                stream=True,
-                prompt=self.prompt,
-                max_tokens=self.num_ctx,
-                temperature=self.temp,
-                seed=self.seed,
-                ):
-            yield chunk['choices'][0]['text']
+        try:
+            for chunk in self.server.create_completion(
+                    stream=True,
+                    prompt=self.prompt,
+                    max_tokens=self.num_ctx,
+                    temperature=self.temp,
+                    seed=self.seed,
+                    ):
+                yield chunk['choices'][0]['text']
+        except GeneratorExit:
+            pass
 
 
     def gen_func_openai (self):
-        for chunk in self.server.completions.create(
+        completions = self.server.completions.create(
                 model=self.model_id,
                 prompt=self.prompt,
                 max_tokens=self.num_ctx,
                 stream=True,
                 temperature=self.temp,
                 seed=self.seed,
-                ):
-            yield chunk.choices[0].text
+                )
+        try:
+            for chunk in completions:
+                yield chunk.choices[0].text
+        except GeneratorExit:
+            # del completions
+            pass
 
 
     def read (self, show=False):
@@ -289,6 +300,7 @@ class chat:
                     if show:
                         print(self.prompt[self.prompt_len:], end="", flush=True)
                     self.prompt_len = self.rev_prompt_tail
+                    del gen_res
                     return res
                 else:
                     self.prompt = prompt_new
