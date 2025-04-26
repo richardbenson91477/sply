@@ -279,8 +279,9 @@ class chat:
             for chunk in completions:
                 yield chunk.choices[0].text
         except GeneratorExit:
-            # del completions
             pass
+
+        del completions
 
 
     def read (self, show=False):
