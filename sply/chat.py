@@ -240,30 +240,36 @@ class chat:
 
 
     def gen_func_ollama (self):
-        try:
-            for chunk in self.server.ollama_generate(
+        completions = self.server.ollama_generate(
                     stream=True,
                     model=self.model_id,
                     prompt=self.prompt,
                     options=self.ollama_options,
-                    ):
+                    )
+        try:
+            for chunk in completions:
                 yield chunk["response"]
         except GeneratorExit:
             pass
 
+        del completions
+
 
     def gen_func_llcpp (self):
-        try:
-            for chunk in self.server.create_completion(
+        completions = self.server.create_completion(
                     stream=True,
                     prompt=self.prompt,
                     max_tokens=self.num_ctx,
                     temperature=self.temp,
                     seed=self.seed,
-                    ):
+                    )
+        try:
+            for chunk in completions:
                 yield chunk['choices'][0]['text']
         except GeneratorExit:
             pass
+
+        del completions
 
 
     def gen_func_openai (self):
