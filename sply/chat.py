@@ -121,7 +121,7 @@ class chat:
                     del self.server
                 import openai
                 self.server = openai.OpenAI(
-                    base_url="http://localhost:8080/v1",
+                    base_url = "http://localhost:8080/v1",
                     api_key = "sk-no-key-required",
                 )
                 self.gen_func = self.gen_func_openai 
@@ -249,7 +249,7 @@ class chat:
         try:
             for chunk in completions:
                 yield chunk["response"]
-        except GeneratorExit:
+        except Exception:
             pass
 
         del completions
@@ -266,7 +266,7 @@ class chat:
         try:
             for chunk in completions:
                 yield chunk['choices'][0]['text']
-        except GeneratorExit:
+        except Exception:
             pass
 
         del completions
@@ -280,11 +280,13 @@ class chat:
                 stream=True,
                 temperature=self.temp,
                 seed=self.seed,
+                cache_prompt=True,
+                extra_body={"cache_prompt": True}
                 )
         try:
             for chunk in completions:
                 yield chunk.choices[0].text
-        except GeneratorExit:
+        except Exception:
             pass
 
         del completions
