@@ -240,7 +240,7 @@ class chat:
 
 
     def gen_func_ollama (self):
-        completions = self.server.ollama_generate(
+        completions = self.server(
                     stream=True,
                     model=self.model_id,
                     prompt=self.prompt,
