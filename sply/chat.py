@@ -280,7 +280,6 @@ class chat:
                 stream=True,
                 temperature=self.temp,
                 seed=self.seed,
-                cache_prompt=True,
                 extra_body={"cache_prompt": True}
                 )
         try:
