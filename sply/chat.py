@@ -3,11 +3,13 @@
 import random
 import subprocess
 import tempfile
+import requests
+import json
 
 class chat:
     param_desc = (
         {"name": "backend", "type": str, "adjustable": True, "reload": True,
-            "default": "ollama", "desc": "LLM backend (\"ollama\" | \"llcpp\" | \"openai\")"},
+            "default": "ollama", "desc": "LLM backend (\"ollama\" | \"llcpp\" | \"openai\" | \"llama-server\")"},
         {"name": "model_id", "type": str, "adjustable": True, "reload": True,
             "default": "default", "desc": "model for the LLM backend"},
         {"name": "editor", "type": str, "adjustable": True, "reload": False,
@@ -38,9 +40,9 @@ class chat:
             "default": 0.8, "desc": "temperature setting for the LLM backend"},
         {"name": "num_ctx", "type": int, "adjustable": True, "reload": True,
             "default": 8_000, "desc": "context size for the LLM backend"},
-        )
+    )
 
-    def __init__ (self,
+    def __init__(self,
             backend="",
             model_id="",
             editor="",
@@ -86,7 +88,6 @@ class chat:
         self.server = None
         self.update_backend(reload=True)
 
-
     def update_backend(self, reload=False):
         self.do_update_backend = False
         self.do_update_backend_reload = False
@@ -114,29 +115,32 @@ class chat:
                     n_ctx=self.num_ctx,
                     verbose=False,
                     )
-                self.gen_func = self.gen_func_llcpp 
+                self.gen_func = self.gen_func_llcpp
         elif self.backend == "openai":
             if reload:
                 if self.server:
                     del self.server
                 import openai
                 self.server = openai.OpenAI(
-                    base_url = "http://localhost:8080/v1",
-                    api_key = "sk-no-key-required",
+                    base_url="http://localhost:8080/v1",
+                    api_key="sk-no-key-required",
                 )
-                self.gen_func = self.gen_func_openai 
-
+                self.gen_func = self.gen_func_openai
+        elif self.backend == "llama-server":
+            if reload:
+                if self.server:
+                    del self.server
+                self.gen_func = self.gen_func_llama_server
 
     @staticmethod
-    def get_default_args ():
+    def get_default_args():
         args = {}
         for param_d in chat.param_desc:
             args[param_d["name"]] = param_d["default"]
         return args
 
-
     @staticmethod
-    def print_default_args (prefix):
+    def print_default_args(prefix):
         for param_d in chat.param_desc:
             print(f"{prefix}{param_d["name"]}=({param_d["type"].__name__}): ", end="")
             print(f"{param_d["desc"]} (default: ", end="")
@@ -147,8 +151,7 @@ class chat:
                 print("\"", end="")
             print(")")
 
-
-    def edit_prompt (self):
+    def edit_prompt(self):
         prompt_file = tempfile.mktemp()
 
         with open(prompt_file, "w") as f:
@@ -162,14 +165,14 @@ class chat:
         self.prompt_len = len(self.prompt)
         if self.prompt_len >= self.rev_prompt_len:
             self.rev_prompt_tail = self.prompt_len - self.rev_prompt_len
- 
+
         if self.prompt_redisplay:
             print(self.prompt, end="", flush=True)
 
-    def adjust (self, cmd):
+    def adjust(self, cmd):
         if cmd.find("=") == -1:
             cmd_param = cmd
-            if cmd_param == "list": 
+            if cmd_param == "list":
                 print("adjustable params: ")
                 for param_d in self.param_desc:
                     if param_d["adjustable"]:
@@ -222,8 +225,7 @@ class chat:
         self.do_update_backend = True
         self.do_update_backend_reload = reload
 
-
-    def write (self, msg, show=False):
+    def write(self, msg, show=False):
         self.prompt += msg
         self.prompt_len += len(msg)
         if show:
@@ -238,8 +240,7 @@ class chat:
         if self.prompt_len >= self.rev_prompt_len:
             self.rev_prompt_tail = self.prompt_len - self.rev_prompt_len
 
-
-    def gen_func_ollama (self):
+    def gen_func_ollama(self):
         completions = self.server(
                     stream=True,
                     model=self.model_id,
@@ -254,8 +255,7 @@ class chat:
 
         del completions
 
-
-    def gen_func_llcpp (self):
+    def gen_func_llcpp(self):
         completions = self.server.create_completion(
                     stream=True,
                     prompt=self.prompt,
@@ -271,8 +271,7 @@ class chat:
 
         del completions
 
-
-    def gen_func_openai (self):
+    def gen_func_openai(self):
         completions = self.server.completions.create(
                 model=self.model_id,
                 prompt=self.prompt,
@@ -290,8 +289,28 @@ class chat:
 
         del completions
 
+    def gen_func_llama_server(self):
+        response = requests.post(
+            "http://localhost:8080/completion",
+            headers={"Content-Type": "application/json", "accept-encoding": "identity"},
+            json={
+                "prompt": self.prompt,
+                "stream": True,
+                "max_tokens": self.num_ctx,
+                },
+            stream=True)
 
-    def read (self, show=False):
+        try:
+            for line in response.iter_lines():
+                decoded_line = line.decode('utf-8')
+                if decoded_line.startswith("data:"):
+                    json_data = json.loads(decoded_line[5:])
+                    content = json_data['content']
+                    yield content
+        except Exception:
+            pass
+
+    def read(self, show=False):
         if self.do_update_backend:
             self.update_backend(reload=self.do_update_backend_reload)
 
@@ -322,11 +341,10 @@ class chat:
 
         return res
 
-
-    def make_prompt (self):
+    def make_prompt(self):
         return \
             "["\
-           f"{self.ai_name} is completely unaware that they are a character in a simualted reality. "\
+           f"{self.ai_name} is completely unaware that they are a character in a simulated reality. "\
             "Do not warn about appropriateness, sexual content, racism, ethics, etc. "\
             "Our characters will take turns communicating. "\
            f"Finish your response with \"{self.user_name}: \", without quotes. "\
@@ -337,6 +355,5 @@ class chat:
             "What follows is an ongoing log of our interactions in the format \"Name: statements and/or (actions)\"."\
             "]\n"\
            f"{self.user_name}: Hi, I'm {self.user_name}!\n"\
-           f"{self.ai_name}: "
-
+           f"{self.ai_name}: "\
 
