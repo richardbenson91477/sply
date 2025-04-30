@@ -296,7 +296,10 @@ class chat:
             json={
                 "prompt": self.prompt,
                 "stream": True,
+                "cache_prompt": True,
                 "max_tokens": self.num_ctx,
+                "temperature": self.temp,
+                "seed": self.seed,
                 },
             stream=True)
 
