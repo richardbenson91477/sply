@@ -3,6 +3,8 @@
 import random
 import subprocess
 import tempfile
+import requests
+import json
 
 class chat:
     param_desc = (
@@ -128,8 +130,6 @@ class chat:
             if reload:
                 if self.server:
                     del self.server
-                import requests
-                import json
                 self.gen_func = self.gen_func_llama_server
 
     @staticmethod
