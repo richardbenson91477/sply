@@ -9,7 +9,7 @@ import json
 class chat:
     param_desc = (
         {"name": "backend", "type": str, "adjustable": True, "reload": True,
-            "default": "ollama", "desc": "LLM backend (\"ollama\" | \"llcpp\" | \"openai\" | \"llama-server\")"},
+            "default": "ollama", "desc": "LLM backend (\"ollama\" | \"llama_cpp_python\" | \"openai\" | \"llama-server\")"},
         {"name": "model_id", "type": str, "adjustable": True, "reload": True,
             "default": "default", "desc": "model for the LLM backend"},
         {"name": "editor", "type": str, "adjustable": True, "reload": False,
@@ -105,7 +105,7 @@ class chat:
                 "temperature": self.temp,
                 "num_ctx": self.num_ctx,
                 }
-        elif self.backend == "llcpp":
+        elif self.backend == "llama_cpp_python":
             if reload:
                 if self.server:
                     del self.server
@@ -115,7 +115,7 @@ class chat:
                     n_ctx=self.num_ctx,
                     verbose=False,
                     )
-                self.gen_func = self.gen_func_llcpp
+                self.gen_func = self.gen_func_llama_cpp_python
         elif self.backend == "openai":
             if reload:
                 if self.server:
@@ -255,7 +255,7 @@ class chat:
 
         del completions
 
-    def gen_func_llcpp(self):
+    def gen_func_llama_cpp_python(self):
         completions = self.server.create_completion(
                     stream=True,
                     prompt=self.prompt,

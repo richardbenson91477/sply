@@ -13,7 +13,7 @@ backend="ollama"
 
 [ "$2" ] && {
     backend="$2"
-    [ "$backend" = "llcpp" ] && {
+    [ "$backend" = "llama_cpp_python" ] && {
         model_full_id="/media/models/llama_models/model_$model_id"
         }
     }

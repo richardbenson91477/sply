@@ -30,7 +30,7 @@ class sp_example:
                     f" [--help]"\
                     f" [mode=\"plain\"|\"think\" (\"{self.mode}\")]"\
                     f" [show=True|False ({sp_args["show"]})]"\
-                    f" [backend=\"ollama\"|\"llcpp\" (\"{sp_args["backend"]}\")]"\
+                    f" [backend=\"ollama\"|\"llama_cpp_python\" (\"{sp_args["backend"]}\")]"\
                     f" [model_id=\"model_id\" (\"{sp_args["model_id"]}\")]"\
                     f" [seed=\"seed\" ({sp_args["seed"]})]"\
                     f" [temp=\"temp\" ({sp_args["temp"]})]"\
