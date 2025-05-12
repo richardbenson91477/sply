@@ -11,13 +11,12 @@ model_id="$1"
 model_dir="/media/models/llama_models"
 backend="llama_cpp_python"
 model_full_id="$model_dir/model_$model_id"
-
 model_sha256sum=$(./get_model_sha256sum "$model_id")
 sply_version=$(../bin/sply_version)
 test_log_path="logs/$model_id""_""$sply_version.log" 
 test_cmds_list_path="test_cmds.list"
 
-export overmind_backend="llama_cpp_python"
+export overmind_backend="$backend"
 export overmind_model_id="$model_full_id" 
 export overmind_show="True" 
 export PYTHONPATH=".."
