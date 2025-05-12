@@ -3,27 +3,20 @@
 cd "$(dirname $(realpath $0))"
 
 [ -z "$1" ] && {
-    echo "Usage: $0 model_id [backend]"
+    echo "Usage: $0 model_id"
     exit -1
     }
 
 model_id="$1"
-model_full_id="$model_id"
-backend="ollama"
-
-[ "$2" ] && {
-    backend="$2"
-    [ "$backend" = "llama_cpp_python" ] && {
-        model_full_id="/media/models/llama_models/model_$model_id"
-        }
-    }
+model_dir="/media/models/llama_models"
+model_full_id="$model_dir/$model_id"
 
 model_sha256sum=$(./get_model_sha256sum "$model_id")
 sply_version=$(../bin/sply_version)
 test_log_path="logs/$model_id""_""$sply_version.log" 
 test_cmds_list_path="test_cmds.list"
 
-export overmind_backend="$backend"
+export overmind_backend="llama_cpp_python"
 export overmind_model_id="$model_full_id" 
 export overmind_show="True" 
 export PYTHONPATH=".."

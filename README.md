@@ -24,7 +24,6 @@ pip install sply
 
 ## Requirements
   * The [requests library](https://docs.python-requests.org/en/latest/index.html) **for the "llama-server" backend**
-  * The [Ollama Python Library](https://pypi.org/project/ollama/) (https://pypi.org/project/ollama/)
 
 ## Optional
   * The [llama-cpp-python library](https://pypi.org/project/llama-cpp-python/) (https://pypi.org/project/llama-cpp-python/)

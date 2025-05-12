@@ -9,7 +9,7 @@ import json
 class chat:
     param_desc = (
         {"name": "backend", "type": str, "adjustable": True, "reload": True,
-            "default": "ollama", "desc": "LLM backend (\"ollama\" | \"llama_cpp_python\" | \"openai\" | \"llama-server\")"},
+            "default": "llama-server", "desc": "LLM backend (\"llama_cpp_python\" | \"openai\" | \"llama-server\")"},
         {"name": "model_id", "type": str, "adjustable": True, "reload": True,
             "default": "default", "desc": "model for the LLM backend"},
         {"name": "editor", "type": str, "adjustable": True, "reload": False,
@@ -92,20 +92,7 @@ class chat:
         self.do_update_backend = False
         self.do_update_backend_reload = False
 
-        if self.backend == "ollama":
-            if reload:
-                if self.server:
-                    del self.server
-                from ollama import generate
-                self.server = generate
-                self.gen_func = self.gen_func_ollama
-
-            self.ollama_options = {
-                "seed": self.seed,
-                "temperature": self.temp,
-                "num_ctx": self.num_ctx,
-                }
-        elif self.backend == "llama_cpp_python":
+        if self.backend == "llama_cpp_python":
             if reload:
                 if self.server:
                     del self.server
@@ -240,20 +227,6 @@ class chat:
         if self.prompt_len >= self.rev_prompt_len:
             self.rev_prompt_tail = self.prompt_len - self.rev_prompt_len
 
-    def gen_func_ollama(self):
-        completions = self.server(
-                    stream=True,
-                    model=self.model_id,
-                    prompt=self.prompt,
-                    options=self.ollama_options,
-                    )
-        try:
-            for chunk in completions:
-                yield chunk["response"]
-        except Exception:
-            pass
-
-        del completions
 
     def gen_func_llama_cpp_python(self):
         completions = self.server.create_completion(
