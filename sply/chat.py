@@ -12,6 +12,10 @@ class chat:
             "default": "llama-server", "desc": "LLM backend (\"llama_cpp_python\" | \"openai\" | \"llama-server\")"},
         {"name": "model_id", "type": str, "adjustable": True, "reload": True,
             "default": "default", "desc": "model for the LLM backend"},
+        {"name": "hostname", "type": str, "adjustable": True, "reload": True,
+            "default": "localhost", "desc": "hostname for the LLM backend"},
+        {"name": "port", "type": int, "adjustable": True, "reload": True,
+            "default": 8080, "desc": "port for the LLM backend"},
         {"name": "editor", "type": str, "adjustable": True, "reload": False,
             "default": "vim -b", "desc": "editor path/args for prompt editing"},
         {"name": "user_name", "type": str, "adjustable": False, "reload": False,
@@ -45,6 +49,8 @@ class chat:
     def __init__(self,
             backend="",
             model_id="",
+            hostname="",
+            port="",
             editor="",
             user_name="",
             user_desc="",
@@ -109,7 +115,7 @@ class chat:
                     del self.server
                 import openai
                 self.server = openai.OpenAI(
-                    base_url="http://localhost:8080/v1",
+                    base_url=f"http://{self.hostname}:{self.port}/v1",
                     api_key="sk-no-key-required",
                 )
                 self.gen_func = self.gen_func_openai
@@ -264,7 +270,7 @@ class chat:
 
     def gen_func_llama_server(self):
         response = requests.post(
-            "http://localhost:8080/completion",
+            f"http://{self.hostname}:{self.port}/completion",
             headers={"Content-Type": "application/json", "accept-encoding": "identity"},
             json={
                 "prompt": self.prompt,
