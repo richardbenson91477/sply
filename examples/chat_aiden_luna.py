@@ -60,9 +60,9 @@ def main ():
     running = True
     while running:
         in1 = c1.read(show=True)
-        c2.write(in1, show=True)
+        c2.write(in1, show=False)
         in2 = c2.read(show=True)
-        c1.write(in2, show=True)
+        c1.write(in2, show=False)
 
     return 0
 
