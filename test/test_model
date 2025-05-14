@@ -9,7 +9,7 @@ cd "$(dirname $(realpath $0))"
 
 model_id="$1"
 model_dir="/media/models/llama_models"
-backend="llama_cpp_python"
+backend="llama-cpp-python"
 model_full_id="$model_dir/model_$model_id"
 model_sha256sum=$(./get_model_sha256sum "$model_id")
 sply_version=$(../bin/sply_version)

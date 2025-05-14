@@ -9,7 +9,7 @@ import json
 class chat:
     param_desc = (
         {"name": "backend", "type": str, "adjustable": True, "reload": True,
-            "default": "llama-server", "desc": "LLM backend (\"llama_cpp_python\" | \"openai\" | \"llama-server\")"},
+            "default": "llama-server", "desc": "LLM backend (\"llama-cpp-python\" | \"openai\" | \"llama-server\")"},
         {"name": "model_id", "type": str, "adjustable": True, "reload": True,
             "default": "default", "desc": "model for the LLM backend"},
         {"name": "hostname", "type": str, "adjustable": True, "reload": True,
@@ -98,7 +98,7 @@ class chat:
         self.do_update_backend = False
         self.do_update_backend_reload = False
 
-        if self.backend == "llama_cpp_python":
+        if self.backend == "llama-cpp-python":
             if reload:
                 if self.server:
                     del self.server
