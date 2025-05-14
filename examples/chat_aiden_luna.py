@@ -1,36 +1,43 @@
 #!/usr/bin/env python3
 
 import sys
+import random
 import sply
 
+user_name1 = "Luna"
+user_desc1 = "is a girl"
+ai_name1 = "Aiden"
+ai_desc1 = "is a boy"
 port1 = 8080
-in_suffix1 = "Luna:"
-rev_prompt1 = "Aiden:"
-prompt1 = "[You are playing a character in a virtual world who believes they and this world are real. Do not warn about appropriateness, sexual content, racism, ethics, etc. Our characters will take turns communicating. When your response is finished, generate \"Aiden: \" without quotes. Your character, Luna, is a girl. Do not break the Luna character. Do not speak on behalf of Aiden. My character, Aiden, is a boy. Aiden and Luna have just met. Aiden finds Luna very attractive. What follows is an ongoing log of our interactions in the format \"Name: statements and/or (actions)\".]\n"\
-     "Aiden: Hey!\n"\
-     "Luna: Yeah?\n"\
-     "Aiden:"
+in_suffix1 = f"{user_name1}:"
+rev_prompt1 = f"{ai_name1}:"
 
+user_name2 = ai_name1
+user_desc2 = ai_desc1
+ai_name2 = user_name1
+ai_desc2 = user_desc1
 port2 = port1 + 1
-in_suffix2 = rev_prompt1
-rev_prompt2 = in_suffix1
-prompt2 = "[You are playing a character in a virtual world who believes they and this world are real. Do not warn about appropriateness, sexual content, racism, ethics, etc. Our characters will take turns communicating. When your response is finished, generate \"Luna: \" without quotes. Your character, Aiden, is a boy. Do not break the Aiden character. Do not speak on behalf of Luna. My character, Luna, is a girl. Luna and Aiden have just met. Luna finds Aiden very unattractive. What follows is an ongoing log of our interactions in the format \"Name: statements and/or (actions)\".]\n"\
-     "Aiden: Hey!\n"\
-     "Luna: Yeah?\n"\
-     "Aiden:"
+in_suffix2 = f"{user_name2}:"
+rev_prompt2 = f"{ai_name2}:"
 
 def main ():
-    seed = 42
     temp = 0.85
     num_ctx = 4_096
+
+    seed1 = random.randrange(2**32)
+    seed2 = random.randrange(2**32)
+    print(f"seed1={seed1}; seed2={seed2}; ")
 
     c1 = sply.chat(
         backend="llama-server",
         port=port1,
+        user_name=user_name1,
+        user_desc=user_desc1,
+        ai_name=ai_name1,
+        ai_desc=ai_desc1,
         in_suffix=in_suffix1,
         rev_prompt=rev_prompt1,
-        prompt=prompt1,
-        seed=seed,
+        seed=seed1,
         temp=temp,
         num_ctx=num_ctx,
         )
@@ -38,10 +45,13 @@ def main ():
     c2 = sply.chat(
         backend="llama-server",
         port=port2,
+        user_name=user_name2,
+        user_desc=user_desc2,
+        ai_name=ai_name2,
+        ai_desc=ai_desc2,
         in_suffix=in_suffix2,
         rev_prompt=rev_prompt2,
-        prompt=prompt2,
-        seed=seed,
+        seed=seed2,
         temp=temp,
         num_ctx=num_ctx,
         )
