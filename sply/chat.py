@@ -9,7 +9,7 @@ import json
 class chat:
     param_desc = (
         {"name": "backend", "type": str, "adjustable": True, "reload": True,
-            "default": "llama-server", "desc": "LLM backend (\"llama-cpp-python\" | \"openai\" | \"llama-server\")"},
+            "default": "llama-cpp-python", "desc": "LLM backend (\"llama-cpp-python\" | \"openai\" | \"llama-server\")"},
         {"name": "model_id", "type": str, "adjustable": True, "reload": True,
             "default": "default", "desc": "model for the LLM backend"},
         {"name": "hostname", "type": str, "adjustable": True, "reload": True,
