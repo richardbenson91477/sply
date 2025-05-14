@@ -9,16 +9,16 @@ user_desc1 = "is a girl"
 ai_name1 = "Aiden"
 ai_desc1 = "is a boy"
 port1 = 8080
-in_suffix1 = f"{user_name1}:"
-rev_prompt1 = f"{ai_name1}:"
+in_suffix1 = f"{ai_name1}:"
+rev_prompt1 = f"{user_name1}:"
 
 user_name2 = ai_name1
 user_desc2 = ai_desc1
 ai_name2 = user_name1
 ai_desc2 = user_desc1
 port2 = port1 + 1
-in_suffix2 = f"{user_name2}:"
-rev_prompt2 = f"{ai_name2}:"
+in_suffix2 = f"{ai_name2}:"
+rev_prompt2 = f"{user_name2}:"
 
 def main ():
     temp = 0.85

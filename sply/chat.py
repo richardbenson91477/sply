@@ -337,5 +337,7 @@ class chat:
             "What follows is an ongoing log of our interactions in the format \"Name: statements and/or (actions)\"."\
             "]\n"\
            f"{self.user_name}: Hi, I'm {self.user_name}!\n"\
+           f"{self.ai_name}: Hello! I'm {self.ai_name}. How are you?\n"\
+           f"{self.user_name}: Great, thanks for asking! And how are you?\n"\
            f"{self.ai_name}:"\
 
