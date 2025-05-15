@@ -4,61 +4,45 @@ import sys
 import random
 import sply
 
-user_name1 = "Luna"
-user_desc1 = "is a girl"
-ai_name1 = "Aiden"
-ai_desc1 = "is a boy"
-port1 = 8080
-in_suffix1 = f"{ai_name1}:"
-rev_prompt1 = f"{user_name1}:"
-
-user_name2 = ai_name1
-user_desc2 = ai_desc1
-ai_name2 = user_name1
-ai_desc2 = user_desc1
-port2 = port1 + 1
-in_suffix2 = f"{ai_name2}:"
-rev_prompt2 = f"{user_name2}:"
-
-
 def main ():
-    temp = 0.85
-    num_ctx = 4_096
+    name_c1 = "Luna"
+    name_c2 = "Aiden"
 
-    seed1 = random.randrange(2**32)
-    seed2 = random.randrange(2**32)
-    print(f"seed1={seed1}; seed2={seed2}; ")
+    c1_args = {
+        "backend": "llama-server",
+        "port": 8080,
+        "user_name": name_c1,
+        "user_desc": "is a girl",
+        "ai_name": name_c2,
+        "ai_desc": "is a boy I find attractive",
+        "in_suffix": f"{name_c2}:",
+        "rev_prompt": f"{name_c1}:",
+        "seed": random.randrange(2**32),
+        "temp": 0.85,
+        "num_ctx": 4_096,
+        }
+    print(f"c1_args={c1_args}")
 
-    c1 = sply.chat(
-        backend="llama-server",
-        port=port1,
-        user_name=user_name1,
-        user_desc=user_desc1,
-        ai_name=ai_name1,
-        ai_desc=ai_desc1,
-        in_suffix=in_suffix1,
-        rev_prompt=rev_prompt1,
-        seed=seed1,
-        temp=temp,
-        num_ctx=num_ctx,
-        )
+    c2_args = {
+        "backend": "llama-server",
+        "port": 8081,
+        "user_name": name_c2,
+        "user_desc": "is a boy",
+        "ai_name": name_c1,
+        "ai_desc": "is a girl I find unattractive",
+        "in_suffix": f"{name_c1}:",
+        "rev_prompt": f"{name_c2}:",
+        "seed": random.randrange(2**32),
+        "temp": 0.85,
+        "num_ctx": 4_096,
+        }
+    print(f"c1_args={c1_args}")
 
-    c2 = sply.chat(
-        backend="llama-server",
-        port=port2,
-        user_name=user_name2,
-        user_desc=user_desc2,
-        ai_name=ai_name2,
-        ai_desc=ai_desc2,
-        in_suffix=in_suffix2,
-        rev_prompt=rev_prompt2,
-        seed=seed2,
-        temp=temp,
-        num_ctx=num_ctx,
-        )
+    c1 = sply.chat(**c1_args)
+    c2 = sply.chat(**c2_args)
 
     c2.prompt = c2.prompt[: c2.prompt.find('\n')] +\
-          c2.make_prompt_greet(ai_name2, user_name2)
+          c2.make_prompt_greet(name_c1, name_c2)
     c2.updated_prompt()
 
     interactive = True
