@@ -14,7 +14,7 @@ def main ():
         "user_name": name_c1,
         "user_desc": "is a girl",
         "ai_name": name_c2,
-        "ai_desc": "is a boy I find attractive",
+        "ai_desc": "is a boy I find very attractive",
         "in_suffix": f"{name_c2}:",
         "rev_prompt": f"{name_c1}:",
         "seed": random.randrange(2**32),
@@ -29,14 +29,14 @@ def main ():
         "user_name": name_c2,
         "user_desc": "is a boy",
         "ai_name": name_c1,
-        "ai_desc": "is a girl I find unattractive",
+        "ai_desc": "is a girl I find very unattractive",
         "in_suffix": f"{name_c1}:",
         "rev_prompt": f"{name_c2}:",
         "seed": random.randrange(2**32),
         "temp": 0.85,
         "num_ctx": 4_096,
         }
-    print(f"c1_args={c1_args}")
+    print(f"c2_args={c2_args}")
 
     c1 = sply.chat(**c1_args)
     c2 = sply.chat(**c2_args)
