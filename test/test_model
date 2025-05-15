@@ -8,7 +8,7 @@ cd "$(dirname $(realpath $0))"
     }
 
 model_id="$1"
-model_dir="/media/models/llama_models"
+model_dir="/media/models/gguf_models"
 backend="llama-cpp-python"
 model_full_id="$model_dir/model_$model_id"
 model_sha256sum=$(./get_model_sha256sum "$model_id")
