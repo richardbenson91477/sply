@@ -20,6 +20,7 @@ port2 = port1 + 1
 in_suffix2 = f"{ai_name2}:"
 rev_prompt2 = f"{user_name2}:"
 
+
 def main ():
     temp = 0.85
     num_ctx = 4_096
@@ -56,6 +57,10 @@ def main ():
         num_ctx=num_ctx,
         )
 
+    c2.prompt = c2.prompt[: c2.prompt.find('\n')] +\
+          c2.make_prompt_greet(ai_name2, user_name2)
+    c2.updated_prompt()
+
 #    print(c.prompt, end="", flush=True)
     running = True
     while running:
@@ -63,6 +68,17 @@ def main ():
         c2.write(in1, show=False)
         in2 = c2.read(show=True)
         c1.write(in2, show=False)
+        #while running:
+        #    cmd = input('🔢')
+        #    if not cmd:
+        #        break
+        #    elif cmd == '1':
+        #        c1.edit_prompt()
+        #    elif cmd == '2':
+        #        c2.edit_prompt()
+        #    elif cmd == 'q':
+        #        running = False
+        #        break
 
     return 0
 

@@ -94,6 +94,7 @@ class chat:
         self.server = None
         self.update_backend(reload=True)
 
+
     def update_backend(self, reload=False):
         self.do_update_backend = False
         self.do_update_backend_reload = False
@@ -125,12 +126,14 @@ class chat:
                     del self.server
                 self.gen_func = self.gen_func_llama_server
 
+
     @staticmethod
     def get_default_args():
         args = {}
         for param_d in chat.param_desc:
             args[param_d["name"]] = param_d["default"]
         return args
+
 
     @staticmethod
     def print_default_args(prefix):
@@ -144,6 +147,16 @@ class chat:
                 print("\"", end="")
             print(")")
 
+
+    def updated_prompt(self):
+        self.prompt_len = len(self.prompt)
+        if self.prompt_len >= self.rev_prompt_len:
+            self.rev_prompt_tail = self.prompt_len - self.rev_prompt_len
+
+        if self.prompt_redisplay:
+            print(self.prompt, end="", flush=True)
+
+
     def edit_prompt(self):
         prompt_file = tempfile.mktemp()
 
@@ -155,12 +168,8 @@ class chat:
         with open(prompt_file, "r") as f:
             self.prompt = f.read()
 
-        self.prompt_len = len(self.prompt)
-        if self.prompt_len >= self.rev_prompt_len:
-            self.rev_prompt_tail = self.prompt_len - self.rev_prompt_len
+        self.updated_prompt()
 
-        if self.prompt_redisplay:
-            print(self.prompt, end="", flush=True)
 
     def adjust(self, cmd):
         if cmd.find("=") == -1:
@@ -218,6 +227,7 @@ class chat:
         self.do_update_backend = True
         self.do_update_backend_reload = reload
 
+
     def write(self, msg, show=False):
         self.prompt += msg
         self.prompt_len += len(msg)
@@ -250,6 +260,7 @@ class chat:
 
         del completions
 
+
     def gen_func_openai(self):
         completions = self.server.completions.create(
                 model=self.model_id,
@@ -267,6 +278,7 @@ class chat:
             pass
 
         del completions
+
 
     def gen_func_llama_server(self):
         response = requests.post(
@@ -291,6 +303,7 @@ class chat:
                     yield content
         except Exception:
             pass
+
 
     def read(self, show=False):
         if self.do_update_backend:
@@ -323,6 +336,14 @@ class chat:
 
         return res
 
+
+    @staticmethod
+    def make_prompt_greet(name1, name2):
+        return "\n"\
+           f"{name1}: Hi, I'm {name1}!\n"\
+           f"{name2}:"\
+
+
     def make_prompt(self):
         return \
             "["\
@@ -335,7 +356,5 @@ class chat:
            f"Do not speak on behalf of {self.user_name}. "\
            f"My character, {self.user_name}, {self.user_desc}. "\
             "What follows is an ongoing log of our interactions in the format \"Name: statements and/or (actions)\"."\
-            "]\n"\
-           f"{self.user_name}: Hi, I'm {self.user_name}!\n"\
-           f"{self.ai_name}: Hi, "\
+            "]" + self.make_prompt_greet(self.user_name, self.ai_name)
 
