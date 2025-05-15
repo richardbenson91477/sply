@@ -61,24 +61,27 @@ def main ():
           c2.make_prompt_greet(ai_name2, user_name2)
     c2.updated_prompt()
 
-#    print(c.prompt, end="", flush=True)
+    interactive = True
     running = True
     while running:
         in1 = c1.read(show=True)
         c2.write(in1, show=False)
         in2 = c2.read(show=True)
         c1.write(in2, show=False)
-        #while running:
-        #    cmd = input('🔢')
-        #    if not cmd:
-        #        break
-        #    elif cmd == '1':
-        #        c1.edit_prompt()
-        #    elif cmd == '2':
-        #        c2.edit_prompt()
-        #    elif cmd == 'q':
-        #        running = False
-        #        break
+        while interactive and running:
+            cmd = input('🔢')
+            if not cmd:
+                break
+            elif cmd == '1':
+                c1.edit_prompt()
+            elif cmd == '2':
+                c2.edit_prompt()
+            elif cmd == 'i':
+                interactive = False
+                break
+            elif cmd == 'q':
+                running = False
+                break
 
     return 0
 
