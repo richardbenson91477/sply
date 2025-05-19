@@ -254,6 +254,7 @@ class chat:
             for chunk in completions:
                 yield chunk['choices'][0]['text']
         except Exception:
+            print("gen_func_llama_cpp_python: exception")
             pass
 
         del completions
@@ -273,6 +274,7 @@ class chat:
             for chunk in completions:
                 yield chunk.choices[0].text
         except Exception:
+            print("gen_func_openai: exception")
             pass
 
         del completions
@@ -300,6 +302,7 @@ class chat:
                     content = json_data['content']
                     yield content
         except Exception:
+            print("gen_func_llama_server: exception")
             pass
 
 
@@ -308,6 +311,7 @@ class chat:
             self.update_backend(reload=self.do_update_backend_reload)
 
         res = ""
+        interrupted = False
         try:
             for gen_res in self.gen_func():
                 prompt_new = self.prompt + gen_res
@@ -321,7 +325,7 @@ class chat:
                         print(self.prompt[self.prompt_len:], end="", flush=True)
                     self.prompt_len = self.rev_prompt_tail
                     del gen_res
-                    return res
+                    return (res, interrupted)
                 else:
                     self.prompt = prompt_new
                     res += gen_res
@@ -331,8 +335,9 @@ class chat:
 
         except KeyboardInterrupt:
             print("** generation interrupted **")
+            interrupted = True
 
-        return res
+        return (res, interrupted)
 
 
     @staticmethod
