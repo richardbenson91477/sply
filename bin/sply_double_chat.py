@@ -50,14 +50,15 @@ def main ():
     for sys_arg in sys.argv[1:]:
         if sys_arg.find("--help") == 0:
             print(f"Usage: {sys.argv[0]} [options]\n"
-                  f"  where [options] are zero or more of:"
-                  )
+                  f"  where [options] are zero or more of:")
             sply.chat.print_default_args("    c1_", c1_args)
             sply.chat.print_default_args("    c2_", c2_args)
             exit(-1)
+
         for param_d in sply.chat.param_desc:
             if sys_arg.find("c1_" + param_d["name"] + "=") == 0:
                 sys_arg_param, sys_arg_value = sys_arg.split("=")
+                sys_arg_param = sys_arg_param[3:]
                 param_type = param_d["type"]
                 if param_type == str:
                     c1_args[sys_arg_param] = sys_arg_value
@@ -67,8 +68,10 @@ def main ():
                     c1_args[sys_arg_param] = int(sys_arg_value)
                 elif param_type == float:
                     c1_args[sys_arg_param] = float(sys_arg_value)
+
             if sys_arg.find("c2_" + param_d["name"] + "=") == 0:
                 sys_arg_param, sys_arg_value = sys_arg.split("=")
+                sys_arg_param = sys_arg_param[3:]
                 param_type = param_d["type"]
                 if param_type == str:
                     c2_args[sys_arg_param] = sys_arg_value
@@ -93,7 +96,7 @@ def main ():
 
     # modify the default prompt's greeting, which is prefaced with '\n'
     c2.prompt = c2.prompt[: c2.prompt.find("\n")] +\
-          c2.make_prompt_greet(names["ai_2"], names["ai_1"])
+          c2.make_prompt_greet(c2_args["ai_name"], c2_args["user_name"])
     c2.updated_prompt()
 
     interactive = False
@@ -102,23 +105,23 @@ def main ():
 
     running = True
     while running:
-        # TODO: move into interact()
         while interactive:
             cmd = input("🔢")
             if not cmd:
                 break
             elif cmd == "h":
-                # TODO print("a: list adjustable params and current values\n"
-                # TODO print("a [param]: display param's value\n"
-                # TODO print("a [param]=[value]: adjust param to value\n"
-                print("h: this help\n")
-                print("e1: edit c1 prompt\n")
-                print("e2: edit c2 prompt\n")
-                print("p1: display c1 [[prompt]]\n")
-                print("p2: display c2 [[prompt]]\n")
-                print("i: disable interactive\n")
-                print("q: quit running\n")
-            #TODO elif cmd == "a":
+                # TODO print("a1: list c1 adjustable params and current values\n"
+                # TODO print("a1 [param]: display c1 param's value\n"
+                # TODO print("a1 [param]=[value]: adjust c1 param to value\n"
+                print("enter: next iteration")
+                print("h: this help")
+                print("e1: edit c1 prompt")
+                print("e2: edit c2 prompt")
+                print("p1: display c1 [[prompt]]")
+                print("p2: display c2 [[prompt]]")
+                print("i: disable interactive")
+                print("q: quit running")
+            #TODO elif cmd == "a1":
             elif cmd == "e1":
                 c1.edit_prompt()
             elif cmd == "e2":
