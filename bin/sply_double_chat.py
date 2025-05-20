@@ -126,8 +126,9 @@ def main ():
                 interactive = True
                 continue
 
-            if c2.in_suffix_enabled:
-                c2.write(c2.in_suffix, show=False)
+            # would have to toggle off earlier somehow like c2.write(.., in_suffix=False)
+            #if c2.in_suffix_enabled:
+            #    c2.write(c2.in_suffix, show=False)
             turn = 2
 
         if turn == 2:
@@ -149,8 +150,9 @@ def main ():
                 interactive = True
                 continue
 
-            if c1.in_suffix_enabled:
-                c1.write(c1.in_suffix, show=False)
+            # would have to toggle off earlier somehow like c2.write(.., in_suffix=False)
+            #if c1.in_suffix_enabled:
+            #    c1.write(c1.in_suffix, show=False)
             turn = 1
 
 
