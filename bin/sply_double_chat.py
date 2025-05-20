@@ -20,9 +20,10 @@ def main ():
         "backend": "llama-server",
         "port": 8080,
         "user_name": names["ai_2"],
-        "user_desc": "user desc goes here",
+        "user_desc": "is a girl",
         "ai_name": names["ai_1"],
-        "ai_desc": "ai desc goes here",
+        "ai_desc": "is another girl",
+        "in_suffix": "",
         "in_suffix_enabled": False,
         "rev_prompt": f"{names["ai_2"]}:",
         "seed": -1,
@@ -38,18 +39,13 @@ def main ():
         "user_desc": c1_args["ai_desc"],
         "ai_name": names["ai_2"],
         "ai_desc": c1_args["user_desc"],
+        "in_suffix": "",
         "in_suffix_enabled": False,
         "rev_prompt": f"{names["ai_1"]}:",
         "seed": -1,
         "temp": 0.9,
         "num_ctx": 16384,
         }
-
-    if c1_args["seed"] == -1:
-        c1_args["seed"] = random.randrange(2**32)
-
-    if c2_args["seed"] == -1:
-        c2_args["seed"] = random.randrange(2**32)
 
     for sys_arg in sys.argv[1:]:
         if sys_arg.find("--help") == 0:
@@ -82,6 +78,12 @@ def main ():
                     c2_args[sys_arg_param] = int(sys_arg_value)
                 elif param_type == float:
                     c2_args[sys_arg_param] = float(sys_arg_value)
+
+    if c1_args["seed"] == -1:
+        c1_args["seed"] = random.randrange(2**32)
+
+    if c2_args["seed"] == -1:
+        c2_args["seed"] = random.randrange(2**32)
 
     print(f"c1_args={c1_args}")
     print(f"c2_args={c2_args}")
