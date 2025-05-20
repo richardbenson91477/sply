@@ -56,31 +56,19 @@ def main ():
             exit(-1)
 
         for param_d in sply.chat.param_desc:
-            if sys_arg.find("c1_" + param_d["name"] + "=") == 0:
-                sys_arg_param, sys_arg_value = sys_arg.split("=")
-                sys_arg_param = sys_arg_param[3:]
-                param_type = param_d["type"]
-                if param_type == str:
-                    c1_args[sys_arg_param] = sys_arg_value
-                elif param_type == bool:
-                    c1_args[sys_arg_param] = True if sys_arg_value == "True" else False
-                elif param_type == int:
-                    c1_args[sys_arg_param] = int(sys_arg_value)
-                elif param_type == float:
-                    c1_args[sys_arg_param] = float(sys_arg_value)
-
-            if sys_arg.find("c2_" + param_d["name"] + "=") == 0:
-                sys_arg_param, sys_arg_value = sys_arg.split("=")
-                sys_arg_param = sys_arg_param[3:]
-                param_type = param_d["type"]
-                if param_type == str:
-                    c2_args[sys_arg_param] = sys_arg_value
-                elif param_type == bool:
-                    c2_args[sys_arg_param] = True if sys_arg_value == "True" else False
-                elif param_type == int:
-                    c2_args[sys_arg_param] = int(sys_arg_value)
-                elif param_type == float:
-                    c2_args[sys_arg_param] = float(sys_arg_value)
+            for prefix, c_args in (("c1_", c1_args), ("c2_", c2_args)):
+                if sys_arg.find(prefix + param_d["name"] + "=") == 0:
+                    sys_arg_param, sys_arg_value = sys_arg.split("=")
+                    sys_arg_param = sys_arg_param[3:]
+                    param_type = param_d["type"]
+                    if param_type == str:
+                        c_args[sys_arg_param] = sys_arg_value
+                    elif param_type == bool:
+                        c_args[sys_arg_param] = True if sys_arg_value == "True" else False
+                    elif param_type == int:
+                        c_args[sys_arg_param] = int(sys_arg_value)
+                    elif param_type == float:
+                        c_args[sys_arg_param] = float(sys_arg_value)
 
     if c1_args["seed"] == -1:
         c1_args["seed"] = random.randrange(2**32)
@@ -119,6 +107,8 @@ def main ():
                 print("e2: edit c2 prompt")
                 print("p1: display c1 [[prompt]]")
                 print("p2: display c2 [[prompt]]")
+                print("t1: set turn to 1")
+                print("t2: set turn to 2")
                 print("i: disable interactive")
                 print("q: quit running")
             #TODO elif cmd == "a1":
