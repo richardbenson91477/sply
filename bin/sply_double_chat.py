@@ -5,15 +5,18 @@ import random
 import sply
 import time
 
+
 def main ():
     # TODO: load these dicts from config
     names = {
-        "ai_1": "Amy"
-        "ai_2": "Amber"
-        "log_path" = "sply_double_chat.log"
+        "ai_1": "Amy",
+        "ai_2": "Amber",
+        "log_path": "sply_double_chat.log",
     }
 
-    c1_args = {
+
+    c1_args = sply.chat.get_default_args()
+    c1_args |= {
         "backend": "llama-server",
         "port": 8080,
         "user_name": names["ai_2"],
@@ -27,7 +30,8 @@ def main ():
         "num_ctx": 16384,
         }
 
-    c2_args = {
+    c2_args = sply.chat.get_default_args()
+    c2_args |= {
         "backend": "llama-server",
         "port": 8081,
         "user_name": names["ai_1"],
@@ -49,7 +53,11 @@ def main ():
 
     for sys_arg in sys.argv[1:]:
         if sys_arg.find("--help") == 0:
-            print_usage()
+            print(f"Usage: {sys.argv[0]} [options]\n"
+                  f"  where [options] are zero or more of:"
+                  )
+            sply.chat.print_default_args("    c1_", c1_args)
+            sply.chat.print_default_args("    c2_", c2_args)
             exit(-1)
         for param_d in sply.chat.param_desc:
             if sys_arg.find("c1_" + param_d["name"] + "=") == 0:
@@ -101,14 +109,13 @@ def main ():
                 # TODO print("a: list adjustable params and current values\n"
                 # TODO print("a [param]: display param's value\n"
                 # TODO print("a [param]=[value]: adjust param to value\n"
-                print("h: this help\n"
-                print("e1: edit c1 prompt\n"
-                print("e2: edit c2 prompt\n"
-                print("p1: display c1 [[prompt]]\n"
-                print("p2: display c2 [[prompt]]\n"
-                print("i: disable interactive\n"
-                print("q: quit running\n"
-                pass
+                print("h: this help\n")
+                print("e1: edit c1 prompt\n")
+                print("e2: edit c2 prompt\n")
+                print("p1: display c1 [[prompt]]\n")
+                print("p2: display c2 [[prompt]]\n")
+                print("i: disable interactive\n")
+                print("q: quit running\n")
             #TODO elif cmd == "a":
             elif cmd == "e1":
                 c1.edit_prompt()

@@ -134,13 +134,19 @@ class chat:
 
 
     @staticmethod
-    def print_default_args(prefix):
+    def print_default_args(prefix, new_defaults=None):
         for param_d in chat.param_desc:
             print(f"{prefix}{param_d["name"]}=({param_d["type"].__name__}): ", end="")
             print(f"{param_d["desc"]} (default: ", end="")
             if param_d["type"] == str:
                 print("\"", end="")
-            print(f"{param_d["default"]}", end="")
+
+            if not new_defaults:
+                print(f"{param_d["default"]}", end="")
+            else:
+                new_default = new_defaults[param_d["name"]]
+                print(f"{new_default}", end="")
+
             if param_d["type"] == str:
                 print("\"", end="")
             print(")")
