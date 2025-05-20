@@ -14,7 +14,7 @@ setup_kwargs = {
     'packages': ['sply', 'sply/overmind'],
     'package_data': {'': ['*']},
     'python_requires': '>=3.8',
-    'scripts': ['bin/sply_chat_interact.py']
+    'scripts': ['bin/sply_chat_interact.py', 'bin/sply_double_chat.py']
 }
 
 setup(**setup_kwargs)
