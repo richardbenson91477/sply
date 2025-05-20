@@ -120,6 +120,10 @@ def main ():
                 print(f"[[{c1.prompt}]]")
             elif cmd == "p2":
                 print(f"[[{c2.prompt}]]")
+            elif cmd == "t1":
+                turn = 1
+            elif cmd == "t2":
+                turn = 2
             elif cmd == "i":
                 interactive = False
                 break
