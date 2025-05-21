@@ -47,6 +47,7 @@ def main ():
                     chat_args[sys_arg_param] = int(sys_arg_value)
                 elif param_type == float:
                     chat_args[sys_arg_param] = float(sys_arg_value)
+                break
 
     print("chat_args = ", end="")
     print(chat_args)
