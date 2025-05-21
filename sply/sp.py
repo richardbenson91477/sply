@@ -50,7 +50,7 @@ class sp:
 
     def runcode (self, msg):
         self.chat.write(f"{msg}\n", show=self.show)
-        res = self.chat.read(show=self.show)
+        res, interrupted = self.chat.read(show=self.show)
         if res.rfind(self.rev_prompt) == len(res) - self.rev_prompt_len:
             res = res[:-self.rev_prompt_len]
         return res
@@ -58,7 +58,7 @@ class sp:
 
     def runcode_think (self, msg):
         self.chat.write(f"{msg}\n<think>", show=self.show)
-        res = self.chat.read(show=self.show)
+        res, interrupted = self.chat.read(show=self.show)
         think_tag_end = res.rfind("</think>")
         if think_tag_end != -1:
             res = res[think_tag_end + 8:]
@@ -69,7 +69,7 @@ class sp:
 
     def edit_prompt (self):
         self.chat.edit_prompt()
-        res = self.chat.read(show=self.show)
+        res, interrupted = self.chat.read(show=self.show)
         if res.rfind(self.rev_prompt) == len(res) - self.rev_prompt_len:
             res = res[:-self.rev_prompt_len]
         return res
