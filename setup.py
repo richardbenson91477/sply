@@ -3,7 +3,7 @@ from setuptools import setup
 
 setup_kwargs = {
     'name': 'sply',
-    'version': '1.0.19',
+    'version': '1.0.20',
     'description': 'a bridge between real and simulated python interpreters',
     'long_description': '',
     'author': 'Richard Benson',
