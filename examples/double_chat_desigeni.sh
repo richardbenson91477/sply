@@ -17,7 +17,7 @@ ai1_desc_default="is a programmer who wants to implement $ai2's designs. If any 
     ai1_desc="$ai1_desc_default"
     }
 
-ai2_desc="is a brilliant designer who wants to create a game with code by $ai1. The game will use no external assets, so that it can be fully designed and tested during the chat. It will have a modern and original design, within reasonable limits. $ai2 will be clear and concise with feature requests and when answering any follow-up questions",
+ai2_desc_default="is a brilliant designer who wants to create a game with code by $ai1. The game will use no external assets, so that it can be fully designed and tested during the chat. It will have a modern and original design, within reasonable limits. $ai2 will be clear and concise with feature requests and when answering any follow-up questions",
 [ "$ai2_desc" ] || {
     ai2_desc="$ai2_desc_default"
     }
