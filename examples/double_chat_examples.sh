@@ -5,21 +5,25 @@ sply_path="$(dirname $(realpath "$0"))/.."
 ai1_default="AI_1"
 [ "$ai1" ] || {
     ai1="$ai1_default"
+    echo "using default ai1 \"$ai1_default\""
     }
 
 ai2_default="AI_2"
 [ "$ai2" ] || {
     ai2="$ai2_default"
+    echo "using default ai2 \"$ai2_default\""
     }
 
 ai1_desc_default="is an LLM"
 [ "$ai1_desc" ] || {
     ai1_desc="$ai1_desc_default"
+    echo "using default ai1_desc \"$ai1_desc_default\""
     }
 
 ai2_desc_default="is a different LLM",
 [ "$ai2_desc" ] || {
     ai2_desc="$ai2_desc_default"
+    echo "using default ai2_desc \"$ai2_desc_default\""
     }
 
 PYTHONPATH="$sply_path" \
