@@ -11,5 +11,9 @@ export ai2_desc_ai1="$ai1_desc_ai1"
 export ai2_desc_ai2="wants to design a single-file pygame (no external assets) with a prompt by $ai1. It will have an original design. $ai2 will try to be clear and concise with feature requests and when asking or answering follow-up questions"
 export ai1_desc_ai2="$ai2_desc_ai2"
 
+[ "$ai2_new_english" ] && {
+    export ai1_desc_ai2="$ai1_desc_ai2"". $ai2 is a new English speaker and is self-conscious about it"
+    }
+
 $sply_path/examples/double_chat_examples.sh
 
