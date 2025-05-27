@@ -197,7 +197,7 @@ def main ():
             if interrupted:
                 interrupted = False
                 interactive = True
-                print("\n[[ entering ninteractive mode: enter h for help ]]")
+                print("\n[[ entering interactive mode: enter h for help ]]")
                 continue
 
             turn = 2
