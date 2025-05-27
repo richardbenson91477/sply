@@ -148,10 +148,10 @@ def main ():
                 c2.edit_prompt()
             elif cmd == "i":
                 if turn == 1:
-                    msg = "\n" + c2_args["rev_prompt"]
+                    msg = "\n" + c1_args["rev_prompt"]
                     turn = 2
                 else:
-                    msg = "\n" + c1_args["rev_prompt"]
+                    msg = "\n" + c2_args["rev_prompt"]
                     turn = 1
 
                 with open(log_path, "a") as f:
