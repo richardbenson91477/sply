@@ -121,15 +121,16 @@ def main ():
                 print("a2: list c2 adjustable params and current values")
                 print("a2 [param]: display c2 param's value")
                 print("a2 [param]=[value]: adjust c2 param to value")
+                print("c: exit interactive mode and continue")
                 print("e1: edit c1 prompt")
                 print("e2: edit c2 prompt")
+                print("i: interrupt turn and continue")
                 print("p1: display [[c1 prompt]]")
                 print("p2: display [[c2 prompt]]")
-                print("pt: show turn")
+                print("q: quit running")
+                print("t: show turn")
                 print("t1: set turn to 1")
                 print("t2: set turn to 2")
-                print("i: exit interactive mode and continue")
-                print("q: quit running")
             elif cmd == "a1":
                 c1.adjust("list")
             elif cmd == "a2":
@@ -138,43 +139,60 @@ def main ():
                 c1.adjust(cmd[3:])
             elif cmd[0:3] == "a2 ":
                 c2.adjust(cmd[3:])
+            elif cmd == "c":
+                interactive = False
+                break
             elif cmd == "e1":
                 c1.edit_prompt()
             elif cmd == "e2":
                 c2.edit_prompt()
+            elif cmd == "i":
+                if turn == 1:
+                    msg = "\n" + c2_args["rev_prompt"]
+                    turn = 2
+                else:
+                    msg = "\n" + c1_args["rev_prompt"]
+                    turn = 1
+
+                with open(log_path, "a") as f:
+                    f.write(msg)
+
+                c1.write(msg, show=False)
+                c2.write(msg, show=True)
+
+                interactive = False
+                break
+
             elif cmd == "p1":
                 print(f"[[{c1.prompt}]]")
             elif cmd == "p2":
                 print(f"[[{c2.prompt}]]")
-            elif cmd == "pt":
+            elif cmd == "q":
+                running = False
+                break
+            elif cmd == "t":
                 print(f"turn is {turn}")
             elif cmd == "t1":
                 turn = 1
             elif cmd == "t2":
                 turn = 2
-            elif cmd == "i":
-                interactive = False
-                break
-            elif cmd == "q":
-                running = False
-                break
 
         if not running:
             break
 
         if turn == 1:
             while True:
-                in1, interrupted = c1.read(show=True)
-                if in1:
+                msg, interrupted = c1.read(show=True)
+                if msg:
                     break
                 else:
                     print("", end="", flush=True)
                     time.sleep(1)
 
             with open(log_path, "a") as f:
-                f.write(in1)
+                f.write(msg)
 
-            c2.write(in1, show=False)
+            c2.write(msg, show=False)
 
             if interrupted:
                 interrupted = False
@@ -186,17 +204,17 @@ def main ():
 
         if turn == 2:
             while True:
-                in2, interrupted = c2.read(show=True)
-                if in2:
+                msg, interrupted = c2.read(show=True)
+                if msg:
                     break
                 else:
                     print("", end="", flush=True)
                     time.sleep(1)
 
             with open(log_path, "a") as f:
-                f.write(in2)
+                f.write(msg)
 
-            c1.write(in2, show=False)
+            c1.write(msg, show=False)
 
             if interrupted:
                 interrupted = False
