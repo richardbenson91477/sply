@@ -17,62 +17,62 @@ ai2_num_ctx_default=16384
 
 [ "$ai1" ] || {
     ai1="$ai1_default"
-    echo "using default ai1 \"$ai1_default\""
+    echo "$0: note: using default ai1 \"$ai1_default\""
     }
 
 [ "$ai2" ] || {
     ai2="$ai2_default"
-    echo "using default ai2 \"$ai2_default\""
+    echo "$0: note: using default ai2 \"$ai2_default\""
     }
 
 [ "$ai1_desc_ai1" ] || {
     ai1_desc_ai1="$ai1_desc_ai1_default"
-    echo "using default ai1_desc \"$ai1_desc_ai1_default\""
+    echo "$0: note: using default ai1_desc \"$ai1_desc_ai1_default\""
     }
 
 [ "$ai1_desc_ai2" ] || {
     ai1_desc_ai2="$ai1_desc_ai2_default"
-    echo "using default ai2_desc \"$ai1_desc_ai2_default\""
+    echo "$0: note: using default ai2_desc \"$ai1_desc_ai2_default\""
     }
 
 [ "$ai2_desc_ai1" ] || {
     ai2_desc_ai1="$ai2_desc_ai1_default"
-    echo "using default ai1_desc \"$ai2_desc_ai1_default\""
+    echo "$0: note: using default ai1_desc \"$ai2_desc_ai1_default\""
     }
 
 [ "$ai2_desc_ai2" ] || {
     ai2_desc_ai2="$ai2_desc_ai2_default"
-    echo "using default ai2_desc \"$ai2_desc_ai2_default\""
+    echo "$0: note: using default ai2_desc \"$ai2_desc_ai2_default\""
     }
 
 [ "$ai1_temp" ] || {
     ai1_temp="$ai1_temp_default"
-    echo "using default ai1_temp \"$ai1_temp_default\""
+    echo "$0: note: using default ai1_temp \"$ai1_temp_default\""
     }
 
 [ "$ai2_temp" ] || {
     ai2_temp="$ai2_temp_default"
-    echo "using default ai2_temp \"$ai2_temp_default\""
+    echo "$0: note: using default ai2_temp \"$ai2_temp_default\""
     }
 
 [ "$ai1_port" ] || {
     ai1_port="$ai1_port_default"
-    echo "using default ai1_port \"$ai1_port_default\""
+    echo "$0: note: using default ai1_port \"$ai1_port_default\""
     }
 
 [ "$ai2_port" ] || {
     ai2_port="$ai2_port_default"
-    echo "using default ai2_port \"$ai2_port_default\""
+    echo "$0: note: using default ai2_port \"$ai2_port_default\""
     }
 
 [ "$ai1_num_ctx" ] || {
     ai1_num_ctx="$ai1_num_ctx_default"
-    echo "using default ai1_num_ctx \"$ai1_num_ctx_default\""
+    echo "$0: note: using default ai1_num_ctx \"$ai1_num_ctx_default\""
     }
 
 [ "$ai2_num_ctx" ] || {
     ai2_num_ctx="$ai2_num_ctx_default"
-    echo "using default ai2_num_ctx \"$ai2_num_ctx_default\""
+    echo "$0: note: using default ai2_num_ctx \"$ai2_num_ctx_default\""
     }
     
 
