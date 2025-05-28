@@ -13,6 +13,7 @@ export ai1_desc_ai2="$ai2_desc_ai2"
 
 [ "$ai2_new_english" ] && {
     export ai1_desc_ai2="$ai1_desc_ai2"". $ai2 is a new English speaker and is self-conscious about it"
+    echo "$0: note: using ai2_new_english enhancement"
     }
 
 $sply_path/examples/double_chat_examples.sh
